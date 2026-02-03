@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Utilities
 {
@@ -17,12 +18,15 @@ namespace Utilities
         #region Properties
 
         /// <summary>
-        /// Gets the singleton instance. If the instance is undefined, it searches for it or create one on the scene.
-        /// The result of search is not guaranteed.
+        /// Gets the singleton instance. If the instance is undefined, it searches for it.
+        /// The result of search is not guaranteed. The existence of returned singleton is not guaranteed.
         /// </summary>
         /// <returns>The singleton instance of type T.</returns>
         /// <remarks>
-        /// It is not recommended to let it search or create.
+        /// It is not recommended to let it search.
+        /// </remarks>
+        /// <remarks>
+        /// Use <see cref="EnsuredSingleton{T}"/> to ensure singleton's existence. 
         /// </remarks>
         public static T Instance
         {
@@ -31,11 +35,6 @@ namespace Utilities
                 if (!_instance)
                 {
                     _instance = FindAnyObjectByType<T>();
-                    if (!_instance)
-                    {
-                        var go = new GameObject(typeof(T).Name + " (Auto-Gen Singleton)");
-                        _instance = go.AddComponent<T>();
-                    }
                 }
 
                 return _instance;
@@ -63,7 +62,7 @@ namespace Utilities
             {
                 Destroy(gameObject);
             }
-            
+
             Init();
         }
 
@@ -119,6 +118,122 @@ namespace Utilities
             {
                 DontDestroyOnLoad(gameObject);
             }
+        }
+
+        #endregion
+    }
+
+
+    /// <summary>
+    /// A singleton that ensure the existence of access of Instance.
+    /// </summary>
+    /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
+    public abstract class EnsuredSingleton<T> : Singleton<T> where T : MonoBehaviour
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets the singleton instance. If the instance is undefined, it searches for it or create one on the scene.
+        /// The result of search is not guaranteed. The existence of returned singleton is guaranteed.
+        /// </summary>
+        /// <returns>The singleton instance of type T.</returns>
+        /// <remarks>
+        /// It is not recommended to let it search or create.
+        /// </remarks>
+        public static T Instance
+        {
+            get
+            {
+                if (!_instance)
+                {
+                    _instance = FindAnyObjectByType<T>();
+                    if (!_instance)
+                    {
+                        var go = new GameObject("(Auto-Gen Singleton) " + typeof(T).Name);
+                        _instance = go.AddComponent<T>();
+                    }
+                }
+
+                return _instance;
+            }
+        }
+
+        #endregion
+    }
+
+
+    /// <summary>
+    /// A persistent singleton that is not destroyed on scene load. And it ensures the existence of access of Instance.
+    /// </summary>
+    /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
+    public abstract class EnsuredPersistentSingleton<T> : EnsuredSingleton<T> where T : MonoBehaviour
+    {
+        #region Methods
+
+        /// <summary>
+        /// Awake method to call DontDestroyOnLoad on the object.
+        /// </summary>
+        /// <remarks>
+        /// Init() is executed before DontDestroyOnLoad.
+        /// </remarks>
+        protected override void Awake()
+        {
+            base.Awake();
+            if (_instance == this)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+        }
+
+        #endregion
+    }
+
+
+    /// <summary>
+    /// A class that ensures there is only one in the game. But it cannot be accessed globally.
+    /// </summary>
+    /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
+    public abstract class LocalSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    {
+        #region Fields
+
+        /// <summary>
+        /// Flag var that shows if there exist a LocalSingleton.
+        /// </summary>
+        protected static bool _instantiated = false;
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Awake method to initialize and set flag var to true.
+        /// </summary>
+        /// <remarks>
+        /// Do not override it.
+        /// See <see cref="Init"/> to append awake behaviour.
+        /// </remarks>
+        protected virtual void Awake()
+        {
+            Assert.IsFalse(_instantiated);
+            _instantiated = true;
+            Init();
+        }
+
+        /// <summary>
+        /// Clear flag var _instantiaed when destroyed.
+        /// </summary>
+        protected virtual void OnDestroy()
+        {
+            Assert.IsTrue(_instantiated);
+            _instantiated = false;
+        }
+
+        /// <summary>
+        /// Behavior that should be called when Awake. Override it to append behaviour is safe and recommended.
+        /// </summary>
+        protected virtual void Init()
+        {
         }
 
         #endregion
