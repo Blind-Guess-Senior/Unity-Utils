@@ -140,7 +140,7 @@ namespace Utilities
         /// <remarks>
         /// It is not recommended to let it search or create.
         /// </remarks>
-        public static T Instance
+        public new static T Instance
         {
             get
             {
