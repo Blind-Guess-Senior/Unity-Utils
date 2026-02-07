@@ -4,9 +4,14 @@ using Utilities;
 
 namespace Editor.ClassDrawer
 {
+    /// <summary>
+    /// Inspector drawer for SerializableDictionary&lt;,&gt; class.
+    /// </summary>
     [CustomPropertyDrawer(typeof(SerializableDictionary<,>), true)]
     public class SerializableDictionaryDrawer : PropertyDrawer
     {
+        #region Override Methods
+
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             GUIContent listLabel = new GUIContent("Dictionary");
@@ -18,9 +23,10 @@ namespace Editor.ClassDrawer
 
             // Show properties.
             EditorGUILayout.LabelField(listLabel);
-            // Reject direct modify in inspector.
+            // Show every single entry rather than show whole list.
             for (var i = 0; i < list.arraySize; i++)
             {
+                // Reject direct modify in inspector.
                 EditorGUI.BeginDisabledGroup(true);
                 GUIContent elementLabel = new GUIContent("Element " + i);
                 EditorGUILayout.PropertyField(list.GetArrayElementAtIndex(i), elementLabel);
@@ -73,5 +79,7 @@ namespace Editor.ClassDrawer
             GUILayout.Space(10); // The fixed space on the right side.
             EditorGUILayout.EndHorizontal();
         }
+
+        #endregion
     }
 }
