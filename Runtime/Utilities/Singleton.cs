@@ -49,8 +49,7 @@ namespace Utilities
         /// Awake method to initialize the singleton instance.
         /// </summary>
         /// <remarks>
-        /// Do not override it.
-        /// See <see cref="Init"/> to append awake behaviour.
+        /// Please override <see cref="Init"/> to append awake behaviour.
         /// </remarks>
         protected virtual void Awake()
         {
@@ -63,7 +62,10 @@ namespace Utilities
                 Destroy(gameObject);
             }
 
-            Init();
+            if (_instance == this)
+            {
+                Init();
+            }
         }
 
         /// <summary>
