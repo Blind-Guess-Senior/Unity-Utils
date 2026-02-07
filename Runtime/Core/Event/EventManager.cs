@@ -47,7 +47,7 @@ namespace Core.Event
     /// </example>
     public class EventManager : PersistentSingleton<EventManager>
     {
-        #region Fields
+        #region Static Fields
 
         /// <summary>
         /// Dictionary to store event buses by their type.
@@ -56,7 +56,7 @@ namespace Core.Event
 
         #endregion
 
-        #region Methods
+        #region Override Methods
 
         protected override void Init()
         {
