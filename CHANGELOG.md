@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Unity package essential files
 - Singleton implementation
+- EventSystem implementation ref: https://github.com/m-gebhard/uni-utils/ add lock and snapshot-in-publish.
+- Reflection usage of getting type in runtime
 
 ### Changed
 
