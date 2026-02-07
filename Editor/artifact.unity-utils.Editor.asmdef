@@ -1,3 +1,4 @@
 {
-	"name": "artifact.unity-utils.Editor"
+	"name": "artifact.unity-utils.Editor",
+	"references":[ "GUID:bb6cc166d1314fb4db821c892d007c97" ]
 }
