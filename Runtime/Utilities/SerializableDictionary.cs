@@ -12,6 +12,11 @@ namespace Utilities
     [Serializable]
     public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
     {
+        #region Fields
+
+        /// <summary>
+        /// Another representation of dictionary to make it serializable.
+        /// </summary>
         public List<Pair> pairList = new();
 
         /// <summary>
@@ -19,6 +24,13 @@ namespace Utilities
         /// </summary>
         public Pair newPair = new();
 
+        #endregion
+
+        #region Definitions
+
+        /// <summary>
+        /// A representation of key-value pair
+        /// </summary>
         [Serializable]
         public struct Pair
         {
@@ -32,6 +44,14 @@ namespace Utilities
             }
         }
 
+        #endregion
+
+
+        #region Methods
+
+        /// <summary>
+        /// Serialize pairList with dictionary's data.
+        /// </summary>
         public void OnBeforeSerialize()
         {
             pairList.Clear();
@@ -42,6 +62,9 @@ namespace Utilities
             }
         }
 
+        /// <summary>
+        /// Dump data from pairList to dictionary.
+        /// </summary>
         public void OnAfterDeserialize()
         {
             Clear();
@@ -54,9 +77,15 @@ namespace Utilities
             }
         }
 
+        /// <summary>
+        /// Add <see cref="newPair"/> to dictionary. Would be called in inspector.
+        /// </summary>
+        /// <returns>Whether add process had success.</returns>
         public bool TryAddPair()
         {
             return TryAdd(newPair.key, newPair.value);
         }
+
+        #endregion
     }
 }
