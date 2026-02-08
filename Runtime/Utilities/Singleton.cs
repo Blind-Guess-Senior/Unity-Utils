@@ -23,10 +23,10 @@ namespace Utilities
         /// </summary>
         /// <returns>The singleton instance of type T.</returns>
         /// <remarks>
-        /// It is not recommended to let it search.
+        /// 1) It is not recommended to let it search.
         /// </remarks>
         /// <remarks>
-        /// Use <see cref="EnsuredSingleton{T}"/> to ensure singleton's existence. 
+        /// 2) Use <see cref="EnsuredSingleton{T}"/> to ensure singleton's existence. 
         /// </remarks>
         public static T Instance
         {
@@ -212,7 +212,7 @@ namespace Utilities
         /// Awake method to initialize and set flag var to true.
         /// </summary>
         /// <remarks>
-        /// Do not override it.
+        /// Do not override it in normal case.
         /// See <see cref="Init"/> to append awake behaviour.
         /// </remarks>
         protected virtual void Awake()
@@ -223,7 +223,7 @@ namespace Utilities
         }
 
         /// <summary>
-        /// Clear flag var _instantiaed when destroyed.
+        /// Clear flag var _instantiated when destroyed.
         /// </summary>
         protected virtual void OnDestroy()
         {
