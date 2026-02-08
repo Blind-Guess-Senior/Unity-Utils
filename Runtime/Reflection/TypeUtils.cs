@@ -89,5 +89,49 @@ namespace Reflection
 
             return false;
         }
+
+        /// <summary>
+        /// Checks if a type is derived from base type.
+        /// </summary>
+        /// <param name="baseType"></param>
+        /// <param name="type"></param>
+        /// <param name="includeInterfaces"></param>
+        /// <returns>True if the type is the derive of base type; otherwise, false.</returns>
+        public static bool IsAssignable(Type baseType, Type type, bool includeInterfaces = false)
+        {
+            if (type == null || baseType == null)
+                return false;
+
+            if (baseType.IsAssignableFrom(type))
+                return true;
+
+            if (baseType.IsGenericTypeDefinition)
+            {
+                var currentType = type;
+                while (currentType != null && currentType != typeof(object))
+                {
+                    if (currentType.IsGenericType && currentType.GetGenericTypeDefinition() == baseType)
+                    {
+                        return true;
+                    }
+
+                    currentType = currentType.BaseType;
+                }
+            }
+
+            if (!includeInterfaces)
+                return false;
+
+            foreach (Type iface in type.GetInterfaces())
+            {
+                if (iface == baseType)
+                    return true;
+
+                if (iface.IsGenericType && iface.GetGenericTypeDefinition() == baseType)
+                    return true;
+            }
+
+            return false;
+        }
     }
 }
