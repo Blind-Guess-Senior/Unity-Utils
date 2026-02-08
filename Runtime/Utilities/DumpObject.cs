@@ -185,8 +185,8 @@ namespace Utilities
         /// ----- The Output will look like -----
         /// [DumpTest3] DumpTest3Int1: 7
         /// [DumpTest3] DumpTest3Int2Private: 8
-        /// [EventBus`1] handlers: System.Collections.Generic.Dictionary ...
-        /// [EventBus`1] _lock: System.Object
+        /// [EventBus`1] handlers: {...may be something in it...}
+        /// [EventBus`1] _lock: {}
         /// [EventBus`1] nextHandlerId: 0
         /// </code>
         /// </example>
