@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reflection usage of getting type in runtime
 - Serializable dictionary
 - Object dumper to string
+- String extension functions
 
 ### Changed
 
