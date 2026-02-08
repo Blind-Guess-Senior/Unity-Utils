@@ -10,7 +10,7 @@ namespace Utilities
     /// <typeparam name="TKey">The type of the key of dictionary.</typeparam>
     /// <typeparam name="TValue">The type of the value of dictionary.</typeparam>
     [Serializable]
-    public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+    public class DictionarySerializable<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
     {
         #region Fields
 

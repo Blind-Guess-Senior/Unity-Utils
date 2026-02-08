@@ -5,10 +5,10 @@ using Utilities;
 namespace Editor.ClassDrawer
 {
     /// <summary>
-    /// Inspector drawer for SerializableDictionary&lt;,&gt; class.
+    /// Inspector drawer for DictionarySerializable&lt;,&gt; class.
     /// </summary>
-    [CustomPropertyDrawer(typeof(SerializableDictionary<,>), true)]
-    public class SerializableDictionaryDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(DictionarySerializable<,>), true)]
+    public class DictionarySerializableDrawer : PropertyDrawer
     {
         #region Override Methods
 
