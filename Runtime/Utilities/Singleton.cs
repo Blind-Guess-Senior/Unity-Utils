@@ -206,7 +206,7 @@ namespace Utilities
 
         #endregion
 
-        #region Methods
+        #region Unity Event Methods
 
         /// <summary>
         /// Awake method to initialize and set flag var to true.
@@ -221,6 +221,10 @@ namespace Utilities
             _instantiated = true;
             Init();
         }
+
+        #endregion
+
+        #region Methods
 
         /// <summary>
         /// Clear flag var _instantiated when destroyed.
