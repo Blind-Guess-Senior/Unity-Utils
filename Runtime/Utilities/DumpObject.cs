@@ -78,6 +78,7 @@ namespace Utilities
         /// </summary>
         /// <param name="obj">The object that wanna be dumped.</param>
         /// <typeparam name="T">The base type that dump will stop at.</typeparam>
+        /// <example>
         /// <code>
         /// public class DumpTest1 : MonoBehaviour
         /// {
@@ -117,6 +118,7 @@ namespace Utilities
         /// [DumpTest1] DumpTest1Int1: 3
         /// [DumpTest1] DumpTest1Int2Private: 4
         /// </code>
+        /// </example>
         public static void DumpUpTo<T>(T obj)
         {
             if (obj == null) return;
