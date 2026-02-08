@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Utilities
+namespace Extensions.Containers
 {
     /// <summary>
     /// A custom dictionary class that can be serialized and show in inspector.
