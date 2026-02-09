@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using Reflection;
 using Unity.Plastic.Newtonsoft.Json;
-using UnityEngine;
 
-namespace Utilities
+namespace Utilities.Debug
 {
     /// <summary>
     /// Utility class for dump an object's field into human-readable format.
@@ -70,7 +69,7 @@ namespace Utilities
                 }
             }
 
-            Debug.Log(dumped);
+            UnityEngine.Debug.Log(dumped);
         }
 
         /// <summary>
@@ -127,7 +126,7 @@ namespace Utilities
 
             if (!baseType.IsAssignableFrom(type))
             {
-                Debug.LogError($"Object of type {type} does not inherit from {baseType}");
+                UnityEngine.Debug.LogError($"Object of type {type} does not inherit from {baseType}");
                 return;
             }
 
@@ -153,7 +152,7 @@ namespace Utilities
                 currentType = currentType.BaseType;
             }
 
-            Debug.Log(dumped);
+            UnityEngine.Debug.Log(dumped);
         }
 
         /// <summary>
@@ -199,7 +198,7 @@ namespace Utilities
 
             if (!TypeUtils.IsAssignable(baseType, type))
             {
-                Debug.LogError($"Object of type {type} does not inherit from {baseType}");
+                UnityEngine.Debug.LogError($"Object of type {type} does not inherit from {baseType}");
                 return;
             }
 
@@ -225,7 +224,7 @@ namespace Utilities
                 currentType = currentType.BaseType;
             }
 
-            Debug.Log(dumped);
+            UnityEngine.Debug.Log(dumped);
         }
 
         #endregion
