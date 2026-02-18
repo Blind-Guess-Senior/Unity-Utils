@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Unity package essential files
-- Singleton implementation
+- Singleton implementation in both normal way and MonoBehaviour way
 - EventSystem implementation ref: https://github.com/m-gebhard/uni-utils/ add lock and snapshot-in-publish.
 - Reflection usage of getting type in runtime
 - Serializable dictionary
