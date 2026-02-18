@@ -164,7 +164,7 @@ namespace Extensions
         /// Utility method for combine a string into existed hash code in sequence way.
         /// </summary>
         /// <param name="hash">The hash code that had been calculated before.</param>
-        /// <param name="s">The string wanna be added into hash code.</param>
+        /// <param name="s">The string want to be added into hash code.</param>
         /// <returns>The new hashcode.</returns>
         private static int AddStringToHash(int hash, string s)
         {

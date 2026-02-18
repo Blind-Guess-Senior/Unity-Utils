@@ -29,7 +29,7 @@ namespace Utilities.Debug
         /// <summary>
         /// Print all fields and their status of an object as itself class.
         /// </summary>
-        /// <param name="obj">The object that wanna be dumped.</param>
+        /// <param name="obj">The object that want to be dumped.</param>
         /// <example>
         /// <code>
         /// public class DumpTest
@@ -75,7 +75,7 @@ namespace Utilities.Debug
         /// <summary>
         /// Print all fields and their status of an object (including base class stop at specified class). 
         /// </summary>
-        /// <param name="obj">The object that wanna be dumped.</param>
+        /// <param name="obj">The object that want to be dumped.</param>
         /// <typeparam name="T">The base type that dump will stop at.</typeparam>
         /// <example>
         /// <code>
@@ -160,7 +160,7 @@ namespace Utilities.Debug
         /// This is the implementation for support of generic base type.
         /// </summary>
         /// <param name="baseType">The base type that dump will stop at.</param>
-        /// <param name="obj">The object that wanna be dumped.</param>
+        /// <param name="obj">The object that want to be dumped.</param>
         /// <example>
         /// <code>
         /// public abstract class EventBus&lt;TEventBus&gt; : IEventBus where TEventBus : EventBus&lt;TEventBus&gt;
@@ -235,7 +235,7 @@ namespace Utilities.Debug
         /// Dump an field into human-readable string.
         /// TODO: May need more check. JsonConvert works well now.
         /// </summary>
-        /// <param name="obj">The field that wanna be dumped.</param>
+        /// <param name="obj">The field that want to be dumped.</param>
         /// <returns>A string representation of input field.</returns>
         private static string FieldToString(object obj)
         {
