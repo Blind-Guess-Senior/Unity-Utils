@@ -3,7 +3,7 @@ using Utilities;
 
 namespace Core.Audio
 {
-    public class SoundManager : PersistentSingleton<SoundManager>
+    public class SoundManager : MonoPersistentSingleton<SoundManager>
     {
         
     }

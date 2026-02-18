@@ -45,7 +45,7 @@ namespace Core.Event
     /// }
     ///</code>
     /// </example>
-    public class EventManager : PersistentSingleton<EventManager>
+    public class EventManager : AutoInitSingleton<EventManager>
     {
         #region Static Fields
 
@@ -58,7 +58,7 @@ namespace Core.Event
 
         #region Override Methods
 
-        protected override void Init()
+        public EventManager()
         {
             RegisterEventBus();
         }

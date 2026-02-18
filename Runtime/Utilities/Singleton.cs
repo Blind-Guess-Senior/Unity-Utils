@@ -1,201 +1,90 @@
+using System;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Utilities
 {
+    public interface ISingleton
+    {
+    }
+
     /// <summary>
-    /// Abstract base class for creating singleton MonoBehaviour instances.
+    /// Abstract base class for creating singleton instances.
     /// </summary>
-    /// <typeparam name="T">Type of the singleton class. Must inherit MonoBehaviour.</typeparam>
-    public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+    /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
+    public abstract class Singleton<T> : ISingleton where T : new()
     {
         #region Fields
 
-        protected static T _instance;
+        protected static readonly Lazy<T> _lazy = new Lazy<T>(() => new T());
 
         #endregion
 
         #region Properties
 
         /// <summary>
-        /// Gets the singleton instance. If the instance is undefined, it searches for it.
-        /// The result of search is not guaranteed. The existence of returned singleton is not guaranteed.
+        /// Gets the singleton instance. It would be created when accessed first time.
         /// </summary>
         /// <returns>The singleton instance of type T.</returns>
-        /// <remarks>
-        /// 1) It is not recommended to let it search.
-        /// </remarks>
-        /// <remarks>
-        /// 2) Use <see cref="EnsuredSingleton{T}"/> to ensure singleton's existence. 
-        /// </remarks>
-        public static T Instance
-        {
-            get
-            {
-                if (!_instance)
-                {
-                    _instance = FindAnyObjectByType<T>();
-                }
-
-                return _instance;
-            }
-        }
-
-        #endregion
-
-        #region Methods
-
-        /// <summary>
-        /// Awake method to initialize the singleton instance.
-        /// </summary>
-        /// <remarks>
-        /// Please override <see cref="Init"/> to append awake behaviour.
-        /// </remarks>
-        protected virtual void Awake()
-        {
-            if (!_instance)
-            {
-                _instance = this as T;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-
-            if (_instance == this)
-            {
-                Init();
-            }
-        }
-
-        /// <summary>
-        /// Behavior that should be called when Awake. Override it to append behaviour is safe and recommended.
-        /// </summary>
-        protected virtual void Init()
-        {
-        }
+        public static T Instance => _lazy.Value;
 
         #endregion
     }
-
 
     /// <summary>
-    /// A persistent singleton that is not destroyed on scene load.
+    /// Abstract base class for creating singleton instances.
+    /// Which would be init whenever any static member first being accessed.
+    /// Every static members would be init whenever any static member first being accessed.
     /// </summary>
-    /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    /// <example>
-    /// <code>
-    /// // Example usage of PersistentSingleton
-    /// public class AudioManager : PersistentSingleton&lt;AudioManager&gt;
-    /// {
-    ///     public void PlaySound(string clipName)
-    ///     {
-    ///         Debug.Log("Playing sound: " + clipName);
-    ///     }
-    /// }
-    ///
-    /// public class GameController : MonoBehaviour
-    /// {
-    ///     void Start()
-    ///     {
-    ///         AudioManager.Instance.PlaySound("GameStart");
-    ///     }
-    /// }
-    /// </code>
-    /// </example>
-    public abstract class PersistentSingleton<T> : Singleton<T> where T : MonoBehaviour
+    /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
+    public abstract class UnlazySingleton<T> : ISingleton where T : new()
     {
-        #region Methods
+        #region Fields
 
-        /// <summary>
-        /// Awake method to call DontDestroyOnLoad on the object.
-        /// </summary>
-        /// <remarks>
-        /// Init() is executed before DontDestroyOnLoad.
-        /// </remarks>
-        protected override void Awake()
-        {
-            base.Awake();
-            if (_instance == this)
-            {
-                DontDestroyOnLoad(gameObject);
-            }
-        }
+        protected static T Instance { get; } = new();
 
         #endregion
     }
-
 
     /// <summary>
-    /// A singleton that ensure the existence of access of Instance.
+    /// Abstract base class for creating singleton instances.
+    /// It will be auto initialized when AfterAssembliesLoaded.
     /// </summary>
-    /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    public abstract class EnsuredSingleton<T> : Singleton<T> where T : MonoBehaviour
+    /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
+    public abstract class AutoInitSingleton<T> : Singleton<T> where T : new()
     {
-        #region Properties
-
         /// <summary>
-        /// Gets the singleton instance. If the instance is undefined, it searches for it or create one on the scene.
-        /// The result of search is not guaranteed. The existence of returned singleton is guaranteed.
+        /// Access the Instance to trigger the initialization of the singleton. 
         /// </summary>
-        /// <returns>The singleton instance of type T.</returns>
-        /// <remarks>
-        /// It is not recommended to let it search or create.
-        /// </remarks>
-        public new static T Instance
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+        public static void AutoInit()
         {
-            get
-            {
-                if (!_instance)
-                {
-                    _instance = FindAnyObjectByType<T>();
-                    if (!_instance)
-                    {
-                        var go = new GameObject("(Auto-Gen Singleton) " + typeof(T).Name);
-                        _instance = go.AddComponent<T>();
-                    }
-                }
-
-                return _instance;
-            }
+            _ = Instance;
         }
-
-        #endregion
     }
-
 
     /// <summary>
-    /// A persistent singleton that is not destroyed on scene load. And it ensures the existence of access of Instance.
+    /// Abstract base class for creating singleton instances.
+    /// All static members will be auto initialized when AfterAssembliesLoaded.
     /// </summary>
-    /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    public abstract class EnsuredPersistentSingleton<T> : EnsuredSingleton<T> where T : MonoBehaviour
+    /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
+    public abstract class AutoInitUnlazySingleton<T> : UnlazySingleton<T> where T : new()
     {
-        #region Methods
-
         /// <summary>
-        /// Awake method to call DontDestroyOnLoad on the object.
+        /// Access the Instance to trigger the initialization of the singleton. 
         /// </summary>
-        /// <remarks>
-        /// Init() is executed before DontDestroyOnLoad.
-        /// </remarks>
-        protected override void Awake()
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+        public static void AutoInit()
         {
-            base.Awake();
-            if (_instance == this)
-            {
-                DontDestroyOnLoad(gameObject);
-            }
+            _ = Instance;
         }
-
-        #endregion
     }
-
 
     /// <summary>
     /// A class that ensures there is only one in the game. But it cannot be accessed globally.
     /// </summary>
-    /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    public abstract class LocalSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    /// <typeparam name="T">Type of the singleton class.</typeparam>
+    public abstract class LocalSingleton<T>
     {
         #region Fields
 
@@ -206,20 +95,28 @@ namespace Utilities
 
         #endregion
 
-        #region Unity Event Methods
+        #region Constructors
 
         /// <summary>
-        /// Awake method to initialize and set flag var to true.
+        /// Constructor.
+        /// Initializes the singleton instance and ensures that only one instance can be created.
         /// </summary>
-        /// <remarks>
-        /// Do not override it in normal case.
-        /// See <see cref="Init"/> to append awake behaviour.
-        /// </remarks>
-        protected virtual void Awake()
+        protected LocalSingleton()
         {
-            Assert.IsFalse(_instantiated);
+            Assert.IsTrue(!_instantiated);
             _instantiated = true;
             Init();
+        }
+
+        /// <summary>
+        /// Destructor.
+        /// Clears the flag var _instantiated when the instance is destroyed.
+        /// </summary>
+        ~LocalSingleton()
+        {
+            Assert.IsTrue(_instantiated);
+            _instantiated = false;
+            Dispose();
         }
 
         #endregion
@@ -227,18 +124,16 @@ namespace Utilities
         #region Methods
 
         /// <summary>
-        /// Clear flag var _instantiated when destroyed.
+        /// Behavior that should be called when constructed.
         /// </summary>
-        protected virtual void OnDestroy()
+        protected virtual void Init()
         {
-            Assert.IsTrue(_instantiated);
-            _instantiated = false;
         }
 
         /// <summary>
-        /// Behavior that should be called when Awake. Override it to append behaviour is safe and recommended.
+        /// Behavior that should be called when destructed.
         /// </summary>
-        protected virtual void Init()
+        protected virtual void Dispose()
         {
         }
 
