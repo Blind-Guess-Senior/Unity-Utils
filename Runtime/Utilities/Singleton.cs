@@ -10,8 +10,20 @@ namespace Utilities
 
     /// <summary>
     /// Abstract base class for creating singleton instances.
+    /// If you want to auto init singleton,
+    /// use [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
+    /// <example>
+    /// <code>
+    /// [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+    /// public static void Initialize()
+    /// {
+    ///     // This class will be auto initialized.
+    ///     _ = Instance;
+    /// }
+    /// </code>
+    /// </example>
     public abstract class Singleton<T> : ISingleton where T : new()
     {
         #region Fields
@@ -35,8 +47,20 @@ namespace Utilities
     /// Abstract base class for creating singleton instances.
     /// Which would be init whenever any static member first being accessed.
     /// Every static members would be init whenever any static member first being accessed.
+    /// If you want to auto init singleton,
+    /// use [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
+    /// <example>
+    /// <code>
+    /// [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+    /// public static void Initialize()
+    /// {
+    ///     // This class will be auto initialized.
+    ///     _ = Instance;
+    /// }
+    /// </code>
+    /// </example>
     public abstract class UnlazySingleton<T> : ISingleton where T : new()
     {
         #region Fields
@@ -44,40 +68,6 @@ namespace Utilities
         protected static T Instance { get; } = new();
 
         #endregion
-    }
-
-    /// <summary>
-    /// Abstract base class for creating singleton instances.
-    /// It will be auto initialized when AfterAssembliesLoaded.
-    /// </summary>
-    /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
-    public abstract class AutoInitSingleton<T> : Singleton<T> where T : new()
-    {
-        /// <summary>
-        /// Access the Instance to trigger the initialization of the singleton. 
-        /// </summary>
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
-        public static void AutoInit()
-        {
-            _ = Instance;
-        }
-    }
-
-    /// <summary>
-    /// Abstract base class for creating singleton instances.
-    /// All static members will be auto initialized when AfterAssembliesLoaded.
-    /// </summary>
-    /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
-    public abstract class AutoInitUnlazySingleton<T> : UnlazySingleton<T> where T : new()
-    {
-        /// <summary>
-        /// Access the Instance to trigger the initialization of the singleton. 
-        /// </summary>
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
-        public static void AutoInit()
-        {
-            _ = Instance;
-        }
     }
 
     /// <summary>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Reflection;
+using UnityEngine;
 using Utilities;
 
 namespace Core.Event
@@ -45,7 +46,7 @@ namespace Core.Event
     /// }
     ///</code>
     /// </example>
-    public class EventManager : AutoInitSingleton<EventManager>
+    public class EventManager : Singleton<EventManager>
     {
         #region Static Fields
 
@@ -56,10 +57,21 @@ namespace Core.Event
 
         #endregion
 
-        #region Override Methods
+        #region Initialization
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+        public static void Initialize()
+        {
+            _ = Instance;
+        }
+
+        #endregion
+
+        #region Constructors
 
         public EventManager()
         {
+            Debug.Log("We get here.");
             RegisterEventBus();
         }
 
