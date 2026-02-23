@@ -18,7 +18,8 @@ namespace Core.Event
     /// }
     /// </code>
     /// </example>
-    public abstract class EventBus<TEventBus> : IEventBus where TEventBus : EventBus<TEventBus>
+    public abstract class EventBus<TEventBus> : IEventBus 
+        where TEventBus : EventBus<TEventBus>
     {
         #region Fields
 

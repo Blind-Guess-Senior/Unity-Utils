@@ -14,7 +14,8 @@ namespace Core.Event
     /// }
     ///</code>
     /// </example>
-    public interface IEvent<TEventBus> where TEventBus : EventBus<TEventBus>
+    public interface IEvent<TEventBus> 
+        where TEventBus : EventBus<TEventBus>
     {
     }
 }

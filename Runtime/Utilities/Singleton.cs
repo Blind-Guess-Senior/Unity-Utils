@@ -24,7 +24,8 @@ namespace Utilities
     /// }
     /// </code>
     /// </example>
-    public abstract class Singleton<T> : ISingleton where T : new()
+    public abstract class Singleton<T> : ISingleton
+        where T : new()
     {
         #region Fields
 
@@ -61,7 +62,8 @@ namespace Utilities
     /// }
     /// </code>
     /// </example>
-    public abstract class UnlazySingleton<T> : ISingleton where T : new()
+    public abstract class UnlazySingleton<T> : ISingleton 
+        where T : new()
     {
         #region Fields
 

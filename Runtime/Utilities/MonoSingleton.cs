@@ -7,7 +7,8 @@ namespace Utilities
     /// Abstract base class for creating singleton MonoBehaviour instances.
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. Must inherit MonoBehaviour.</typeparam>
-    public abstract class MonoSingleton<T> : MonoBehaviour, ISingleton where T : MonoBehaviour
+    public abstract class MonoSingleton<T> : MonoBehaviour, ISingleton 
+        where T : MonoBehaviour
     {
         #region Fields
 
@@ -82,7 +83,6 @@ namespace Utilities
         #endregion
     }
 
-
     /// <summary>
     /// A persistent MonoBehaviour singleton that is not destroyed on scene load.
     /// </summary>
@@ -107,7 +107,8 @@ namespace Utilities
     /// }
     /// </code>
     /// </example>
-    public abstract class MonoPersistentSingleton<T> : MonoSingleton<T> where T : MonoBehaviour
+    public abstract class MonoPersistentSingleton<T> : MonoSingleton<T> 
+        where T : MonoBehaviour
     {
         #region Override Methods
 
@@ -128,13 +129,13 @@ namespace Utilities
 
         #endregion
     }
-
-
+    
     /// <summary>
     /// A MonoBehaviour singleton that ensure the existence of access of Instance.
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    public abstract class MonoEnsuredSingleton<T> : MonoSingleton<T> where T : MonoBehaviour
+    public abstract class MonoEnsuredSingleton<T> : MonoSingleton<T> 
+        where T : MonoBehaviour
     {
         #region Properties
 
@@ -166,13 +167,13 @@ namespace Utilities
 
         #endregion
     }
-
-
+    
     /// <summary>
     /// A persistent MonoBehaviour singleton that is not destroyed on scene load. And it ensures the existence of access of Instance.
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    public abstract class MonoEnsuredPersistentSingleton<T> : MonoEnsuredSingleton<T> where T : MonoBehaviour
+    public abstract class MonoEnsuredPersistentSingleton<T> : MonoEnsuredSingleton<T> 
+        where T : MonoBehaviour
     {
         #region Override Methods
 
@@ -193,13 +194,13 @@ namespace Utilities
 
         #endregion
     }
-
-
+    
     /// <summary>
     /// A MonoBehaviour class that ensures there is only one in the game. But it cannot be accessed globally.
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    public abstract class MonoLocalSingleton<T> : MonoBehaviour where T : MonoBehaviour
+    public abstract class MonoLocalSingleton<T> : MonoBehaviour 
+        where T : MonoBehaviour
     {
         #region Fields
 
