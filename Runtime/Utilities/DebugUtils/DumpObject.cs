@@ -4,7 +4,7 @@ using System.Reflection;
 using Reflection;
 using Unity.Plastic.Newtonsoft.Json;
 
-namespace Utilities.Debug
+namespace Utilities.DebugUtils
 {
     /// <summary>
     /// Utility class for dump an object's field into human-readable format.
