@@ -1,8 +1,7 @@
 using System;
-using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Utilities
+namespace Utilities.Singleton
 {
     public interface ISingleton
     {

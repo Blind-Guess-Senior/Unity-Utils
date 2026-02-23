@@ -1,5 +1,4 @@
-using UnityEngine;
-using Utilities;
+using Utilities.Singleton;
 
 namespace Core.Audio
 {

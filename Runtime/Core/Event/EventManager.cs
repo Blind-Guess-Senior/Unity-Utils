@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Reflection;
 using UnityEngine;
-using Utilities;
+using Utilities.Singleton;
 
 namespace Core.Event
 {

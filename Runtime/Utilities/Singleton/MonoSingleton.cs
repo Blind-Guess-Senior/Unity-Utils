@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Utilities
+namespace Utilities.Singleton
 {
     /// <summary>
     /// Abstract base class for creating singleton MonoBehaviour instances.
