@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Serializable dictionary
 - Object dumper to string
 - String extension functions
+- Generic registry storage method
+- Attribute for injection and injection way to set ref
+- Extend tag system
+- Game bootstrapper, installer and service locator for un-singleton accessiable services
 
 ### Changed
 

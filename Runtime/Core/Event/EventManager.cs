@@ -71,7 +71,6 @@ namespace Core.Event
 
         public EventManager()
         {
-            Debug.Log("We get here.");
             RegisterEventBus();
         }
 
