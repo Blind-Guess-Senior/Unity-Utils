@@ -1,12 +1,12 @@
 using UnityEngine.Scripting;
 
-namespace Core.Event.EventBuses
+namespace Samples_.Event.EventBuses
 {
     /// <summary>
     /// This is a sample of EventBus. You can just make your own event bus with the same pattern as this one.
-    /// </summary>
+    /// </summary> 
     [Preserve]
-    public class DefaultEventBus : EventBus<DefaultEventBus>
+    public class __Sample_DefaultEventBus : EventBus<DefaultEventBus>
     {
     }
 }
