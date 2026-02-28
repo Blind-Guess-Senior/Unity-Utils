@@ -7,15 +7,15 @@ using UnityEngine;
 namespace Editor.RegistryTools
 {
     /// <summary>
-    /// 
+    /// Useful editor tools for registry.
     /// </summary>
     public static class GenericRegistryTools
     {
         /// <summary>
-        /// 
+        /// Update all entries which belongs to given library by search for all existed entry SO assets.
         /// </summary>
-        /// <typeparam name="TLib"></typeparam>
-        /// <typeparam name="TEntry"></typeparam>
+        /// <typeparam name="TLib">The type of library want to be updated.</typeparam>
+        /// <typeparam name="TEntry">The type of entry signed for given library.</typeparam>
         public static void UpdateRegistryLibrary<TLib, TEntry>()
             where TLib : GenericLibrary<TEntry>
             where TEntry : ScriptableObject

@@ -4,6 +4,7 @@ namespace Core.Installer
 {
     /// <summary>
     /// Generic installer for ScriptableObject. Which will install itself into ServiceLocator.
+    /// Usage: derive from this class and override <see cref="InstallService"/>.
     /// </summary>
     /// <typeparam name="T">The type of that ScriptableObject. Must implement <see cref="IService"/>.</typeparam>
     public abstract class GenericInstaller<T>
