@@ -50,7 +50,7 @@ namespace Core.Locator
         /// </summary>
         /// <param name="service">The service want to be registered.</param>
         /// <typeparam name="T">The type of service.</typeparam>
-        public static void Register<T>(T service)
+        public static void Register<T>(T service) where T : IService
         {
             _services[typeof(T)] = service;
         }
@@ -60,7 +60,7 @@ namespace Core.Locator
         /// </summary>
         /// <typeparam name="T">The type of service.</typeparam>
         /// <returns>The service of type T stored in this locator.</returns>
-        public static T Get<T>()
+        public static T Get<T>() where T : IService
         {
             return (T)_services[typeof(T)];
         }
