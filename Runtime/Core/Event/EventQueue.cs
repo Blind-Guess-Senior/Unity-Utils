@@ -49,7 +49,7 @@ namespace Core.Event
     }
 
     /// <summary>
-    /// Event queue for given eventbus
+    /// Event queue for given eventbus.
     /// </summary>
     public class EventQueue : MonoPersistentSingleton<EventQueue>
     {
@@ -97,7 +97,7 @@ namespace Core.Event
         private readonly object _lock = new();
 
         /// <summary>
-        /// Queued event struct. Store event type and its time
+        /// Queued event struct. Store event type and its time.
         /// </summary>
         private struct QueueEvent
         {
@@ -465,9 +465,9 @@ namespace Core.Event
         /// <summary>
         /// Process tick-based bucket to check all event of given type that if it has meet publish conditions. 
         /// </summary>
-        /// <param name="type">The type of event want to be check.</param>
+        /// <param name="type">The type of event want to be checked.</param>
         /// <param name="currentTick">The value of current tick to judge conditions.</param>
-        /// <param name="outList">The ref of external list that will contains the events which meet conditions.</param>
+        /// <param name="outList">The ref of external list that will contain the events which meet conditions.</param>
         private void ProcessTickBucket(QueueEventType type, ulong currentTick, List<QueueEvent> outList)
         {
             if (!_tickBuckets.TryGetValue(type, out var bucket))
@@ -508,9 +508,9 @@ namespace Core.Event
         /// <summary>
         /// Process time-based bucket to check all event of given type that if it has meet publish conditions. 
         /// </summary>
-        /// <param name="type">The type of event want to be check.</param>
+        /// <param name="type">The type of event want to be checked.</param>
         /// <param name="currentTime">The value of current time to judge conditions.</param>
-        /// <param name="outList">The ref of external list that will contains the events which meet conditions.</param>
+        /// <param name="outList">The ref of external list that will contain the events which meet conditions.</param>
         private void ProcessTimeBucket(QueueEventType type, float currentTime, List<QueueEvent> outList)
         {
             if (!_timeBuckets.TryGetValue(type, out var bucket))
