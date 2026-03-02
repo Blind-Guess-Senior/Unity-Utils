@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities.DebugUtils;
 
 namespace Extensions.Containers
 {
@@ -46,7 +47,6 @@ namespace Extensions.Containers
 
         #endregion
 
-
         #region Methods
 
         /// <summary>
@@ -72,7 +72,8 @@ namespace Extensions.Containers
             {
                 if (!TryAdd(p.key, p.value))
                 {
-                    Debug.LogError($"Duplicate key: {p.key} and {p.value}");
+                    ArtifactDebug.Log(
+                        $"[DictionarySerializable] Duplicate key {p.key} and {p.value}", DebugLevel.Warning);
                 }
             }
         }

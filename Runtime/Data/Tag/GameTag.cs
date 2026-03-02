@@ -2,13 +2,14 @@ using System;
 using Extensions;
 using Unity.Collections;
 using UnityEngine;
+using Utilities.DebugUtils;
 
 namespace Data.Tag
 {
     /// <summary>
     /// Game tag SO which can be created as a static asset.
     /// </summary>
-    [CreateAssetMenu(fileName = "GameTag", menuName = "Tag System/Tag")]
+    [CreateAssetMenu(fileName = "GameTag", menuName = "Artifact Unity Utils/Tag System/Tag")]
     public class GameTag : ScriptableObject, IEquatable<GameTag>, ISerializationCallbackReceiver
     {
         #region Fields
@@ -78,7 +79,8 @@ namespace Data.Tag
             {
                 _fullName = newName;
                 _hash = _fullName.GetStableHash();
-                Debug.Log(_hash);
+                ArtifactDebug.Log(
+                    $"[GameTag] {name}'s hash changed to {_hash}.</color>", DebugLevel.Info);
 #if UNITY_EDITOR
                 UnityEditor.EditorUtility.SetDirty(this);
 #endif

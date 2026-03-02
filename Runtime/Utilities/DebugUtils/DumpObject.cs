@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Reflection;
 using Unity.Plastic.Newtonsoft.Json;
+using UnityEngine;
 
 namespace Utilities.DebugUtils
 {
@@ -69,7 +70,7 @@ namespace Utilities.DebugUtils
                 }
             }
 
-            UnityEngine.Debug.Log(dumped);
+            Debug.Log(dumped);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Utilities.DebugUtils
 
             if (!baseType.IsAssignableFrom(type))
             {
-                UnityEngine.Debug.LogError($"Object of type {type} does not inherit from {baseType}");
+                ArtifactDebug.Log($"[Dump] Object of type {type} does not inherit from {baseType}", DebugLevel.Warning);
                 return;
             }
 
@@ -152,7 +153,7 @@ namespace Utilities.DebugUtils
                 currentType = currentType.BaseType;
             }
 
-            UnityEngine.Debug.Log(dumped);
+            Debug.Log(dumped);
         }
 
         /// <summary>
@@ -198,7 +199,7 @@ namespace Utilities.DebugUtils
 
             if (!TypeUtils.IsAssignable(baseType, type))
             {
-                UnityEngine.Debug.LogError($"Object of type {type} does not inherit from {baseType}");
+                ArtifactDebug.Log($"[Dump] Object of type {type} does not inherit from {baseType}", DebugLevel.Warning);
                 return;
             }
 
@@ -224,7 +225,7 @@ namespace Utilities.DebugUtils
                 currentType = currentType.BaseType;
             }
 
-            UnityEngine.Debug.Log(dumped);
+            Debug.Log(dumped);
         }
 
         #endregion

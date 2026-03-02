@@ -1,6 +1,7 @@
 using Extensions.Containers;
 using UnityEditor;
 using UnityEngine;
+using Utilities.DebugUtils;
 
 namespace Editor.ClassDrawer
 {
@@ -66,11 +67,9 @@ namespace Editor.ClassDrawer
                 // Add key-value pair to dictionary.
                 if (tryAddMethod == null)
                 {
-                    Debug.LogError($"This should never happen: {dictionary.GetType()} does not have TryAddPair().");
-                }
-                else if (!(bool)tryAddMethod.Invoke(dictionary, null))
-                {
-                    Debug.LogWarning("Duplicate key: {p.key} and {p.value}");
+                    ArtifactDebug.Log(
+                        $"[DictionarySerializable - Drawer] This should never happen: {dictionary.GetType()} does not have TryAddPair().",
+                        DebugLevel.Fatal);
                 }
 
                 property.serializedObject.ApplyModifiedProperties();

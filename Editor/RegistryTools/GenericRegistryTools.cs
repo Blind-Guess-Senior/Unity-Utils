@@ -3,6 +3,7 @@ using System.Reflection;
 using Data.Registry;
 using UnityEditor;
 using UnityEngine;
+using Utilities.DebugUtils;
 
 namespace Editor.RegistryTools
 {
@@ -23,7 +24,8 @@ namespace Editor.RegistryTools
             string[] libraryGuids = AssetDatabase.FindAssets($"t:{typeof(TLib).Name}");
             if (libraryGuids.Length == 0)
             {
-                Debug.LogError($"{typeof(TLib).Name}.asset not found! Please create one.");
+                ArtifactDebug.Log(
+                    $"[Registry Library] {typeof(TLib).Name}.asset not found! Please create one.", DebugLevel.Error);
                 return;
             }
 
@@ -50,8 +52,9 @@ namespace Editor.RegistryTools
             EditorUtility.SetDirty(library);
             AssetDatabase.SaveAssets();
 
-            Debug.Log(
-                $"<color=green>[Registry Library - {typeof(TLib).Name}] has been successfully updated with {entries.Count} entries.</color>");
+            ArtifactDebug.Log(
+                $"[Registry Library - {typeof(TLib).Name}] has been successfully updated with {entries.Count} entries.",
+                DebugLevel.WorksWell);
         }
     }
 }

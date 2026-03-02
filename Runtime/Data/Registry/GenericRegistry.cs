@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Core.Locator;
 using UnityEngine;
+using Utilities.DebugUtils;
 
 namespace Data.Registry
 {
@@ -67,7 +68,8 @@ namespace Data.Registry
                 var key = keySetter(entry);
                 if (!_cacheMap.TryAdd(key, entry))
                 {
-                    Debug.LogWarning($"[GenericRegistry] Key collision with Key {key}, Entry {entry} missing.");
+                    ArtifactDebug.Log(
+                        $"[GenericRegistry] Key collision with Key {key}, Entry {entry} missing.", DebugLevel.Warning);
                 }
             }
         }

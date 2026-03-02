@@ -1,6 +1,7 @@
 using Core.Installer;
 using Reflection;
 using UnityEngine;
+using Utilities.DebugUtils;
 
 namespace Core
 {
@@ -30,12 +31,14 @@ namespace Core
                     }
                     catch (System.Exception ex)
                     {
-                        Debug.LogError($"Failed to install {type.Name}: {ex.Message}");
+                        ArtifactDebug.Log(
+                            $"[GameBootstrapper] Failed to install {type.Name}: {ex.Message}", DebugLevel.Error);
                     }
                 }
                 else
                 {
-                    Debug.LogError(type.Name + " can not install: No InstallMethod found.");
+                    ArtifactDebug.Log(
+                        $"[GameBootstrapper] {type.Name} can not install: No InstallMethod found.", DebugLevel.Fatal);
                 }
             }
         }

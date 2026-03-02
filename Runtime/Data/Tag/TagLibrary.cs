@@ -4,6 +4,7 @@ using Data.Registry;
 using Extensions;
 using UnityEditor;
 using UnityEngine;
+using Utilities.DebugUtils;
 
 namespace Data.Tag
 {
@@ -11,7 +12,7 @@ namespace Data.Tag
     /// Tag library SO which can be created as a static asset.
     /// Stores all exist game tags.
     /// </summary>
-    [CreateAssetMenu(fileName = "TagLibrary", menuName = "Tag System/TagLibrary")]
+    [CreateAssetMenu(fileName = "TagLibrary", menuName = "Artifact Unity Utils/Tag System/TagLibrary")]
     public class TagLibrary : GenericLibrary<GameTag>
     {
     }
@@ -144,7 +145,8 @@ namespace Data.Tag
             string[] libraryGuids = AssetDatabase.FindAssets($"t:{nameof(TagLibrary)}");
             if (libraryGuids.Length == 0)
             {
-                Debug.LogError($"{nameof(TagLibrary)}.asset not found! Please create one.");
+                ArtifactDebug.Log(
+                    $"[Tag Library] {nameof(TagLibrary)}.asset not found! Please create one.", DebugLevel.Error);
                 return;
             }
 

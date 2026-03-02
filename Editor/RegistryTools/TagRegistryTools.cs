@@ -11,7 +11,7 @@ namespace Editor.RegistryTools
         /// <summary>
         /// Update all game tags into tag registry.
         /// </summary>
-        [MenuItem("Jobs/Registry/Tag/Update Tag Registry")]
+        [MenuItem("Artifact Unity Utils/Registry/Tag/Update Tag Registry")]
         public static void RegisterTag()
             => GenericRegistryTools.UpdateRegistryLibrary<TagLibrary, GameTag>();
     }
