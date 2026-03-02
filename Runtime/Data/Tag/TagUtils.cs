@@ -12,7 +12,7 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by GameTag entry.
         /// </summary>
-        /// <param name="gameObject">The game object wanna to check.</param>
+        /// <param name="gameObject">The game object want to check.</param>
         /// <param name="tagToCompare">The game tag entry to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag(GameObject gameObject, GameTag tagToCompare)
@@ -21,7 +21,7 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by full tag name.
         /// </summary>
-        /// <param name="gameObject">The game object wanna to check.</param>
+        /// <param name="gameObject">The game object want to check.</param>
         /// <param name="fullTagName">The game tag's full name to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag(GameObject gameObject, string fullTagName)
@@ -30,17 +30,17 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by GameTag entry.
         /// </summary>
-        /// <param name="gameObject">The game object wanna to check.</param>
+        /// <param name="gameObject">The game object want to check.</param>
         /// <param name="tagNamespace">The game tag's namespace to compare.</param>
         /// <param name="tagName">The game tag's name to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag(GameObject gameObject, string tagNamespace, string tagName)
             => gameObject?.GetComponent<Taggable>()?.HasTag(tagNamespace, tagName) ?? false;
-        
+
         /// <summary>
         /// Check if given GameObject has given tag by tag name in "Default" namespace.
         /// </summary>
-        /// <param name="gameObject">The game object wanna to check.</param>
+        /// <param name="gameObject">The game object want to check.</param>
         /// <param name="tagName">The game tag's name to compare.</param>
         /// <param name="_">Use for distinguish from fullname overloading.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
@@ -50,7 +50,7 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by tag hash.
         /// </summary>
-        /// <param name="gameObject">The game object wanna to check.</param>
+        /// <param name="gameObject">The game object want to check.</param>
         /// <param name="tagHash">The game tag's hash code to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag(GameObject gameObject, int tagHash)
@@ -59,11 +59,36 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by tag name in "Default" namespace.
         /// </summary>
-        /// <param name="gameObject">The game object wanna to check.</param>
+        /// <param name="gameObject">The game object want to check.</param>
         /// <param name="tagName">The game tag's name to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag1(GameObject gameObject, string tagName)
             => gameObject?.GetComponent<Taggable>()?.HasTag1(tagName) ?? false;
+
+        #endregion
+
+        #region Static String Helper Methods
+
+        /// <summary>
+        /// Helper string method for getting full tag name by tag namespace and tag name.
+        /// </summary>
+        /// <param name="tagNamespace">The namespace of tag.</param>
+        /// <param name="tagName">The name of tag.</param>
+        /// <returns>The full name of given tag.</returns>
+        public static string CombineTagFullName(string tagNamespace, string tagName)
+        {
+            return $"{tagNamespace}@{tagName}";
+        }
+
+        /// <summary>
+        /// Helper string method for getting full tag name with Default namespace by tag name.
+        /// </summary>
+        /// <param name="tagName">The name of tag.</param>
+        /// <returns>The full name of given tag.</returns>
+        public static string CombineTagFullName1(string tagName)
+        {
+            return $"Default@{tagName}";
+        }
 
         #endregion
     }
