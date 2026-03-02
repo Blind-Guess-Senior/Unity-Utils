@@ -59,6 +59,9 @@ namespace Core.Event
 
         #region Initialization
 
+        /// <summary>
+        /// Auto init self to avoid runtime init consume cpu time.
+        /// </summary>
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
         public static void Initialize()
         {
