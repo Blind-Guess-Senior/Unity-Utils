@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Attributes;
 using UnityEngine;
+using Utilities.DebugUtils;
 
 namespace Core.Locator
 {
@@ -39,7 +40,22 @@ namespace Core.Locator
         /// <summary>
         /// Store all services by type.
         /// </summary>
-        private static Dictionary<Type, object> _services = new();
+        private static readonly Dictionary<Type, object> _services = new();
+
+        /// <summary>
+        /// Lock for safe edit stored services.
+        /// </summary>
+        private static readonly object _lock = new();
+
+        /// <summary>
+        /// Cache injectable fields by type to reduce reflection cost.
+        /// </summary>
+        private static readonly Dictionary<Type, List<FieldInfo>> _cachedInjectableFields = new();
+
+        /// <summary>
+        /// Lock for safe edit cached injectable fields.
+        /// </summary>
+        private static readonly object _cachedInjectableFieldsLock = new();
 
         #endregion
 
@@ -52,7 +68,10 @@ namespace Core.Locator
         /// <typeparam name="T">The type of service.</typeparam>
         public static void Register<T>(T service) where T : IService
         {
-            _services[typeof(T)] = service;
+            lock (_lock)
+            {
+                _services[typeof(T)] = service;
+            }
         }
 
         /// <summary>
@@ -73,24 +92,40 @@ namespace Core.Locator
         {
             var type = target.GetType();
 
-            var fields = type.GetFields(BindingFlags.Instance |
-                                        BindingFlags.Public |
-                                        BindingFlags.NonPublic);
-
-            foreach (var field in fields)
+            // ReSharper disable once InconsistentlySynchronizedField
+            if (!_cachedInjectableFields.TryGetValue(type, out var injectableFields))
             {
-                if (field.GetCustomAttribute<InjectAttribute>() != null)
+                injectableFields = new List<FieldInfo>();
+                var fields = type.GetFields(BindingFlags.Instance |
+                                            BindingFlags.Public |
+                                            BindingFlags.NonPublic);
+
+                foreach (var field in fields)
                 {
-                    var serviceType = field.FieldType;
-                    if (_services.TryGetValue(serviceType, out var service))
+                    if (field.GetCustomAttribute<InjectAttribute>() != null)
                     {
-                        field.SetValue(target, service);
+                        injectableFields.Add(field);
                     }
-                    else
-                    {
-                        Debug.LogError(
-                            $"[ServiceLocator] Failed to inject {serviceType.Name} into {type.Name}. Service not found.");
-                    }
+                }
+
+                lock (_cachedInjectableFieldsLock)
+                {
+                    _cachedInjectableFields[type] = injectableFields;
+                }
+            }
+
+            foreach (var field in injectableFields)
+            {
+                var serviceType = field.FieldType;
+                if (_services.TryGetValue(serviceType, out var service))
+                {
+                    field.SetValue(target, service);
+                }
+                else
+                {
+                    ArtifactDebug.Log(
+                        $"[ServiceLocator] Failed to inject {serviceType.Name} into {type.Name}. Service not found.",
+                        DebugLevel.Error);
                 }
             }
         }
