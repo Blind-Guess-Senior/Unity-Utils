@@ -65,6 +65,15 @@ namespace Data.Tag
             _disabledTags = new HashSet<GameTag>();
         }
 
+        /// <summary>
+        /// Check if this has any runtime tag.
+        /// </summary>
+        /// <returns>True if this has any runtime tag; otherwise, false.</returns>
+        public bool HasAnyRuntimeTags()
+        {
+            return _runtimeTags.Count > 0;
+        }
+
         #endregion
 
         #region HasTag Methods
@@ -910,14 +919,132 @@ namespace Data.Tag
 
         #endregion
 
-        // TODO: #region Operator Overloading
-        //
-        // // TODO: + - (for += -=) | & (return true/false) operator
-        // public static Taggable operator +(Taggable taggable1, GameTag tag)
-        // {
-        //     return taggable1;
-        // }
-        //
-        // #endregion
+        #region Operator Overloading
+
+        /// <summary>
+        /// Operator overloading of += for simplified tag adding operation.
+        /// Add tag to runtime tags by GameTag entry.
+        /// </summary>
+        /// <param name="taggable">The taggable object want to be operated.</param>
+        /// <param name="tagToAdd">The game tag entry to add.</param>
+        /// <returns>True if add successful; otherwise, false.</returns>
+        /// <remarks>
+        /// When return false, it performs no substantive operation.
+        /// </remarks>
+        /// <remarks>
+        /// <br/>
+        /// NEVER USE +! Only += is allowed!
+        /// </remarks>
+        public static Taggable operator +(Taggable taggable, GameTag tagToAdd)
+        {
+            taggable.AddTag(tagToAdd);
+            return taggable;
+        }
+
+        /// <summary>
+        /// Operator overloading of += for simplified tag adding operation.
+        /// Add tag to runtime tags by full tag name.
+        /// </summary>
+        /// <param name="taggable">The taggable object want to be operated.</param>
+        /// <param name="fullTagName">The game tag's full name to add.</param>
+        /// <returns>True if add successful; otherwise, false.</returns>
+        /// <remarks>
+        /// When return false, it performs no substantive operation.
+        /// </remarks>
+        /// <remarks>
+        /// <br/>
+        /// NEVER USE +! Only += is allowed!
+        /// </remarks>
+        public static Taggable operator +(Taggable taggable, string fullTagName)
+        {
+            taggable.AddTag(fullTagName);
+            return taggable;
+        }
+
+        /// <summary>
+        /// Operator overloading of -= for simplified tag removing operation.
+        /// Remove tag from runtime tags by GameTag entry.
+        /// </summary>
+        /// <param name="taggable">The taggable object want to be operated.</param>
+        /// <param name="tagToRemove">The game tag entry to remove.</param>
+        /// <returns>True if remove successful; otherwise, false.</returns>
+        /// <remarks>
+        /// When return false, it performs no substantive operation.
+        /// </remarks>
+        /// <remarks>
+        /// <br/>
+        /// NEVER USE -! Only -= is allowed!
+        /// </remarks>
+        public static Taggable operator -(Taggable taggable, GameTag tagToRemove)
+        {
+            taggable.RemoveTag(tagToRemove);
+            return taggable;
+        }
+
+        /// <summary>
+        /// Operator overloading of -= for simplified tag removing operation.
+        /// Remove tag from runtime tags by full tag name.
+        /// </summary>
+        /// <param name="taggable">The taggable object want to be operated.</param>
+        /// <param name="fullTagName">The game tag's full name to remove.</param>
+        /// <returns>True if remove successful; otherwise, false.</returns>
+        /// <remarks>
+        /// When return false, it performs no substantive operation.
+        /// </remarks>
+        /// <remarks>
+        /// <br/>
+        /// NEVER USE -! Only -= is allowed!
+        /// </remarks>
+        public static Taggable operator -(Taggable taggable, string fullTagName)
+        {
+            taggable.RemoveTag(fullTagName);
+            return taggable;
+        }
+
+        /// <summary>
+        /// Operator overloading of & for simplified tag existence check.
+        /// </summary>
+        /// <param name="taggable">The taggable object want to be operated.</param>
+        /// <param name="tag">The game tag want to check existence.</param>
+        /// <returns>True if it has given tag; otherwise, false.</returns>
+        /// <remarks>
+        /// If tag is disabled, it won't be treated as "has".
+        /// </remarks>
+        public static bool operator &(Taggable taggable, GameTag tag)
+        {
+            return taggable.HasTag(tag);
+        }
+
+        /// <summary>
+        /// Operator overloading of & for simplified tag existence check.
+        /// </summary>
+        /// <param name="taggable">The taggable object want to be operated.</param>
+        /// <param name="fullTagName">The game tag's full name want to check existence.</param>
+        /// <returns>True if it has given tag; otherwise, false.</returns>
+        /// <remarks>
+        /// If tag is disabled, it won't be treated as "has".
+        /// </remarks>
+        public static bool operator &(Taggable taggable, string fullTagName)
+        {
+            return taggable.HasTag(fullTagName);
+        }
+
+        /// <summary>
+        /// Operator overloading of true for simplified check for the existence of any tag.
+        /// </summary>
+        /// <param name="taggable">The taggable object want to be operated.</param>
+        /// <returns>True if this has any runtime tag; otherwise, false.</returns>
+        public static bool operator true(Taggable taggable)
+            => taggable.HasAnyRuntimeTags();
+
+        /// <summary>
+        /// Operator overloading of false for simplified check for the existence of any tag.
+        /// </summary>
+        /// <param name="taggable">The taggable object want to be operated.</param>
+        /// <returns>True if this has no runtime tag; otherwise, false.</returns>
+        public static bool operator false(Taggable taggable)
+            => !taggable.HasAnyRuntimeTags();
+
+        #endregion
     }
 }
