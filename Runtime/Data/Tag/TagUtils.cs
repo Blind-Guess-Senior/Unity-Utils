@@ -12,7 +12,7 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by GameTag entry.
         /// </summary>
-        /// <param name="gameObject">The game object want to check.</param>
+        /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagToCompare">The game tag entry to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag(GameObject gameObject, GameTag tagToCompare)
@@ -21,7 +21,7 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by full tag name.
         /// </summary>
-        /// <param name="gameObject">The game object want to check.</param>
+        /// <param name="gameObject">The game object to check.</param>
         /// <param name="fullTagName">The game tag's full name to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag(GameObject gameObject, string fullTagName)
@@ -30,7 +30,7 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by GameTag entry.
         /// </summary>
-        /// <param name="gameObject">The game object want to check.</param>
+        /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagNamespace">The game tag's namespace to compare.</param>
         /// <param name="tagName">The game tag's name to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
@@ -40,7 +40,7 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by tag name in "Default" namespace.
         /// </summary>
-        /// <param name="gameObject">The game object want to check.</param>
+        /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagName">The game tag's name to compare.</param>
         /// <param name="_">Use for distinguish from fullname overloading.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
@@ -50,7 +50,7 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by tag hash.
         /// </summary>
-        /// <param name="gameObject">The game object want to check.</param>
+        /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagHash">The game tag's hash code to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag(GameObject gameObject, int tagHash)
@@ -59,7 +59,7 @@ namespace Data.Tag
         /// <summary>
         /// Check if given GameObject has given tag by tag name in "Default" namespace.
         /// </summary>
-        /// <param name="gameObject">The game object want to check.</param>
+        /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagName">The game tag's name to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag1(GameObject gameObject, string tagName)
