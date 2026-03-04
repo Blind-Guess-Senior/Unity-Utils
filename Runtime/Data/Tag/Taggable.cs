@@ -247,6 +247,7 @@ namespace Data.Tag
         /// <returns>True if add successful or tag already exists; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag at least exist in one of two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryAddTag(GameTag tagToAdd)
@@ -266,6 +267,7 @@ namespace Data.Tag
         /// <returns>True if add successful or tag already exists; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag at least exist in one of two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryAddTag(string fullTagName)
@@ -280,6 +282,7 @@ namespace Data.Tag
         /// <returns>True if add successful or tag already exists; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag at least exist in one of two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryAddTag(string tagNamespace, string tagName)
@@ -294,6 +297,7 @@ namespace Data.Tag
         /// <returns>True if add successful or tag already exists; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag at least exist in one of two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryAddTag(string tagName, int _)
@@ -307,6 +311,7 @@ namespace Data.Tag
         /// <returns>True if add successful or tag already exists; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag at least exist in one of two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryAddTag(int tagHash)
@@ -320,6 +325,7 @@ namespace Data.Tag
         /// <returns>True if add successful or tag already exists; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag at least exist in one of two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryAddTag1(string tagName)
@@ -414,6 +420,7 @@ namespace Data.Tag
         /// <returns>True if remove successful or tag doesn't exist in set; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag does not exist in both two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryRemoveTag(GameTag tagToRemove)
@@ -433,6 +440,7 @@ namespace Data.Tag
         /// <returns>True if remove successful or tag doesn't exist in set; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag does not exist in both two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryRemoveTag(string fullTagName)
@@ -447,6 +455,7 @@ namespace Data.Tag
         /// <returns>True if remove successful or tag doesn't exist in set; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag does not exist in both two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryRemoveTag(string tagNamespace, string tagName)
@@ -461,6 +470,7 @@ namespace Data.Tag
         /// <returns>True if remove successful or tag doesn't exist in set; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag does not exist in both two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryRemoveTag(string tagName, int _)
@@ -474,6 +484,7 @@ namespace Data.Tag
         /// <returns>True if remove successful or tag doesn't exist in set; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag does not exist in both two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryRemoveTag(int tagHash)
@@ -487,6 +498,7 @@ namespace Data.Tag
         /// <returns>True if remove successful or tag doesn't exist in set; otherwise, false.</returns>
         /// <remarks>
         /// When return true, it ensures that input tag does not exist in both two sets.
+        /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
         public bool TryRemoveTag1(string tagName)
@@ -588,6 +600,7 @@ namespace Data.Tag
         /// <returns>True if enable successful or tag already disabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in runtime tags and doesn't exist in disabled tags.
         /// </remarks>
         public bool TryEnableTag(GameTag tagToEnable)
@@ -612,6 +625,7 @@ namespace Data.Tag
         /// <returns>True if enable successful or tag already enabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in runtime tags and doesn't exist in disabled tags.
         /// </remarks>
         public bool TryEnableTag(string fullTagName)
@@ -627,6 +641,7 @@ namespace Data.Tag
         /// <returns>True if enable successful or tag already enabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in runtime tags and doesn't exist in disabled tags.
         /// </remarks>
         public bool TryEnableTag(string tagNamespace, string tagName)
@@ -642,6 +657,7 @@ namespace Data.Tag
         /// <returns>True if enable successful or tag already enabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in runtime tags and doesn't exist in disabled tags.
         /// </remarks>
         public bool TryEnableTag(string tagName, int _)
@@ -656,6 +672,7 @@ namespace Data.Tag
         /// <returns>True if enable successful or tag already enabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in runtime tags and doesn't exist in disabled tags.
         /// </remarks>
         public bool TryEnableTag(int tagHash)
@@ -670,6 +687,7 @@ namespace Data.Tag
         /// <returns>True if enable successful or tag already enabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in runtime tags and doesn't exist in disabled tags.
         /// </remarks>
         public bool TryEnableTag1(string tagName)
@@ -771,6 +789,7 @@ namespace Data.Tag
         /// <returns>True if disable successful or tag already disabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in disabled tags and doesn't exist in runtime tags.
         /// </remarks>
         public bool TryDisableTag(GameTag tagToDisable)
@@ -795,6 +814,7 @@ namespace Data.Tag
         /// <returns>True if disable successful or tag already disabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in disabled tags and doesn't exist in runtime tags.
         /// </remarks>
         public bool TryDisableTag(string fullTagName)
@@ -810,6 +830,7 @@ namespace Data.Tag
         /// <returns>True if disable successful or tag already disabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in disabled tags and doesn't exist in runtime tags.
         /// </remarks>
         public bool TryDisableTag(string tagNamespace, string tagName)
@@ -825,6 +846,7 @@ namespace Data.Tag
         /// <returns>True if disable successful or tag already disabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in disabled tags and doesn't exist in runtime tags.
         /// </remarks>
         public bool TryDisableTag(string tagName, int _)
@@ -839,6 +861,7 @@ namespace Data.Tag
         /// <returns>True if disable successful or tag already disabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in disabled tags and doesn't exist in runtime tags.
         /// </remarks>
         public bool TryDisableTag(int tagHash)
@@ -853,6 +876,7 @@ namespace Data.Tag
         /// <returns>True if disable successful or tag already disabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
+        /// <br/>
         /// When return true, it ensures input tag exist in disabled tags and doesn't exist in runtime tags.
         /// </remarks>
         public bool TryDisableTag1(string tagName)
@@ -930,8 +954,6 @@ namespace Data.Tag
         /// <returns>The input taggble object.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
-        /// </remarks>
-        /// <remarks>
         /// <br/>
         /// NEVER USE +! Only += is allowed!
         /// </remarks>
@@ -950,8 +972,6 @@ namespace Data.Tag
         /// <returns>The input taggble object.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
-        /// </remarks>
-        /// <remarks>
         /// <br/>
         /// NEVER USE +! Only += is allowed!
         /// </remarks>
@@ -970,8 +990,6 @@ namespace Data.Tag
         /// <returns>True if remove successful; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
-        /// </remarks>
-        /// <remarks>
         /// <br/>
         /// NEVER USE -! Only -= is allowed!
         /// </remarks>
@@ -990,8 +1008,6 @@ namespace Data.Tag
         /// <returns>True if remove successful; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
-        /// </remarks>
-        /// <remarks>
         /// <br/>
         /// NEVER USE -! Only -= is allowed!
         /// </remarks>
@@ -1002,7 +1018,7 @@ namespace Data.Tag
         }
 
         /// <summary>
-        /// Operator overloading of & for simplified tag existence check.
+        /// Operator overloading of &amp; for simplified tag existence check.
         /// </summary>
         /// <param name="this">The taggable object want to be operated.</param>
         /// <param name="tag">The game tag want to check existence.</param>
@@ -1016,7 +1032,7 @@ namespace Data.Tag
         }
 
         /// <summary>
-        /// Operator overloading of & for simplified tag existence check.
+        /// Operator overloading of &amp; for simplified tag existence check.
         /// </summary>
         /// <param name="this">The taggable object want to be operated.</param>
         /// <param name="fullTagName">The game tag's full name want to check existence.</param>

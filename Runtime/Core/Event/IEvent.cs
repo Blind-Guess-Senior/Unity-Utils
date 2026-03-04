@@ -19,7 +19,7 @@ namespace Core.Event
     /// {
     ///     public float jumpStrength;
     /// }
-    ///</code>
+    /// </code>
     /// </example>
     public interface IEvent<TEventBus> : IEvent
         where TEventBus : EventBus<TEventBus>

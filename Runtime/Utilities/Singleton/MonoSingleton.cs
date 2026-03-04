@@ -25,8 +25,7 @@ namespace Utilities.Singleton
         /// <returns>The singleton instance of type T.</returns>
         /// <remarks>
         /// 1) It is not recommended to let it search.
-        /// </remarks>
-        /// <remarks>
+        /// <br/>
         /// 2) Use <see cref="MonoEnsuredSingleton{T}"/> to ensure singleton's existence. 
         /// </remarks>
         public static T Instance
@@ -218,6 +217,7 @@ namespace Utilities.Singleton
         /// </summary>
         /// <remarks>
         /// Do not override it in normal case.
+        /// <br/>
         /// See <see cref="Init"/> to append awake behaviour.
         /// </remarks>
         protected virtual void Awake()

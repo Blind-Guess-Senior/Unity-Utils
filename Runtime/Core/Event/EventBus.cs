@@ -54,6 +54,7 @@ namespace Core.Event
         /// <returns>The ID of the subscribed handler.</returns>
         /// <remarks>
         /// Never discard return value.
+        /// <br/>
         /// Caution to multiple subscribe.
         /// </remarks>
         public virtual int Subscribe<TEvent>(Action<TEvent> handler) where TEvent : IEvent<TEventBus>
