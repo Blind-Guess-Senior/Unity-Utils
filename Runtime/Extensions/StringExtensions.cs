@@ -33,6 +33,7 @@ namespace Extensions
 
         /// <summary>
         /// Get stable hash code for a string.
+        /// <br/>
         /// It's an extension method of string. It's an overload function for readonly span.
         /// </summary>
         /// <param name="span">The string's readonly span that will be hashed.</param>
@@ -50,6 +51,7 @@ namespace Extensions
 
         /// <summary>
         /// Get stable hash code for a string.
+        /// <br/>
         /// It's an extension method to string.
         /// </summary>
         /// <param name="str">The string that will be hashed.</param>
@@ -187,6 +189,7 @@ namespace Extensions
 
         /// <summary>
         /// Convert one hex string into Unity Color32.
+        /// <br/>
         /// It's an extension method of string.
         /// </summary>
         /// <param name="hex">The string in regular color format.</param>
@@ -267,6 +270,7 @@ namespace Extensions
 
         /// <summary>
         /// Truncates the input string to a specified maximum length without cutting off words.
+        /// <br/>
         /// Appends a truncation indicator if necessary.
         /// </summary>
         /// <param name="text">The input string to be truncated.</param>

@@ -91,9 +91,12 @@ namespace Editor.SettingToggler
 
         /// <summary>
         /// Compile flags of QuadTree's destroy auto-detect feature.
+        /// <br/>
         /// It will automatically remove dead items (whose gameObject had been destroyed, while SetActive and disable will not).
         /// when running GetIntersected() method.
+        /// <br/>
         /// It will consume additional performance.
+        /// <br/>
         /// Only use it when you often destroy game objects and hard to write dispose method for them.
         /// </summary>
         private const string DefineSymbolQuadTreeDestroyAutoDetect =
@@ -157,7 +160,9 @@ namespace Editor.SettingToggler
 
         /// <summary>
         /// Compile flags of QuadTree's not-in-tree item query feature.
+        /// <br/>
         /// It will allow GetIntersected() for not-in-tree item.
+        /// <br/>
         /// It will consume additional performance.
         /// </summary>
         private const string DefineSymbolQuadTreeNotInTreeItemQuery =

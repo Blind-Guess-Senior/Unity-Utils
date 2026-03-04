@@ -20,6 +20,7 @@ namespace Utilities.Singleton
 
         /// <summary>
         /// Gets the singleton instance. If the instance is undefined, it searches for it.
+        /// <br/>
         /// The result of search is not guaranteed. The existence of returned singleton is not guaranteed.
         /// </summary>
         /// <returns>The singleton instance of type T.</returns>
@@ -140,6 +141,7 @@ namespace Utilities.Singleton
 
         /// <summary>
         /// Gets the singleton instance. If the instance is undefined, it searches for it or create one on the scene.
+        /// <br/>
         /// The result of search is not guaranteed. The existence of returned singleton is guaranteed.
         /// </summary>
         /// <returns>The singleton instance of type T.</returns>

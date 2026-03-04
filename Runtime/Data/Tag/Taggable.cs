@@ -34,7 +34,8 @@ namespace Data.Tag
         /// <summary>
         /// Store disabled game tags in runtime.
         /// One tag should never be in both of these two sets at the same time.
-        /// The remarks for all the following functions are based on this requirement.
+        /// <br/>
+        /// The comments for all the following functions are based on this requirement.
         /// </summary>
         private HashSet<GameTag> _disabledTags;
 
@@ -44,6 +45,7 @@ namespace Data.Tag
 
         /// <summary>
         /// Awake method to initialize the taggable class.
+        /// <br/>
         /// Will inject TagRegistry in runtime.
         /// </summary>
         private void Awake()
@@ -947,6 +949,7 @@ namespace Data.Tag
 
         /// <summary>
         /// Operator overloading of += for simplified tag adding operation.
+        /// <br/>
         /// Add tag to runtime tags by GameTag entry.
         /// </summary>
         /// <param name="this">The taggable object want to be operated.</param>
@@ -965,6 +968,7 @@ namespace Data.Tag
 
         /// <summary>
         /// Operator overloading of += for simplified tag adding operation.
+        /// <br/>
         /// Add tag to runtime tags by full tag name.
         /// </summary>
         /// <param name="this">The taggable object want to be operated.</param>
@@ -983,6 +987,7 @@ namespace Data.Tag
 
         /// <summary>
         /// Operator overloading of -= for simplified tag removing operation.
+        /// <br/>
         /// Remove tag from runtime tags by GameTag entry.
         /// </summary>
         /// <param name="this">The taggable object want to be operated.</param>
@@ -1001,6 +1006,7 @@ namespace Data.Tag
 
         /// <summary>
         /// Operator overloading of -= for simplified tag removing operation.
+        /// <br/>
         /// Remove tag from runtime tags by full tag name.
         /// </summary>
         /// <param name="this">The taggable object want to be operated.</param>

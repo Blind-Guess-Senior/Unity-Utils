@@ -19,6 +19,8 @@ namespace Utilities.DebugUtils
 
     /// <summary>
     /// Debug wrapper of Unity Debug. With package header and debug-level-based color.
+    /// <br/>
+    /// It will be automatically disabled in the built release version.
     /// </summary>
     public static class ArtifactDebug
     {
@@ -34,7 +36,9 @@ namespace Utilities.DebugUtils
         #region Static Methods
 
         /// <summary>
-        /// Wrapped debug function. Does not work in the official release version.
+        /// Wrapped debug function.
+        /// <br/>
+        /// It will be automatically disabled in the built release version.
         /// </summary>
         /// <param name="message">The message want to be logged. Same as using UnityEngine.Debug.Log().</param>
         /// <param name="level">The <see cref="DebugLevel"/> of log.</param>

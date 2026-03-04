@@ -14,6 +14,7 @@ namespace Utilities.DataStructure.QuadTree
 {
     /// <summary>
     /// QuadTree data structure implementation for Collider2D's collision detection.
+    /// <br/>
     /// It is noexcept in released runtime. Exception handling only take effect while in editor mode.
     /// </summary>
     /// <remarks>
@@ -154,6 +155,7 @@ namespace Utilities.DataStructure.QuadTree
 
             /// <summary>
             /// Set pos for current node.
+            /// <br/>
             /// They will be 10% larger than the actual size as tolerance
             /// to avoid entering and exiting too frequently and improve the accuracy of collision detection.
             /// </summary>
@@ -229,6 +231,7 @@ namespace Utilities.DataStructure.QuadTree
             /// <summary>
             /// Try adding an item to current node.
             /// If exceed threshold, split.
+            /// <br/>
             /// Overloading method for raw item input.
             /// </summary>
             /// <param name="item">The item to add.</param>
@@ -476,7 +479,7 @@ namespace Utilities.DataStructure.QuadTree
         }
 
         /// <summary>
-        /// Initialize the quadtree with an anchor point and width & height of boundary.
+        /// Initialize the quadtree with an anchor point and width &amp; height of boundary.
         /// </summary>
         /// <param name="leftTop">The anchor point of left-top endpoint. In Unity world pos.</param>
         /// <param name="width">The horizontal length of boundary.</param>
@@ -485,7 +488,8 @@ namespace Utilities.DataStructure.QuadTree
             => Init(leftTop, new Vector2(leftTop.x + width, leftTop.y - height));
 
         /// <summary>
-        /// Initialize the quadtree with an anchor point and width & height of boundary.
+        /// Initialize the quadtree with an anchor point and width &amp; height of boundary.
+        /// <br/>
         /// Overload method for %int% type params.
         /// </summary>
         /// <param name="leftTop">The anchor point of left-top endpoint. In Unity world pos.</param>
@@ -503,7 +507,7 @@ namespace Utilities.DataStructure.QuadTree
             => Init((Vector2)leftTop.position, (Vector2)rightBottom.position);
 
         /// <summary>
-        /// Initialize the quadtree with an anchor point's Transform and width & height of boundary.
+        /// Initialize the quadtree with an anchor point's Transform and width &amp; height of boundary.
         /// </summary>
         /// <param name="leftTop">The anchor point of left-top endpoint.</param>
         /// <param name="width">The horizontal length of boundary.</param>
@@ -512,7 +516,8 @@ namespace Utilities.DataStructure.QuadTree
             => Init((Vector2)leftTop.position, width, height);
 
         /// <summary>
-        /// Initialize the quadtree with an anchor point's Transform and width & height of boundary.
+        /// Initialize the quadtree with an anchor point's Transform and width &amp; height of boundary.
+        /// <br/>
         /// Overload method for %int% type params.
         /// </summary>
         /// <param name="leftTop">The anchor point of left-top endpoint.</param>
@@ -717,6 +722,7 @@ namespace Utilities.DataStructure.QuadTree
 
         /// <summary>
         /// Reset QuadTree into blank state.
+        /// <br/>
         /// You should do <see cref="SetParam"/> after Reset if you want to reuse this QuadTree.
         /// </summary>
         public virtual void Reset()
@@ -740,7 +746,6 @@ namespace Utilities.DataStructure.QuadTree
 
         /// <summary>
         /// Operator overloading of += for simplified QuadTree adding object operation.
-        /// Add an item to QuadTree.
         /// </summary>
         /// <param name="this">The QuadTree object want to be operated.</param>
         /// <param name="item">The item to add.</param>
@@ -819,6 +824,7 @@ namespace Utilities.DataStructure.QuadTree
     {
         /// <summary>
         /// Install QuadTree as a service in locator.
+        /// <br/>
         /// It would create an instance of QuadTree and then register it to locator.
         /// </summary>
         public override void InstallService()

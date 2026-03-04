@@ -119,7 +119,6 @@ namespace Core.Event
         /// </summary>
         /// <typeparam name="TEvent">The type of the event.</typeparam>
         /// <param name="event">The event to publish.</param>
-        /// tips: @ will allow us to use preserved name like class/event
         public virtual void Publish<TEvent>(IEvent<TEventBus> @event) where TEvent : IEvent<TEventBus>
         {
             List<Action<IEvent<TEventBus>>> snapshot = null;

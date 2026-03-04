@@ -29,7 +29,7 @@ namespace Data.Registry
     }
 
     /// <summary>
-    /// Utility class for provide index & query methods for given library.
+    /// Utility class for provide index &amp; query methods for given library.
     /// </summary>
     /// <typeparam name="TLibrary">The type of library want to be indexed with given entry type.</typeparam>
     /// <typeparam name="TEntry">The type of entry in given library.</typeparam>
@@ -42,7 +42,7 @@ namespace Data.Registry
         #region Fields
 
         /// <summary>
-        /// Runtime cached registry that provide index & query methods by Dictionary type.
+        /// Runtime cached registry that provide index &amp; query methods by Dictionary type.
         /// </summary>
         private readonly Dictionary<TKey, TEntry> _cacheMap = new();
 

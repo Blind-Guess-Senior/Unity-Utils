@@ -9,6 +9,7 @@ namespace Utilities.Singleton
 
     /// <summary>
     /// Abstract base class for creating singleton instances.
+    /// <br/>
     /// If you want to auto init singleton,
     /// use [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
     /// </summary>
@@ -47,6 +48,7 @@ namespace Utilities.Singleton
     /// Abstract base class for creating singleton instances.
     /// Which would be init whenever any static member first being accessed.
     /// Every static members would be init whenever any static member first being accessed.
+    /// <br/>
     /// If you want to auto init singleton,
     /// use [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
     /// </summary>

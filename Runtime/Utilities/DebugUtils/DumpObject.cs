@@ -158,6 +158,7 @@ namespace Utilities.DebugUtils
 
         /// <summary>
         /// Print all fields and their status of an object (including base class stop at specified class).
+        /// <br/>
         /// This is the implementation for support of generic base type.
         /// </summary>
         /// <param name="baseType">The base type that dump will stop at.</param>

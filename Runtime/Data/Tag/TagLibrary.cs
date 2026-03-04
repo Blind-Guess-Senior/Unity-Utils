@@ -138,6 +138,7 @@ namespace Data.Tag
     {
         /// <summary>
         /// Install tag registry as a service in locator.
+        /// <br/>
         /// It would create an instance of TagRegistry and then register it to locator.
         /// </summary>
         public override void InstallService()

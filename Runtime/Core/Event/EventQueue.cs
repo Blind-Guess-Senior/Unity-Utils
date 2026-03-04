@@ -146,6 +146,7 @@ namespace Core.Event
         /// <summary>
         /// Buckets of all tick-based event.
         /// Events which are nearest to current time will be on the front.
+        /// <br/>
         /// tips: Queue used for situations that some events has the same time. 
         /// </summary>
         private readonly Dictionary<QueueEventType, SortedDictionary<ulong, Queue<int>>> _tickBuckets =
@@ -158,6 +159,7 @@ namespace Core.Event
         /// <summary>
         /// Buckets of all time-based event.
         /// Events which are nearest to current time will be on the front.
+        /// <br/>
         /// tips: Queue used for situations that some events has the same time. 
         /// </summary>
         private readonly Dictionary<QueueEventType, SortedDictionary<float, Queue<int>>> _timeBuckets =
@@ -235,6 +237,7 @@ namespace Core.Event
 
         /// <summary>
         /// Add an event into queue. It will be published when meet the time conditions.
+        /// <br/>
         /// Only used for Tick based event.
         /// </summary>
         /// <param name="event">The event to enqueue.</param>
@@ -274,6 +277,7 @@ namespace Core.Event
 
         /// <summary>
         /// Add an event into queue. It will be published when meet the time conditions.
+        /// <br/>
         /// Only used for Time based event.
         /// </summary>
         /// <param name="event">The event to enqueue.</param>
@@ -381,6 +385,7 @@ namespace Core.Event
         {
             var eventType = @event.EventType;
 
+            // ReSharper disable once InconsistentlySynchronizedField
             if (_cachedPublishDelegates.TryGetValue(eventType, out var action))
             {
                 action(@event.Event);

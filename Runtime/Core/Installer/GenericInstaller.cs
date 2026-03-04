@@ -4,6 +4,7 @@ namespace Core.Installer
 {
     /// <summary>
     /// Generic installer for ScriptableObject. Which will install itself into ServiceLocator.
+    /// <br/>
     /// Usage: derive from this class and override <see cref="InstallService"/>.
     /// </summary>
     /// <typeparam name="T">The type of that ScriptableObject. Must implement <see cref="IService"/>.</typeparam>
@@ -12,6 +13,7 @@ namespace Core.Installer
     {
         /// <summary>
         /// Virtual function for install service into locator.
+        /// <br/>
         /// Override it to do things like load resource and register in locator.
         /// </summary>
         public virtual void InstallService()
