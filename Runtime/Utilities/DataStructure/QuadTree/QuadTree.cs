@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Core.Installer;
 using Core.Locator;
@@ -13,6 +14,7 @@ namespace Utilities.DataStructure.QuadTree
 {
     /// <summary>
     /// QuadTree data structure implementation for Collider2D's collision detection.
+    /// It is noexcept in released runtime. Exception handling only take effect while in editor mode.
     /// </summary>
     /// <remarks>
     /// Toggle in editor's "Artifact Unity Utils/Data Structure/QuadTree/Features" to enable/disable advanced features.
@@ -241,9 +243,12 @@ namespace Utilities.DataStructure.QuadTree
             {
                 if (_items.Remove(itemInstanceID))
                 {
+#if UNITY_EDITOR
                     try
                     {
+#endif
                         _tree._itemsNodeMap[itemInstanceID].Remove(this);
+#if UNITY_EDITOR
                     }
                     catch (KeyNotFoundException)
                     {
@@ -253,6 +258,7 @@ namespace Utilities.DataStructure.QuadTree
                             DebugLevel.Fatal);
                         throw;
                     }
+#endif
                 }
             }
 
@@ -263,11 +269,11 @@ namespace Utilities.DataStructure.QuadTree
             public void Remove(Collider2D item)
                 => Remove(item.GetInstanceID());
 
-#if __ARTIFACT_UNITY_UTILS__QUADTREE_DESTROYAUTODETECT
             /// <summary>
             /// Try deleting an item from QuadTree.
             /// </summary>
             /// <param name="itemInstanceID">The item to delete.</param>
+            [Conditional("__ARTIFACT_UNITY_UTILS__QUADTREE_NOTINTREEITEMQUERY")]
             private void Delete(int itemInstanceID)
             {
                 Remove(itemInstanceID);
@@ -277,7 +283,6 @@ namespace Utilities.DataStructure.QuadTree
                     _tree._itemsNodeMap.Remove(itemInstanceID);
                 }
             }
-#endif
 
             /// <summary>
             /// Try to dismiss an item if it is not in range of current node.
@@ -299,12 +304,12 @@ namespace Utilities.DataStructure.QuadTree
             private bool Intersects(Collider2D item)
                 => NodeRect.Overlaps(GetItemRect(item));
 
-#if __ARTIFACT_UNITY_UTILS__QUADTREE_NOTINTREEITEMQUERY
             /// <summary>
             /// Getting all nodes that intersected with given item.
             /// </summary>
             /// <param name="itemRect">The rect of item to check intersecting.</param>
             /// <param name="results">The results of intersection. Will be modified.</param>
+            [Conditional("__ARTIFACT_UNITY_UTILS__QUADTREE_NOTINTREEITEMQUERY")]
             public void CollectIntersectingNodes(Rect itemRect, HashSet<QuadTreeNode> results)
             {
                 if (!NodeRect.Overlaps(itemRect))
@@ -322,7 +327,6 @@ namespace Utilities.DataStructure.QuadTree
                     results.Add(this);
                 }
             }
-#endif
 
             /// <summary>
             /// Split current node into 4 nodes.
@@ -563,14 +567,17 @@ namespace Utilities.DataStructure.QuadTree
 
             if (_allItems.Remove(instanceID))
             {
+#if UNITY_EDITOR
                 try
                 {
+#endif
                     foreach (var node in _itemsNodeMap[instanceID].ToArray())
                     {
                         node.Remove(instanceID);
                     }
 
                     _itemsNodeMap.Remove(instanceID);
+#if UNITY_EDITOR
                 }
                 catch (KeyNotFoundException)
                 {
@@ -580,6 +587,7 @@ namespace Utilities.DataStructure.QuadTree
                         DebugLevel.Fatal);
                     throw;
                 }
+#endif
             }
         }
 
@@ -589,12 +597,15 @@ namespace Utilities.DataStructure.QuadTree
         /// <param name="item">The item to update.</param>
         public virtual void Update(Collider2D item)
         {
+#if UNITY_EDITOR
             try
             {
+#endif
                 foreach (var node in _itemsNodeMap[item.GetInstanceID()].ToArray())
                 {
                     node.TryDismiss(item);
                 }
+#if UNITY_EDITOR
             }
             catch (KeyNotFoundException)
             {
@@ -604,6 +615,7 @@ namespace Utilities.DataStructure.QuadTree
                     DebugLevel.Fatal);
                 throw;
             }
+#endif
 
             Add(item);
         }
@@ -671,15 +683,14 @@ namespace Utilities.DataStructure.QuadTree
             return result.ToList();
         }
 
-#if __ARTIFACT_UNITY_UTILS__QUADTREE_NOTINTREEITEMQUERY
         /// <summary>
         /// Getting all nodes that intersected with given item.
         /// </summary>
         /// <param name="itemRect">The rect of item to check intersecting.</param>
         /// <param name="results">The results of intersection. Will be modified.</param>
+        [Conditional("__ARTIFACT_UNITY_UTILS__QUADTREE_NOTINTREEITEMQUERY")]
         private void CollectIntersectingNodes(Rect itemRect, HashSet<QuadTreeNode> results)
             => _root.CollectIntersectingNodes(itemRect, results);
-#endif
 
         /// <summary>
         /// Clear QuadTree into empty state. Won't reset boundaries.
