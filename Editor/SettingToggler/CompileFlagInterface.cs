@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEditor.Build;
+using UnityEngine.Scripting;
 
 namespace Editor.SettingToggler
 {
@@ -19,20 +20,23 @@ namespace Editor.SettingToggler
 
         #region QuadTree
 
+        #region QuadTree Enable
+
         /// <summary>
         /// Menu path of QuadTree config.
         /// </summary>
-        private const string QuadTreePath = "Data Structures/QuadTree";
+        private const string QuadTreePath = "Data Structures/QuadTree/QuadTree Enabled";
 
         /// <summary>
         /// Compile flags of QuadTree.
         /// </summary>
-        private const string DefineSymbolQuadTree = "__ARTIFACT_UNITY_UTILS__ENABLE_QUADTREE";
+        private const string DefineSymbolQuadTree = "__ARTIFACT_UNITY_UTILS__QUADTREE_ENABLED";
+
 
         /// <summary>
         /// Toggle QuadTree's enable or disable by editing scripting define symbols.
         /// </summary>
-        [MenuItem(MenuPath + QuadTreePath)]
+        [MenuItem(MenuPath + QuadTreePath, false, -1000)]
         private static void ToggleQuadTree()
         {
             var namedBuildTarget = GetNamedBuildTarget();
@@ -76,6 +80,141 @@ namespace Editor.SettingToggler
 
         #endregion
 
+        #region QuadTree Features
+
+        #region Destroy Auto Detect Feature
+
+        /// <summary>
+        /// Menu path of QuadTree's destroy auto-detect feature.
+        /// </summary>
+        private const string QuadTreeDestroyAutoDetectPath = "Data Structures/QuadTree/Features/Destroy Auto-Detect";
+
+        /// <summary>
+        /// Compile flags of QuadTree's destroy auto-detect feature.
+        /// It will automatically remove dead items (whose gameObject had been destroyed, while SetActive and disable will not).
+        /// when running GetIntersected() method.
+        /// It will consume additional performance.
+        /// Only use it when you often destroy game objects and hard to write dispose method for them.
+        /// </summary>
+        private const string DefineSymbolQuadTreeDestroyAutoDetect =
+            "__ARTIFACT_UNITY_UTILS__QUADTREE_DESTROYAUTODETECT";
+
+        /// <summary>
+        /// Toggle QuadTree's destroy auto-detect feature by editing scripting define symbols.
+        /// </summary>
+        [MenuItem(MenuPath + QuadTreeDestroyAutoDetectPath, false, -900)]
+        private static void ToggleQuadTreeDestroyAutoDetectFeature()
+        {
+            var namedBuildTarget = GetNamedBuildTarget();
+
+            var defines = GetScriptingDefineSymbols(namedBuildTarget);
+
+            if (defines.Contains(DefineSymbolQuadTreeDestroyAutoDetect))
+            {
+                // If enabled, then disable.
+                defines = defines.Replace(DefineSymbolQuadTreeDestroyAutoDetect, "").Replace(";;", ";").Trim(';');
+            }
+            else
+            {
+                // If disabled, then enable.
+                if (!string.IsNullOrEmpty(defines))
+                {
+                    defines += ";";
+                }
+
+                defines += DefineSymbolQuadTreeDestroyAutoDetect;
+            }
+
+            PlayerSettings.SetScriptingDefineSymbols(namedBuildTarget, defines);
+        }
+
+        /// <summary>
+        /// Display a check mark next to the menu item to indicate whether it is currently enabled.
+        /// </summary>
+        /// <returns>Always true.</returns>
+        [MenuItem(MenuPath + QuadTreeDestroyAutoDetectPath, true)]
+        private static bool ValidateToggleQuadTreeDestroyAutoDetectFeature()
+        {
+            var namedBuildTarget = GetNamedBuildTarget();
+
+            var defines = GetScriptingDefineSymbols(namedBuildTarget);
+
+            Menu.SetChecked(MenuPath + QuadTreeDestroyAutoDetectPath,
+                defines.Contains(DefineSymbolQuadTreeDestroyAutoDetect));
+
+            return true;
+        }
+
+        #endregion
+
+        #region Not-In-Tree Item Query
+
+        /// <summary>
+        /// Menu path of QuadTree's not-in-tree item query feature.
+        /// </summary>
+        private const string QuadTreeNotInTreeItemQueryPath =
+            "Data Structures/QuadTree/Features/Not-In-Tree Item Query";
+
+        /// <summary>
+        /// Compile flags of QuadTree's not-in-tree item query feature.
+        /// It will allow GetIntersected() for not-in-tree item.
+        /// It will consume additional performance.
+        /// </summary>
+        private const string DefineSymbolQuadTreeNotInTreeItemQuery =
+            "__ARTIFACT_UNITY_UTILS__QUADTREE_NOTINTREEITEMQUERY";
+
+        /// <summary>
+        /// Toggle QuadTree's not-in-tree item query feature by editing scripting define symbols.
+        /// </summary>
+        [MenuItem(MenuPath + QuadTreeNotInTreeItemQueryPath, false, -900)]
+        private static void ToggleQuadTreeNotInTreeItemQueryFeature()
+        {
+            var namedBuildTarget = GetNamedBuildTarget();
+
+            var defines = GetScriptingDefineSymbols(namedBuildTarget);
+
+            if (defines.Contains(DefineSymbolQuadTreeNotInTreeItemQuery))
+            {
+                // If enabled, then disable.
+                defines = defines.Replace(DefineSymbolQuadTreeNotInTreeItemQuery, "").Replace(";;", ";").Trim(';');
+            }
+            else
+            {
+                // If disabled, then enable.
+                if (!string.IsNullOrEmpty(defines))
+                {
+                    defines += ";";
+                }
+
+                defines += DefineSymbolQuadTreeNotInTreeItemQuery;
+            }
+
+            PlayerSettings.SetScriptingDefineSymbols(namedBuildTarget, defines);
+        }
+
+        /// <summary>
+        /// Display a check mark next to the menu item to indicate whether it is currently enabled.
+        /// </summary>
+        /// <returns>Always true.</returns>
+        [MenuItem(MenuPath + QuadTreeNotInTreeItemQueryPath, true)]
+        private static bool ValidateToggleQuadTreeNotInTreeItemQueryFeature()
+        {
+            var namedBuildTarget = GetNamedBuildTarget();
+
+            var defines = GetScriptingDefineSymbols(namedBuildTarget);
+
+            Menu.SetChecked(MenuPath + QuadTreeNotInTreeItemQueryPath,
+                defines.Contains(DefineSymbolQuadTreeNotInTreeItemQuery));
+
+            return true;
+        }
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
         #region Helper Methods
 
         /// <summary>
@@ -102,6 +241,13 @@ namespace Editor.SettingToggler
             var defines = PlayerSettings.GetScriptingDefineSymbols(namedBuildTarget);
 
             return defines;
+        }
+
+        /// <summary>
+        /// Used to find this file.
+        /// </summary>
+        public static void CompileFlagInterfaceNavigator()
+        {
         }
 
         #endregion
