@@ -50,7 +50,7 @@ namespace Core.Event
         /// Subscribes a handler to an event type.
         /// </summary>
         /// <typeparam name="TEvent">The type of the event.</typeparam>
-        /// <param name="handler">The handler to be invoked when the event is published.</param>
+        /// <param name="handler">The handler to invoke when the event is published.</param>
         /// <returns>The ID of the subscribed handler.</returns>
         /// <remarks>
         /// Never discard return value.
@@ -82,7 +82,7 @@ namespace Core.Event
         /// Unsubscribes a handler from an event type.
         /// </summary>
         /// <typeparam name="TEvent">The type of the event.</typeparam>
-        /// <param name="handlerId">The ID of the handler to be unsubscribed.</param>
+        /// <param name="handlerId">The ID of the handler to unsubscribe.</param>
         public virtual void Unsubscribe<TEvent>(int handlerId) where TEvent : IEvent<TEventBus>
         {
             lock (_lock)

@@ -237,7 +237,7 @@ namespace Core.Event
         /// Add an event into queue. It will be published when meet the time conditions.
         /// Only used for Tick based event.
         /// </summary>
-        /// <param name="event">The event want to be enqueued.</param>
+        /// <param name="event">The event to enqueue.</param>
         /// <param name="queueEventType">The type of queued event.</param>
         /// <param name="tick">The value for waiting. Meaning changes for different QueueEventType.</param>
         /// <returns>The event id in queue.</returns>
@@ -276,7 +276,7 @@ namespace Core.Event
         /// Add an event into queue. It will be published when meet the time conditions.
         /// Only used for Time based event.
         /// </summary>
-        /// <param name="event">The event want to be enqueued.</param>
+        /// <param name="event">The event to enqueue.</param>
         /// <param name="queueEventType">The type of queued event.</param>
         /// <param name="time">The value for waiting. Meaning changes for different QueueEventType.</param>
         /// <returns>The event id in queue.</returns>
@@ -319,7 +319,7 @@ namespace Core.Event
         /// <summary>
         /// Overload method for %int% type tick param.
         /// </summary>
-        /// <param name="event">The event want to be enqueued.</param>
+        /// <param name="event">The event to enqueue.</param>
         /// <param name="queueEventType">The type of queued event.</param>
         /// <param name="tick">The value for waiting. Meaning changes for different QueueEventType.</param>
         /// <returns>The event id in queue.</returns>
@@ -329,7 +329,7 @@ namespace Core.Event
         /// <summary>
         /// Overload method with default QueueEventType FixedTick.
         /// </summary>
-        /// <param name="event">The event want to be enqueued.</param>
+        /// <param name="event">The event to enqueue.</param>
         /// <param name="tick">The value of ticks for waiting.</param>
         /// <returns>The event id in queue.</returns>
         public int Enqueue(IEvent @event, ulong tick)
@@ -341,7 +341,7 @@ namespace Core.Event
         /// <summary>
         /// Overload method for %double% type time param.
         /// </summary>
-        /// <param name="event">The event want to be enqueued.</param>
+        /// <param name="event">The event to enqueue.</param>
         /// <param name="queueEventType">The type of queued event.</param>
         /// <param name="time">The value for waiting. Meaning changes for different QueueEventType.</param>
         /// <returns>The event id in queue.</returns>
@@ -351,7 +351,7 @@ namespace Core.Event
         /// <summary>
         /// Overload method with default QueueEventType ScaledFixedTime.
         /// </summary>
-        /// <param name="event">The event want to be enqueued.</param>
+        /// <param name="event">The event to enqueue.</param>
         /// <param name="time">The value of seconds for waiting.</param>
         /// <returns>The event id in queue.</returns>
         public int Enqueue(IEvent @event, float time)
