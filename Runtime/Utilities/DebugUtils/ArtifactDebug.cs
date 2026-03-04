@@ -1,5 +1,6 @@
 using System;
-using UnityEngine;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 namespace Utilities.DebugUtils
 {
@@ -33,11 +34,12 @@ namespace Utilities.DebugUtils
         #region Static Methods
 
         /// <summary>
-        /// Wrapped debug function.
+        /// Wrapped debug function. Does not work in the official release version.
         /// </summary>
         /// <param name="message">The message want to be logged. Same as using UnityEngine.Debug.Log().</param>
         /// <param name="level">The <see cref="DebugLevel"/> of log.</param>
         /// <exception cref="ArgumentException">Occur when <see cref="DebugLevel"/> wrong.</exception>
+        [Conditional("UNITY_EDITOR")]
         public static void Log(object message, DebugLevel level = DebugLevel.Info)
         {
             switch (level)
