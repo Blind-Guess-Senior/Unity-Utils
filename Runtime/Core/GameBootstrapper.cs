@@ -20,6 +20,8 @@ namespace Core
             var types = TypeUtils.GetTypes(typeof(GenericInstaller<>));
             foreach (var type in types)
             {
+                if (type.IsAbstract) continue;
+
                 var installMethod = type.GetMethod("InstallService");
                 if (installMethod != null)
                 {
