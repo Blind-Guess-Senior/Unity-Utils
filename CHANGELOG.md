@@ -22,6 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Attribute for injection and injection way to set ref
 - Extend tag system
 - Game bootstrapper, installer and service locator for un-singleton accessiable services
+- Wrapped debug log utilities
+- Compile flag toggler in editor
+- QuadTree data structure implementation
 
 ### Changed
 
