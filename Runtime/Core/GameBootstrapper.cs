@@ -33,14 +33,14 @@ namespace Core
                     }
                     catch (System.Exception ex)
                     {
-                        ArtifactDebug.Log(
-                            $"[GameBootstrapper] Failed to install {type.Name}: {ex.Message}", DebugLevel.Error);
+                        ArtifactDebug.PackageLog(
+                            $"[GameBootstrapper] Failed to install {type.Name}: {ex.Message}", DebugLogLevel.Error);
                     }
                 }
                 else
                 {
-                    ArtifactDebug.Log(
-                        $"[GameBootstrapper] {type.Name} can not install: No InstallMethod found.", DebugLevel.Fatal);
+                    ArtifactDebug.PackageLog(
+                        $"[GameBootstrapper] {type.Name} can not install: No InstallMethod found.", DebugLogLevel.Fatal);
                 }
             }
         }

@@ -72,8 +72,8 @@ namespace Extensions.Containers
             {
                 if (!TryAdd(p.key, p.value))
                 {
-                    ArtifactDebug.Log(
-                        $"[DictionarySerializable] Duplicate key {p.key} and {p.value}", DebugLevel.Warning);
+                    ArtifactDebug.PackageLog(
+                        $"[DictionarySerializable] Duplicate key {p.key} and {p.value}", DebugLogLevel.Warning);
                 }
             }
         }

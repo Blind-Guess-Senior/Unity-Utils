@@ -255,10 +255,10 @@ namespace Utilities.DataStructure.QuadTree
                     }
                     catch (KeyNotFoundException)
                     {
-                        ArtifactDebug.Log(
+                        ArtifactDebug.PackageLog(
                             "[QuadTree] Could not found item(with id): " + itemInstanceID + " when remove;" +
                             "; Try check if object is added correctly or Init is done correctly with right rectangle range.",
-                            DebugLevel.Fatal);
+                            DebugLogLevel.Fatal);
                         throw;
                     }
 #endif
@@ -542,7 +542,7 @@ namespace Utilities.DataStructure.QuadTree
         {
             if (_root.Center == Vector2.zero && _root.Top == 0)
             {
-                ArtifactDebug.Log("[QuadTree] Set param before Init, do nothing.", DebugLevel.Warning);
+                ArtifactDebug.PackageLog("[QuadTree] Set param before Init, do nothing.", DebugLogLevel.Warning);
                 return;
             }
 
@@ -586,10 +586,10 @@ namespace Utilities.DataStructure.QuadTree
                 }
                 catch (KeyNotFoundException)
                 {
-                    ArtifactDebug.Log(
+                    ArtifactDebug.PackageLog(
                         "[QuadTree] Could not found item: " + item.name + " when remove;" +
                         "; Try check if object is added correctly or Init is done correctly with right rectangle range.",
-                        DebugLevel.Fatal);
+                        DebugLogLevel.Fatal);
                     throw;
                 }
 #endif
@@ -614,10 +614,10 @@ namespace Utilities.DataStructure.QuadTree
             }
             catch (KeyNotFoundException)
             {
-                ArtifactDebug.Log(
+                ArtifactDebug.PackageLog(
                     "[QuadTree] Could not found item: " + item.name + " when update;" +
                     "Try check if object is added correctly or Init is done correctly with right rectangle range.",
-                    DebugLevel.Fatal);
+                    DebugLogLevel.Fatal);
                 throw;
             }
 #endif
@@ -830,7 +830,7 @@ namespace Utilities.DataStructure.QuadTree
         public override void InstallService()
         {
             ServiceLocator.Register(new TQuadTree());
-            ArtifactDebug.Log(
+            ArtifactDebug.PackageLog(
                 $"[Data Structure - QuadTree] QuadTree {nameof(TQuadTree)} has been enabled."
 #if __ARTIFACT_UNITY_UTILS__QUADTREE_DESTROYAUTODETECT
                 + " With destroy auto-detect feature."
@@ -838,7 +838,7 @@ namespace Utilities.DataStructure.QuadTree
 #if __ARTIFACT_UNITY_UTILS__QUADTREE_NOTINTREEITEMQUERY
                 + " With not-in-tree item query feature."
 #endif
-                , DebugLevel.WorksWell);
+                , DebugLogLevel.WorksWell);
         }
     }
 

@@ -146,8 +146,8 @@ namespace Data.Tag
             string[] libraryGuids = AssetDatabase.FindAssets($"t:{nameof(TagLibrary)}");
             if (libraryGuids.Length == 0)
             {
-                ArtifactDebug.Log(
-                    $"[Tag Library] {nameof(TagLibrary)}.asset not found! Please create one.", DebugLevel.Error);
+                ArtifactDebug.PackageLog(
+                    $"[Tag Library] {nameof(TagLibrary)}.asset not found! Please create one.", DebugLogLevel.Error);
                 return;
             }
 

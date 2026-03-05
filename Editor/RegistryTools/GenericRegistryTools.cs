@@ -24,8 +24,8 @@ namespace Editor.RegistryTools
             string[] libraryGuids = AssetDatabase.FindAssets($"t:{typeof(TLib).Name}");
             if (libraryGuids.Length == 0)
             {
-                ArtifactDebug.Log(
-                    $"[Registry Library] {typeof(TLib).Name}.asset not found! Please create one.", DebugLevel.Error);
+                ArtifactDebug.PackageLog(
+                    $"[Registry Library] {typeof(TLib).Name}.asset not found! Please create one.", DebugLogLevel.Error);
                 return;
             }
 
@@ -52,9 +52,9 @@ namespace Editor.RegistryTools
             EditorUtility.SetDirty(library);
             AssetDatabase.SaveAssets();
 
-            ArtifactDebug.Log(
+            ArtifactDebug.PackageLog(
                 $"[Registry Library - {typeof(TLib).Name}] has been successfully updated with {entries.Count} entries.",
-                DebugLevel.WorksWell);
+                DebugLogLevel.WorksWell);
         }
     }
 }

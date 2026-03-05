@@ -68,8 +68,8 @@ namespace Data.Registry
                 var key = keySetter(entry);
                 if (!_cacheMap.TryAdd(key, entry))
                 {
-                    ArtifactDebug.Log(
-                        $"[GenericRegistry] Key collision with Key {key}, Entry {entry} missing.", DebugLevel.Warning);
+                    ArtifactDebug.PackageLog(
+                        $"[GenericRegistry] Key collision with Key {key}, Entry {entry} missing.", DebugLogLevel.Warning);
                 }
             }
         }

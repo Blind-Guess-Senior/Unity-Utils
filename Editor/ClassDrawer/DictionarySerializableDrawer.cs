@@ -67,9 +67,9 @@ namespace Editor.ClassDrawer
                 // Add key-value pair to dictionary.
                 if (tryAddMethod == null)
                 {
-                    ArtifactDebug.Log(
+                    ArtifactDebug.PackageLog(
                         $"[DictionarySerializable - Drawer] This should never happen: {dictionary.GetType()} does not have TryAddPair().",
-                        DebugLevel.Fatal);
+                        DebugLogLevel.Fatal);
                 }
 
                 property.serializedObject.ApplyModifiedProperties();

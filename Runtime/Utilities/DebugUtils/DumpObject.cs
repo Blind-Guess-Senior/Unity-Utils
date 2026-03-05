@@ -127,7 +127,7 @@ namespace Utilities.DebugUtils
 
             if (!baseType.IsAssignableFrom(type))
             {
-                ArtifactDebug.Log($"[Dump] Object of type {type} does not inherit from {baseType}", DebugLevel.Warning);
+                ArtifactDebug.PackageLog($"[Dump] Object of type {type} does not inherit from {baseType}", DebugLogLevel.Warning);
                 return;
             }
 
@@ -200,7 +200,7 @@ namespace Utilities.DebugUtils
 
             if (!TypeUtils.IsAssignable(baseType, type))
             {
-                ArtifactDebug.Log($"[Dump] Object of type {type} does not inherit from {baseType}", DebugLevel.Warning);
+                ArtifactDebug.PackageLog($"[Dump] Object of type {type} does not inherit from {baseType}", DebugLogLevel.Warning);
                 return;
             }
 

@@ -123,9 +123,9 @@ namespace Core.Locator
                 }
                 else
                 {
-                    ArtifactDebug.Log(
+                    ArtifactDebug.PackageLog(
                         $"[ServiceLocator] Failed to inject {serviceType.Name} into {type.Name}. Service not found.",
-                        DebugLevel.Error);
+                        DebugLogLevel.Error);
                 }
             }
         }

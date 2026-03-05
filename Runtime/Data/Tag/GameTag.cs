@@ -79,8 +79,8 @@ namespace Data.Tag
             {
                 _fullName = newName;
                 _hash = _fullName.GetStableHash();
-                ArtifactDebug.Log(
-                    $"[GameTag] {name}'s hash changed to {_hash}.</color>", DebugLevel.Info);
+                ArtifactDebug.PackageLog(
+                    $"[GameTag] {name}'s hash changed to {_hash}.</color>", DebugLogLevel.Info);
 #if UNITY_EDITOR
                 UnityEditor.EditorUtility.SetDirty(this);
 #endif
