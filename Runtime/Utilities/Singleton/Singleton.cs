@@ -25,7 +25,7 @@ namespace Utilities.Singleton
     /// </code>
     /// </example>
     public abstract class Singleton<T> : ISingleton
-        where T : new()
+        where T : Singleton<T>, new()
     {
         #region Fields
 
@@ -63,8 +63,8 @@ namespace Utilities.Singleton
     /// }
     /// </code>
     /// </example>
-    public abstract class UnlazySingleton<T> : ISingleton 
-        where T : new()
+    public abstract class UnlazySingleton<T> : ISingleton
+        where T : UnlazySingleton<T>, new()
     {
         #region Fields
 
@@ -78,6 +78,7 @@ namespace Utilities.Singleton
     /// </summary>
     /// <typeparam name="T">Type of the singleton class.</typeparam>
     public abstract class LocalSingleton<T>
+        where T : LocalSingleton<T>
     {
         #region Fields
 

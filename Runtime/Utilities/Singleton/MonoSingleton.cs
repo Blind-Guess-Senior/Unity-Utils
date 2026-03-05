@@ -8,7 +8,7 @@ namespace Utilities.Singleton
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. Must inherit MonoBehaviour.</typeparam>
     public abstract class MonoSingleton<T> : MonoBehaviour, ISingleton 
-        where T : MonoBehaviour
+        where T : MonoSingleton<T>
     {
         #region Fields
 
@@ -108,7 +108,7 @@ namespace Utilities.Singleton
     /// </code>
     /// </example>
     public abstract class MonoPersistentSingleton<T> : MonoSingleton<T> 
-        where T : MonoBehaviour
+        where T : MonoPersistentSingleton<T>
     {
         #region Override Methods
 
@@ -135,7 +135,7 @@ namespace Utilities.Singleton
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
     public abstract class MonoEnsuredSingleton<T> : MonoSingleton<T> 
-        where T : MonoBehaviour
+        where T : MonoEnsuredSingleton<T>
     {
         #region Properties
 
@@ -174,7 +174,7 @@ namespace Utilities.Singleton
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
     public abstract class MonoEnsuredPersistentSingleton<T> : MonoEnsuredSingleton<T> 
-        where T : MonoBehaviour
+        where T : MonoEnsuredPersistentSingleton<T>
     {
         #region Override Methods
 
@@ -201,7 +201,7 @@ namespace Utilities.Singleton
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
     public abstract class MonoLocalSingleton<T> : MonoBehaviour 
-        where T : MonoBehaviour
+        where T : MonoLocalSingleton<T>
     {
         #region Fields
 
