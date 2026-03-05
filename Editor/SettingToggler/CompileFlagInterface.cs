@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEditor.Build;
-using UnityEngine.Scripting;
 
 namespace Editor.SettingToggler
 {
