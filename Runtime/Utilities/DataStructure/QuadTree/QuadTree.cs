@@ -1,11 +1,14 @@
+#if __ARTIFACT_UNITY_UTILS__QUADTREE_ENABLED
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Artifact.UnityUtils.Utilities.DebugUtils;
 using UnityEngine;
-using Utilities.DebugUtils;
 
-namespace Utilities.DataStructure.QuadTree
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Utilities.DataStructure.QuadTree
 {
     /// <summary>
     /// QuadTree data structure implementation.
@@ -30,12 +33,12 @@ namespace Utilities.DataStructure.QuadTree
         /// <summary>
         /// Function that receive a TItem typed object and return Rect object which represent the item's AABB.
         /// </summary>
-        private readonly Func<TItem, Rect> _rectFunc;
+        protected readonly Func<TItem, Rect> _rectFunc;
 
         /// <summary>
         /// Function that receive two TItem typed objects and return whether these two are collided.
         /// </summary>
-        private readonly Func<TItem, TItem, bool> _touchingFunc;
+        protected readonly Func<TItem, TItem, bool> _touchingFunc;
 
         /// <summary>
         /// Root node of this QuadTree.
@@ -45,13 +48,13 @@ namespace Utilities.DataStructure.QuadTree
         /// <summary>
         /// All items stored in whole quad tree.
         /// </summary>
-        private readonly Dictionary<int, TItem> _allItems = new();
+        protected readonly Dictionary<int, TItem> _allItems = new();
 
         /// <summary>
         /// Store all nodes to which each item belongs.
         /// Used to improve the performance of remove.
         /// </summary>
-        private readonly Dictionary<int, HashSet<QuadTreeNode>> _itemsNodeMap = new();
+        protected readonly Dictionary<int, HashSet<QuadTreeNode>> _itemsNodeMap = new();
 
         #endregion
 
@@ -60,7 +63,7 @@ namespace Utilities.DataStructure.QuadTree
         /// <summary>
         /// Nodes in QuadTree.
         /// </summary>
-        private class QuadTreeNode
+        protected class QuadTreeNode
         {
             #region Fields & Properties
 
@@ -468,8 +471,10 @@ namespace Utilities.DataStructure.QuadTree
         /// </summary>
         /// <param name="leftTop">The anchor point of left-top endpoint. In Unity world pos.</param>
         /// <param name="rightBottom">The anchor point of right-bottom endpoint. In Unity world pos.</param>
-        /// <param name="rectFunc">The function that receive a TItem typed object and return Rect object which represent the item's AABB. </param>
-        /// <param name="touchingFunc">Function that receive two TItem typed objects and return whether these two are collided.</param>
+        /// <param name="rectFunc">The function that receive a TItem typed object and return Rect object which represent the item's AABB.
+        /// <br/>
+        /// See <see cref="QuadTreeUtils.GetCollider2DRect"/>'s comment to get hints of making rect or use GetRect utils.</param>
+        /// <param name="touchingFunc">The function that receive two TItem typed objects and return whether these two are collided.</param>
         /// <param name="splitThreshold">The new split threshold of tree.</param>
         /// <param name="maxDepth">The new max depth of tree.</param>
         public QuadTree(Vector2 leftTop, Vector2 rightBottom,
@@ -827,3 +832,4 @@ namespace Utilities.DataStructure.QuadTree
         #endregion
     }
 }
+#endif
