@@ -1,9 +1,10 @@
-using Utilities.Singleton;
+using Artifact.UnityUtils.Utilities.Singleton;
 
-namespace Core.Audio
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Core.Audio
 {
     public class SoundManager : MonoPersistentSingleton<SoundManager>
     {
-        
     }
 }

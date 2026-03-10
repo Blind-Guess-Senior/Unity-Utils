@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using System.Reflection;
-using Data.Registry;
+using Artifact.UnityUtils.Data.Registry;
+using Artifact.UnityUtils.Utilities.DebugUtils;
 using UnityEditor;
 using UnityEngine;
-using Utilities.DebugUtils;
 
-namespace Editor.RegistryTools
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Editor.RegistryTools
 {
     /// <summary>
     /// Useful editor tools for registry.

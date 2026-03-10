@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Reflection
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Reflection
 {
     /// <summary>
     /// Utility class for retrieving types from predefined assemblies.

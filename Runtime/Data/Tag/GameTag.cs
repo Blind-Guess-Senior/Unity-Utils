@@ -1,10 +1,13 @@
 using System;
-using Extensions;
+using Artifact.UnityUtils.Extensions;
+using Artifact.UnityUtils.Utilities.DebugUtils;
 using Unity.Collections;
+using UnityEditor;
 using UnityEngine;
-using Utilities.DebugUtils;
 
-namespace Data.Tag
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Data.Tag
 {
     /// <summary>
     /// Game tag SO which can be created as a static asset.
@@ -82,7 +85,7 @@ namespace Data.Tag
                 ArtifactDebug.PackageLog(
                     $"[GameTag] {name}'s hash changed to {_hash}.</color>", DebugLogLevel.Info);
 #if UNITY_EDITOR
-                UnityEditor.EditorUtility.SetDirty(this);
+                EditorUtility.SetDirty(this);
 #endif
             }
         }

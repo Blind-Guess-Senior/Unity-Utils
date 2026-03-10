@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Attributes;
-using UnityEngine;
-using Utilities.DebugUtils;
+using Artifact.UnityUtils.Attributes;
+using Artifact.UnityUtils.Utilities.DebugUtils;
 
-namespace Core.Locator
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Core.Locator
 {
     /// <summary>
     /// Service locator which provide global accessiable services. 

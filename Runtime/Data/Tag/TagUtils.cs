@@ -1,6 +1,8 @@
 using UnityEngine;
 
-namespace Data.Tag
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Data.Tag
 {
     /// <summary>
     /// Provide utility functions for tag operation.

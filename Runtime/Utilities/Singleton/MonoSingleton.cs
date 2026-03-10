@@ -1,13 +1,15 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Utilities.Singleton
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Utilities.Singleton
 {
     /// <summary>
     /// Abstract base class for creating singleton MonoBehaviour instances.
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. Must inherit MonoBehaviour.</typeparam>
-    public abstract class MonoSingleton<T> : MonoBehaviour, ISingleton 
+    public abstract class MonoSingleton<T> : MonoBehaviour, ISingleton
         where T : MonoSingleton<T>
     {
         #region Fields
@@ -107,7 +109,7 @@ namespace Utilities.Singleton
     /// }
     /// </code>
     /// </example>
-    public abstract class MonoPersistentSingleton<T> : MonoSingleton<T> 
+    public abstract class MonoPersistentSingleton<T> : MonoSingleton<T>
         where T : MonoPersistentSingleton<T>
     {
         #region Override Methods
@@ -129,12 +131,12 @@ namespace Utilities.Singleton
 
         #endregion
     }
-    
+
     /// <summary>
     /// A MonoBehaviour singleton that ensure the existence of access of Instance.
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    public abstract class MonoEnsuredSingleton<T> : MonoSingleton<T> 
+    public abstract class MonoEnsuredSingleton<T> : MonoSingleton<T>
         where T : MonoEnsuredSingleton<T>
     {
         #region Properties
@@ -168,12 +170,12 @@ namespace Utilities.Singleton
 
         #endregion
     }
-    
+
     /// <summary>
     /// A persistent MonoBehaviour singleton that is not destroyed on scene load. And it ensures the existence of access of Instance.
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    public abstract class MonoEnsuredPersistentSingleton<T> : MonoEnsuredSingleton<T> 
+    public abstract class MonoEnsuredPersistentSingleton<T> : MonoEnsuredSingleton<T>
         where T : MonoEnsuredPersistentSingleton<T>
     {
         #region Override Methods
@@ -195,12 +197,12 @@ namespace Utilities.Singleton
 
         #endregion
     }
-    
+
     /// <summary>
     /// A MonoBehaviour class that ensures there is only one in the game. But it cannot be accessed globally.
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must inherit MonoBehaviour.</typeparam>
-    public abstract class MonoLocalSingleton<T> : MonoBehaviour 
+    public abstract class MonoLocalSingleton<T> : MonoBehaviour
         where T : MonoLocalSingleton<T>
     {
         #region Fields

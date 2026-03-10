@@ -1,7 +1,9 @@
-using Data.Tag;
+using Artifact.UnityUtils.Data.Tag;
 using UnityEditor;
 
-namespace Editor.RegistryTools
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Editor.RegistryTools
 {
     /// <summary>
     /// Useful editor tools for tag registry.

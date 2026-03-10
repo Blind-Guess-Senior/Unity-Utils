@@ -1,12 +1,17 @@
-using Core.Installer;
-using Core.Locator;
-using Data.Registry;
-using Extensions;
+using System;
+using System.Reflection;
+using Artifact.UnityUtils.Core.Installer;
+using Artifact.UnityUtils.Core.Locator;
+using Artifact.UnityUtils.Data.Registry;
+using Artifact.UnityUtils.Extensions;
+using Artifact.UnityUtils.Utilities.DebugUtils;
 using UnityEditor;
 using UnityEngine;
-using Utilities.DebugUtils;
+using StringExtensions = Artifact.UnityUtils.Extensions.StringExtensions;
 
-namespace Data.Tag
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Data.Tag
 {
     /// <summary>
     /// Tag library SO which can be created as a static asset.
@@ -154,9 +159,9 @@ namespace Data.Tag
             string libraryPath = AssetDatabase.GUIDToAssetPath(libraryGuids[0]);
             var library = AssetDatabase.LoadAssetAtPath<TagLibrary>(libraryPath);
 
-            var registry = (TagRegistry)System.Activator.CreateInstance(
+            var registry = (TagRegistry)Activator.CreateInstance(
                 typeof(TagRegistry),
-                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+                BindingFlags.Instance | BindingFlags.NonPublic,
                 null,
                 new object[] { library },
                 null

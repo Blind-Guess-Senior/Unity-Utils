@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Reflection;
+using Artifact.UnityUtils.Reflection;
+using Artifact.UnityUtils.Utilities.Singleton;
 using UnityEngine;
-using Utilities.Singleton;
 
-namespace Core.Event
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Core.Event
 {
     /// <summary>
     /// Manages event buses and provides methods to subscribe and publish events.
@@ -113,6 +115,9 @@ namespace Core.Event
         /// <typeparam name="TEvent">The type of the event.</typeparam>
         /// <param name="handler">The handler(with param of the Event) to add for the event.</param>
         /// <returns>The ID of the subscribed handler.</returns>
+        /// <remarks>
+        /// It's better not to discard return value of this method.
+        /// </remarks>
         public static int Subscribe<TEventBus, TEvent>(Action<TEvent> handler)
             where TEventBus : EventBus<TEventBus>
             where TEvent : IEvent<TEventBus>

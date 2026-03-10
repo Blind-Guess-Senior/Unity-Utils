@@ -1,7 +1,9 @@
 using UnityEditor;
 using UnityEditor.Build;
 
-namespace Editor.SettingToggler
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Editor.SettingToggler
 {
     /// <summary>
     /// Editor tools for simplify compile flag management.
@@ -14,6 +16,74 @@ namespace Editor.SettingToggler
         /// Parent menu path for all item of Artifact Unity Utils.
         /// </summary>
         private const string MenuPath = "Artifact Unity Utils/";
+
+        #endregion
+
+        #region Event System
+
+        #region Timed Event Queue
+
+        #region Timed Event Queue Enable
+
+        /// <summary>
+        /// Menu path of timed event queue config.
+        /// </summary>
+        private const string TimedEventQueuePath = "Event System/Timed Event Queue/Timed Event Queue Enabled";
+
+        /// <summary>
+        /// Compile flags of timed event queue.
+        /// </summary>
+        private const string DefineSymbolTimedEventQueue = "__ARTIFACT_UNITY_UTILS__TIMEDEVENTQUEUE_ENABLED";
+
+
+        /// <summary>
+        /// Toggle timed event queue's enable or disable by editing scripting define symbols.
+        /// </summary>
+        [MenuItem(MenuPath + TimedEventQueuePath, false, -1000)]
+        private static void ToggleTimedEventQueue()
+        {
+            var namedBuildTarget = GetNamedBuildTarget();
+
+            var defines = GetScriptingDefineSymbols(namedBuildTarget);
+
+            if (defines.Contains(DefineSymbolTimedEventQueue))
+            {
+                // If enabled, then disable.
+                defines = defines.Replace(DefineSymbolTimedEventQueue, "").Replace(";;", ";").Trim(';');
+            }
+            else
+            {
+                // If disabled, then enable.
+                if (!string.IsNullOrEmpty(defines))
+                {
+                    defines += ";";
+                }
+
+                defines += DefineSymbolTimedEventQueue;
+            }
+
+            PlayerSettings.SetScriptingDefineSymbols(namedBuildTarget, defines);
+        }
+
+        /// <summary>
+        /// Display a check mark next to the menu item to indicate whether it is currently enabled.
+        /// </summary>
+        /// <returns>Always true.</returns>
+        [MenuItem(MenuPath + TimedEventQueuePath, true)]
+        private static bool ValidateToggleTimedEventQueue()
+        {
+            var namedBuildTarget = GetNamedBuildTarget();
+
+            var defines = GetScriptingDefineSymbols(namedBuildTarget);
+
+            Menu.SetChecked(MenuPath + TimedEventQueuePath, defines.Contains(DefineSymbolTimedEventQueue));
+
+            return true;
+        }
+
+        #endregion
+
+        #endregion
 
         #endregion
 

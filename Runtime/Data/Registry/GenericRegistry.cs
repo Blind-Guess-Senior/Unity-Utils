@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Core.Locator;
+using Artifact.UnityUtils.Core.Locator;
+using Artifact.UnityUtils.Utilities.DebugUtils;
 using UnityEngine;
-using Utilities.DebugUtils;
 
-namespace Data.Registry
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Data.Registry
 {
     /// <summary>
     /// A library that store objects in specified type, and provide readonly query methods. 
@@ -69,7 +71,8 @@ namespace Data.Registry
                 if (!_cacheMap.TryAdd(key, entry))
                 {
                     ArtifactDebug.PackageLog(
-                        $"[GenericRegistry] Key collision with Key {key}, Entry {entry} missing.", DebugLogLevel.Warning);
+                        $"[GenericRegistry] Key collision with Key {key}, Entry {entry} missing.",
+                        DebugLogLevel.Warning);
                 }
             }
         }

@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using Artifact.UnityUtils.Utilities.DebugUtils;
 
-namespace Core.Event
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Core.Event
 {
     /// <summary>
     /// Abstract class representing an event bus that can subscribe, unsubscribe, and publish events.
@@ -18,7 +20,7 @@ namespace Core.Event
     /// }
     /// </code>
     /// </example>
-    public abstract class EventBus<TEventBus> : IEventBus 
+    public abstract class EventBus<TEventBus> : IEventBus
         where TEventBus : EventBus<TEventBus>
     {
         #region Fields
@@ -147,7 +149,10 @@ namespace Core.Event
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogException(ex);
+                    ArtifactDebug.Log(
+                        $"[Event Bus] Fatal: Invoke event {nameof(@event)}'s subsriber {nameof(action)} failed.",
+                        DebugLogLevel.Fatal);
+                    // Debug.LogException(ex);
                 }
             }
         }

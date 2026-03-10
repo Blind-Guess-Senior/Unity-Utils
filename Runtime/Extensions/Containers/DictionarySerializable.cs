@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Artifact.UnityUtils.Utilities.DebugUtils;
 using UnityEngine;
-using Utilities.DebugUtils;
 
-namespace Extensions.Containers
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Extensions.Containers
 {
     /// <summary>
     /// A custom dictionary class that can be serialized and show in inspector.

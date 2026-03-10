@@ -1,9 +1,12 @@
-using Core.Installer;
-using Reflection;
+using System;
+using Artifact.UnityUtils.Core.Installer;
+using Artifact.UnityUtils.Reflection;
+using Artifact.UnityUtils.Utilities.DebugUtils;
 using UnityEngine;
-using Utilities.DebugUtils;
 
-namespace Core
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Core
 {
     /// <summary>
     /// Bootstrapper of game.
@@ -28,10 +31,10 @@ namespace Core
                     try
                     {
                         // Create an instance of the installer
-                        var instance = System.Activator.CreateInstance(type);
+                        var instance = Activator.CreateInstance(type);
                         installMethod.Invoke(instance, null);
                     }
-                    catch (System.Exception ex)
+                    catch (Exception ex)
                     {
                         ArtifactDebug.PackageLog(
                             $"[GameBootstrapper] Failed to install {type.Name}: {ex.Message}", DebugLogLevel.Error);
@@ -40,7 +43,8 @@ namespace Core
                 else
                 {
                     ArtifactDebug.PackageLog(
-                        $"[GameBootstrapper] {type.Name} can not install: No InstallMethod found.", DebugLogLevel.Fatal);
+                        $"[GameBootstrapper] {type.Name} can not install: No InstallMethod found.",
+                        DebugLogLevel.Fatal);
                 }
             }
         }

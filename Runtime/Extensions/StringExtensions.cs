@@ -3,7 +3,9 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace Extensions
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Extensions
 {
     /// <summary>
     /// Provides extension methods for Strings.

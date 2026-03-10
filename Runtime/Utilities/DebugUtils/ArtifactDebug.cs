@@ -2,7 +2,9 @@ using System;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
 
-namespace Utilities.DebugUtils
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Utilities.DebugUtils
 {
     /// <summary>
     /// Enum for switching debug level to set color and log level.
@@ -42,7 +44,7 @@ namespace Utilities.DebugUtils
         /// </summary>
         /// <param name="message">The message want to be logged. Same as using UnityEngine.Debug.Log().</param>
         /// <param name="logLevel">The <see cref="DebugLogLevel"/> of log.</param>
-        /// <exception cref="ArgumentException">Occur when <see cref="DebugLogLevel"/> wrong.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Occur when <see cref="DebugLogLevel"/> wrong.</exception>
         [Conditional("UNITY_EDITOR")]
         public static void PackageLog(object message, DebugLogLevel logLevel = DebugLogLevel.Info)
         {
@@ -67,7 +69,8 @@ namespace Utilities.DebugUtils
                     Debug.Log($"{ArtifactHead}<color=#32CD32>{message}</color>");
                     break;
                 default:
-                    throw new ArgumentException("Wrong Debug Level type");
+                    throw new ArgumentOutOfRangeException(nameof(logLevel), logLevel,
+                        ToLogString("Wrong Debug Level type"));
             }
         }
 
@@ -78,7 +81,7 @@ namespace Utilities.DebugUtils
         /// </summary>
         /// <param name="message">The message want to be logged. Same as using UnityEngine.Debug.Log().</param>
         /// <param name="logLevel">The <see cref="DebugLogLevel"/> of log.</param>
-        /// <exception cref="ArgumentException">Occur when <see cref="DebugLogLevel"/> wrong.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Occur when <see cref="DebugLogLevel"/> wrong.</exception>
         [Conditional("UNITY_EDITOR")]
         public static void Log(object message, DebugLogLevel logLevel = DebugLogLevel.Info)
         {
@@ -103,7 +106,8 @@ namespace Utilities.DebugUtils
                     Debug.Log($"<color=#32CD32>{message}</color>");
                     break;
                 default:
-                    throw new ArgumentException("Wrong Debug Level type");
+                    throw new ArgumentOutOfRangeException(nameof(logLevel), logLevel,
+                        ToLogString("Wrong Debug Level type"));
             }
         }
 
@@ -113,6 +117,8 @@ namespace Utilities.DebugUtils
         /// It will be automatically disabled in the built release version.
         /// </summary>
         /// <param name="message">The message want to be logged. Same as using UnityEngine.Debug.Log().</param>
+        /// <exception cref="ArgumentOutOfRangeException">Occur when <see cref="DebugLogLevel"/> wrong.</exception>
+        [Conditional("UNITY_EDITOR")]
         public static void LogError(object message)
             => Log(message, DebugLogLevel.Error);
 
@@ -122,8 +128,30 @@ namespace Utilities.DebugUtils
         /// It will be automatically disabled in the built release version.
         /// </summary>
         /// <param name="message">The message want to be logged. Same as using UnityEngine.Debug.Log().</param>
+        /// <exception cref="ArgumentOutOfRangeException">Occur when <see cref="DebugLogLevel"/> wrong.</exception>
+        [Conditional("UNITY_EDITOR")]
         public static void LogWarning(object message)
             => Log(message, DebugLogLevel.Warning);
+
+        /// <summary>
+        /// Make one message to ArtifactLof type string. Used for throw exception or others.
+        /// </summary>
+        /// <param name="message">The message want to be logged. Same as using UnityEngine.Debug.Log().</param>
+        /// <param name="logLevel">The <see cref="DebugLogLevel"/> of log.</param>
+        /// <returns>The string after process.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Occur when <see cref="DebugLogLevel"/> wrong.</exception>
+        public static string ToLogString(object message, DebugLogLevel logLevel = DebugLogLevel.Info)
+            => $"{ArtifactHead}" + logLevel switch
+            {
+                DebugLogLevel.Fatal => $"<color=#DC143C>{message}</color>",
+                DebugLogLevel.Error => $"<color=#FF4500>{message}</color>",
+                DebugLogLevel.Warning => $"<color=#FFA500>{message}</color>",
+                DebugLogLevel.Info => $"<color=#6495ED>{message}</color>",
+                DebugLogLevel.Hint => $"<color=#48D1CC>{message}</color>",
+                DebugLogLevel.WorksWell => $"<color=#32CD32>{message}</color>",
+                _ => throw new ArgumentOutOfRangeException(nameof(logLevel), logLevel,
+                    $"{ArtifactHead}<color=#DC143C>Wrong Debug Level type</color>")
+            };
 
         #endregion
     }

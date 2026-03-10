@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Reflection;
+using Artifact.UnityUtils.Reflection;
 using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine;
 
-namespace Utilities.DebugUtils
+// ReSharper disable CheckNamespace
+
+namespace Artifact.UnityUtils.Utilities.DebugUtils
 {
     /// <summary>
     /// Utility class for dump an object's field into human-readable format.
@@ -127,7 +129,8 @@ namespace Utilities.DebugUtils
 
             if (!baseType.IsAssignableFrom(type))
             {
-                ArtifactDebug.PackageLog($"[Dump] Object of type {type} does not inherit from {baseType}", DebugLogLevel.Warning);
+                ArtifactDebug.PackageLog($"[Dump] Object of type {type} does not inherit from {baseType}",
+                    DebugLogLevel.Warning);
                 return;
             }
 
@@ -200,7 +203,8 @@ namespace Utilities.DebugUtils
 
             if (!TypeUtils.IsAssignable(baseType, type))
             {
-                ArtifactDebug.PackageLog($"[Dump] Object of type {type} does not inherit from {baseType}", DebugLogLevel.Warning);
+                ArtifactDebug.PackageLog($"[Dump] Object of type {type} does not inherit from {baseType}",
+                    DebugLogLevel.Warning);
                 return;
             }
 
