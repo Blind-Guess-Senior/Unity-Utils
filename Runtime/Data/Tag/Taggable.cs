@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Artifact.UnityUtils.Attributes;
 using Artifact.UnityUtils.Core.Locator;
@@ -41,6 +42,11 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </summary>
         private HashSet<GameTag> _disabledTags;
 
+        /// <summary>
+        /// Handlers that will be invoked when tag "tends" to change.
+        /// </summary>
+        private event Action<Taggable> OnTagChanged;
+
         #endregion
 
         #region Unity Event Methods
@@ -76,6 +82,24 @@ namespace Artifact.UnityUtils.Data.Tag
         public bool HasAnyRuntimeTags()
         {
             return _runtimeTags.Count > 0;
+        }
+
+        /// <summary>
+        /// Register a listener to this taggable's tag change event.
+        /// </summary>
+        /// <param name="listener">The listener to add.</param>
+        public void ListenToTagChange(Action<Taggable> listener)
+        {
+            OnTagChanged += listener;
+        }
+
+        /// <summary>
+        /// DeRegister a listener from this taggable's tag change event.
+        /// </summary>
+        /// <param name="listener">The listener to remove.</param>
+        public void RemoveListenToTagChange(Action<Taggable> listener)
+        {
+            OnTagChanged -= listener;
         }
 
         #region HasTag Methods
@@ -179,6 +203,8 @@ namespace Artifact.UnityUtils.Data.Tag
             if (_runtimeTags == null || _disabledTags == null) return false;
             if (_disabledTags.Contains(tagToAdd)) return false;
 
+            OnTagChanged?.Invoke(this);
+
             return _runtimeTags.Add(tagToAdd);
         }
 
@@ -261,6 +287,9 @@ namespace Artifact.UnityUtils.Data.Tag
             if (_disabledTags.Contains(tagToAdd)) return true;
 
             _runtimeTags.Add(tagToAdd); // If add failed and tag do not exist, it won't return false but throw.
+
+            OnTagChanged?.Invoke(this);
+
             return true;
         }
 
@@ -353,6 +382,8 @@ namespace Artifact.UnityUtils.Data.Tag
             if (!tagToRemove) return false;
             if (_runtimeTags == null || _disabledTags == null) return false;
 
+            OnTagChanged?.Invoke(this);
+
             return _runtimeTags.Remove(tagToRemove) || _disabledTags.Remove(tagToRemove);
         }
 
@@ -434,6 +465,9 @@ namespace Artifact.UnityUtils.Data.Tag
 
             _runtimeTags.Remove(tagToRemove);
             _disabledTags.Remove(tagToRemove);
+
+            OnTagChanged?.Invoke(this);
+
             return true;
         }
 
@@ -525,6 +559,8 @@ namespace Artifact.UnityUtils.Data.Tag
         {
             if (!tagToEnable) return false;
             if (_runtimeTags == null || _disabledTags == null) return false;
+
+            OnTagChanged?.Invoke(this);
 
             // Short-circuit
             return _disabledTags.Remove(tagToEnable) && _runtimeTags.Add(tagToEnable);
@@ -619,6 +655,9 @@ namespace Artifact.UnityUtils.Data.Tag
             // No  | No  -> False
             if (!_disabledTags.Remove(tagToEnable)) return _runtimeTags.Contains(tagToEnable);
             _runtimeTags.Add(tagToEnable);
+
+            OnTagChanged?.Invoke(this);
+
             return true;
         }
 
@@ -715,6 +754,8 @@ namespace Artifact.UnityUtils.Data.Tag
             if (!tagToDisable) return false;
             if (_runtimeTags == null || _disabledTags == null) return false;
 
+            OnTagChanged?.Invoke(this);
+
             // Short-circuit
             return _runtimeTags.Remove(tagToDisable) && _disabledTags.Add(tagToDisable);
         }
@@ -808,6 +849,9 @@ namespace Artifact.UnityUtils.Data.Tag
             // No  | No  -> False
             if (!_runtimeTags.Remove(tagToDisable)) return _disabledTags.Contains(tagToDisable);
             _disabledTags.Add(tagToDisable);
+
+            OnTagChanged?.Invoke(this);
+
             return true;
         }
 
