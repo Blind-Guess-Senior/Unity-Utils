@@ -1,4 +1,6 @@
-TODOs:
+### TODOs:
 
-- Entity state machine
-- Global var
+- [ ] Entity state machine
+- [ ] Global var
+- [ ] Stricter type constraints
+- [ ] Taggable editor utils
