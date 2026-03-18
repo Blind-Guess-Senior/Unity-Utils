@@ -637,7 +637,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// Enable tag in runtime by GameTag entry. It must already have that tag (include disabled). 
         /// </summary>
         /// <param name="tagToEnable">The game tag entry to enable.</param>
-        /// <returns>True if enable successful or tag already disabled; otherwise, false.</returns>
+        /// <returns>True if enable successful or tag already enabled; otherwise, false.</returns>
         /// <remarks>
         /// When return false, it performs no substantive operation.
         /// <br/>
