@@ -93,45 +93,8 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </summary>
         /// <param name="tagName">The name of tag.</param>
         /// <returns>The GameTag entry for given tag name.</returns>
-        public GameTag GetTag1(string tagName)
+        public GameTag GetDefaultTag(string tagName)
             => GetEntry(StringExtensions.GetStableHash("Default@", tagName));
-
-        #endregion
-
-        #region Indexer
-
-        /// <summary>
-        /// An indexer wrap of entry getting function. Get tag by tag's fullname
-        /// </summary>
-        /// <param name="fullTagName">The tag name in complete representation.</param>
-        public GameTag this[string fullTagName]
-            => GetEntry(fullTagName.GetStableHash());
-
-        /// <summary>
-        /// An indexer wrap of entry getting function. Get tag by tag's namespace and name.
-        /// </summary>
-        /// <param name="tagNamespace">The namespace of tag.</param>
-        /// <param name="tagName">The name of tag.</param>
-        /// <returns>The GameTag entry for given tag name.</returns>
-        public GameTag this[string tagNamespace, string tagName]
-            => GetEntry(StringExtensions.GetStableHash(tagNamespace, "@", tagName));
-
-        /// <summary>
-        /// An indexer wrap of entry getting function. Get tag by tag's name with "Default" namespace.
-        /// </summary>
-        /// <param name="tagName">The name of tag.</param>
-        /// <param name="_">Use for distinguish from fullname overloading.</param>
-        /// <returns>The GameTag entry for given tag name.</returns>
-        public GameTag this[string tagName, int _]
-            => GetEntry(StringExtensions.GetStableHash("Default@", tagName));
-
-        /// <summary>
-        /// An indexer wrap of entry getting function. Get tag by tag's hash code.
-        /// </summary>
-        /// <param name="tagHash">The hash code of a tag.</param>
-        /// <returns>The GameTag entry for given tag hash.</returns>
-        public GameTag this[int tagHash]
-            => GetEntry(tagHash);
 
         #endregion
     }

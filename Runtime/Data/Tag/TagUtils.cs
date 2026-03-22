@@ -65,7 +65,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <param name="tagName">The game tag's name to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
         public static bool HasTag1(GameObject gameObject, string tagName)
-            => gameObject?.GetComponent<Taggable>()?.HasTag1(tagName) ?? false;
+            => gameObject?.GetComponent<Taggable>()?.HasDefaultTag(tagName) ?? false;
 
         #endregion
 

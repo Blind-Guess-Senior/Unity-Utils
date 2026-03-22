@@ -159,7 +159,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </remarks>
         public bool HasTag(string tagName, int _)
             => !tagName.IsNullOrEmpty() &&
-               HasTag(_tagRegistry.GetTag1(tagName));
+               HasTag(_tagRegistry.GetDefaultTag(tagName));
 
         /// <summary>
         /// Check if it has given tag by tag hash.
@@ -181,9 +181,9 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <remarks>
         /// If tag is disabled, it won't be treated as "has".
         /// </remarks>
-        public bool HasTag1(string tagName)
+        public bool HasDefaultTag(string tagName)
             => !tagName.IsNullOrEmpty() &&
-               HasTag(_tagRegistry.GetTag1(tagName));
+               HasTag(_tagRegistry.GetDefaultTag(tagName));
 
         #endregion
 
@@ -244,7 +244,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </remarks>
         public bool AddTag(string tagName, int _)
             => !tagName.IsNullOrEmpty() &&
-               AddTag(_tagRegistry.GetTag1(tagName));
+               AddTag(_tagRegistry.GetDefaultTag(tagName));
 
         /// <summary>
         /// Add tag to runtime tags by tag hash.
@@ -266,9 +266,9 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <remarks>
         /// When return false, it performs no substantive operation.
         /// </remarks>
-        public bool AddTag1(string tagName)
+        public bool AddDefaultTag(string tagName)
             => !tagName.IsNullOrEmpty() &&
-               AddTag(_tagRegistry.GetTag1(tagName));
+               AddTag(_tagRegistry.GetDefaultTag(tagName));
 
         /// <summary>
         /// Add tag to runtime tags by GameTag entry.
@@ -335,7 +335,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </remarks>
         public bool TryAddTag(string tagName, int _)
             => !tagName.IsNullOrEmpty() &&
-               TryAddTag(_tagRegistry.GetTag1(tagName));
+               TryAddTag(_tagRegistry.GetDefaultTag(tagName));
 
         /// <summary>
         /// Add tag to runtime tags by tag hash.
@@ -361,9 +361,9 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
-        public bool TryAddTag1(string tagName)
+        public bool TryAddDefaultTag(string tagName)
             => !tagName.IsNullOrEmpty() &&
-               TryAddTag(_tagRegistry.GetTag1(tagName));
+               TryAddTag(_tagRegistry.GetDefaultTag(tagName));
 
         #endregion
 
@@ -422,7 +422,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </remarks>
         public bool RemoveTag(string tagName, int _)
             => !tagName.IsNullOrEmpty() &&
-               RemoveTag(_tagRegistry.GetTag1(tagName));
+               RemoveTag(_tagRegistry.GetDefaultTag(tagName));
 
         /// <summary>
         /// Remove tag from runtime tags by tag hash.
@@ -444,9 +444,9 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <remarks>
         /// When return false, it performs no substantive operation.
         /// </remarks>
-        public bool RemoveTag1(string tagName)
+        public bool RemoveDefaultTag(string tagName)
             => !tagName.IsNullOrEmpty() &&
-               RemoveTag(_tagRegistry.GetTag1(tagName));
+               RemoveTag(_tagRegistry.GetDefaultTag(tagName));
 
         /// <summary>
         /// Remove tag from runtime tags by GameTag entry.
@@ -513,7 +513,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </remarks>
         public bool TryRemoveTag(string tagName, int _)
             => !tagName.IsNullOrEmpty() &&
-               TryRemoveTag(_tagRegistry.GetTag1(tagName));
+               TryRemoveTag(_tagRegistry.GetDefaultTag(tagName));
 
         /// <summary>
         /// Remove tag from runtime tags by tag hash.
@@ -539,9 +539,9 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <br/>
         /// When return false, it performs no substantive operation.
         /// </remarks>
-        public bool TryRemoveTag1(string tagName)
+        public bool TryRemoveDefaultTag(string tagName)
             => !tagName.IsNullOrEmpty() &&
-               TryRemoveTag(_tagRegistry.GetTag1(tagName));
+               TryRemoveTag(_tagRegistry.GetDefaultTag(tagName));
 
         #endregion
 
@@ -604,7 +604,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </remarks>
         public bool EnableTag(string tagName, int _)
             => !tagName.IsNullOrEmpty() &&
-               EnableTag(_tagRegistry.GetTag1(tagName));
+               EnableTag(_tagRegistry.GetDefaultTag(tagName));
 
 
         /// <summary>
@@ -628,9 +628,9 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <remarks>
         /// When return false, it performs no substantive operation.
         /// </remarks>
-        public bool EnableTag1(string tagName)
+        public bool EnableDefaultTag(string tagName)
             => !tagName.IsNullOrEmpty() &&
-               EnableTag(_tagRegistry.GetTag1(tagName));
+               EnableTag(_tagRegistry.GetDefaultTag(tagName));
 
 
         /// <summary>
@@ -705,7 +705,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </remarks>
         public bool TryEnableTag(string tagName, int _)
             => !tagName.IsNullOrEmpty() &&
-               TryEnableTag(_tagRegistry.GetTag1(tagName));
+               TryEnableTag(_tagRegistry.GetDefaultTag(tagName));
 
 
         /// <summary>
@@ -733,9 +733,9 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <br/>
         /// When return true, it ensures input tag exist in runtime tags and doesn't exist in disabled tags.
         /// </remarks>
-        public bool TryEnableTag1(string tagName)
+        public bool TryEnableDefaultTag(string tagName)
             => !tagName.IsNullOrEmpty() &&
-               TryEnableTag(_tagRegistry.GetTag1(tagName));
+               TryEnableTag(_tagRegistry.GetDefaultTag(tagName));
 
         #endregion
 
@@ -798,7 +798,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </remarks>
         public bool DisableTag(string tagName, int _)
             => !tagName.IsNullOrEmpty() &&
-               DisableTag(_tagRegistry.GetTag1(tagName));
+               DisableTag(_tagRegistry.GetDefaultTag(tagName));
 
 
         /// <summary>
@@ -822,9 +822,9 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <remarks>
         /// When return false, it performs no substantive operation.
         /// </remarks>
-        public bool DisableTag1(string tagName)
+        public bool DisableDefaultTag(string tagName)
             => !tagName.IsNullOrEmpty() &&
-               DisableTag(_tagRegistry.GetTag1(tagName));
+               DisableTag(_tagRegistry.GetDefaultTag(tagName));
 
 
         /// <summary>
@@ -899,7 +899,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </remarks>
         public bool TryDisableTag(string tagName, int _)
             => !tagName.IsNullOrEmpty() &&
-               TryDisableTag(_tagRegistry.GetTag1(tagName));
+               TryDisableTag(_tagRegistry.GetDefaultTag(tagName));
 
 
         /// <summary>
@@ -927,9 +927,9 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <br/>
         /// When return true, it ensures input tag exist in disabled tags and doesn't exist in runtime tags.
         /// </remarks>
-        public bool TryDisableTag1(string tagName)
+        public bool TryDisableDefaultTag(string tagName)
             => !tagName.IsNullOrEmpty() &&
-               TryDisableTag(_tagRegistry.GetTag1(tagName));
+               TryDisableTag(_tagRegistry.GetDefaultTag(tagName));
 
         #endregion
 
