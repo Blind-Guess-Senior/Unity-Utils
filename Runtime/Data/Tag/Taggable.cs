@@ -13,6 +13,7 @@ namespace Artifact.UnityUtils.Data.Tag
     /// A class that Indicates that an object can have game tags attached,
     /// and stores the game tags while providing related utility methods.
     /// </summary>
+    [DisallowMultipleComponent]
     public class Taggable : MonoBehaviour
     {
         #region Fields

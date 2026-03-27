@@ -55,6 +55,7 @@ namespace Artifact.UnityUtils.Core.Event
     /// <br/>
     /// It is not as same as normal event queue.
     /// </summary>
+    [DisallowMultipleComponent]
     public class TimedEventQueue : MonoPersistentSingleton<TimedEventQueue>
     {
         #region Fields
