@@ -796,40 +796,27 @@ namespace Artifact.UnityUtils.Utilities.DataStructure.QuadTree
             => _root.CollectIntersectingNodes(itemRect, results);
 
         #endregion
+    }
 
-        #region Operator Overloading
-
-        /// <summary>
-        /// Operator overloading of += for simplified QuadTree adding object operation.
-        /// </summary>
-        /// <param name="this">The QuadTree object want to be operated.</param>
-        /// <param name="item">The item to add.</param>
-        /// <returns>The input QuadTree object.</returns>
-        /// <remarks>
-        /// NEVER USE +! Only += is allowed!
-        /// </remarks>
-        public static QuadTree<TItem> operator +(QuadTree<TItem> @this, TItem item)
+    // ReSharper disable once InconsistentNaming
+    public static class __UsedOnlyForAOTCodeGeneration__QuadTree
+    {
+        public static void UsedOnlyForAOTCodeGeneration()
         {
-            @this.Add(item);
-            return @this;
-        }
+            // Ensure that IL2CPP will create code for QuadTree
+            // using Collider2D as an argument.
+            new QuadTree<Collider2D>(Vector2.up, Vector2.zero, _ => new Rect(), (_, _) => true);
 
-        /// <summary>
-        /// Operator overloading of -= for simplified QuadTree removing object operation.
-        /// </summary>
-        /// <param name="this">The QuadTree object want to be operated.</param>
-        /// <param name="item">The item to remove.</param>
-        /// <returns>The input QuadTree object.</returns>
-        /// <remarks>
-        /// NEVER USE -! Only -= is allowed!
-        /// </remarks>
-        public static QuadTree<TItem> operator -(QuadTree<TItem> @this, TItem item)
-        {
-            @this.Remove(item);
-            return @this;
-        }
+            // Ensure that IL2CPP will create code for SomeType.GenericMethod
+            // using MyStruct as an argument.
+            // new SomeType().GenericMethod<MyStruct>();
 
-        #endregion
+            // Include an exception so we can be sure to know if this
+            // method is ever called.
+            throw new InvalidOperationException(
+                "This method is used for AOT code generation only. " +
+                "Do not call it at runtime.");
+        }
     }
 }
 #endif
