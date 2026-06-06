@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- 
+
+### Changed
+
+-
+
+### Removed
+
+-
+
+## [0.1.0] - 2026-06-06
+
+### Added
+
 - Unity package essential files
 - Singleton implementation in both normal way and MonoBehaviour way
 - Event system implementation (ref: https://github.com/m-gebhard/uni-utils/) with lock and snapshot-in-publish
@@ -25,18 +39,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Wrapped debug log utilities
 - Compile flag toggler in editor
 - QuadTree data structure implementation
-
-### Changed
-
--
-
-### Removed
-
--
-
-## [1.0.0] - xxxx-xx-xx
-
-### Added
-
-- 
 
