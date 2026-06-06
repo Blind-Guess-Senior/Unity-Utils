@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Artifact.UnityUtils.Reflection;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
@@ -248,7 +248,14 @@ namespace Artifact.UnityUtils.Utilities.DebugUtils
             string dumped = "";
 
             // var type = obj.GetType();
-            dumped = JsonConvert.SerializeObject(obj, Formatting.None);
+            try
+            {
+                dumped = JsonConvert.SerializeObject(obj, Formatting.None);
+            }
+            catch
+            {
+                dumped = obj.ToString();
+            }
 
             return dumped;
         }

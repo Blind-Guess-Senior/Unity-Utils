@@ -147,10 +147,10 @@ namespace Artifact.UnityUtils.Core.Event
                 {
                     action?.Invoke(@event);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     ArtifactDebug.Log(
-                        $"[Event Bus] Fatal: Invoke event {nameof(@event)}'s subsriber {nameof(action)} failed.",
+                        $"[Event Bus] Fatal: Invoke event {nameof(@event)}'s subscriber {nameof(action)} failed.",
                         DebugLogLevel.Fatal);
                     // Debug.LogException(ex);
                 }

@@ -1,6 +1,6 @@
 ﻿{
   "name" : "com.artifact.unity-utils",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "displayName": "Artifact Unity Utils",
   "description": "Artifact Unity Utils",
   "unity": "6000.0",
@@ -9,6 +9,7 @@
   "licensesUrl": "https://mit-license.org/",
   "hideInEditor": false,
   "dependencies": {
+    "com.unity.nuget.newtonsoft-json" : "3.2.2"
   },
   "keywords": [
     "utils",
