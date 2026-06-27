@@ -1,7 +1,7 @@
 using System;
+using Artifact.UnityUtils.Attributes;
 using Artifact.UnityUtils.Extensions;
 using Artifact.UnityUtils.Utilities.DebugUtils;
-using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 
@@ -36,7 +36,7 @@ namespace Artifact.UnityUtils.Data.Tag
         /// <summary>
         /// Full name is a combine of tag group and tag name. It is unique.
         /// </summary>
-        [SerializeField] private string _fullName;
+        [SerializeField] [ReadOnly] private string _fullName;
 
         /// <summary>
         /// Hash code of that game tag, generated from full name. It is unique.

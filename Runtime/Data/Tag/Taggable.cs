@@ -19,6 +19,11 @@ namespace Artifact.UnityUtils.Data.Tag
         #region Fields
 
         /// <summary>
+        /// Hide 'tag' field in UnityEngine.Component.
+        /// </summary>
+        private new string tag;
+
+        /// <summary>
         /// A reference to tag registry to call utilities it provides.
         /// </summary>
         [Inject] private TagRegistry _tagRegistry;
