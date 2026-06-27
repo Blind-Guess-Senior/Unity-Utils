@@ -1,6 +1,6 @@
 ﻿{
   "name" : "com.artifact.unity-utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "displayName": "Artifact Unity Utils",
   "description": "Artifact Unity Utils",
   "unity": "6000.0",

@@ -9,11 +9,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- 
+-
+
+### Fixed
+
+-
 
 ### Changed
 
 -
+
+### Removed
+
+-
+
+## [0.1.1] - 2026-06-27
+
+### Added
+
+- ReadOnly property attribute. And make all previous readonly field use it.
+
+### Fixed
+
+- Hide `tag` field from `UnityEngine.Component` in `Taggable` to avoid accidentally use it.
+- Serious mistake that cause build error since incorrectly using the editor content.
+
+### Changed
+
+- Make generic install fully abstract.
 
 ### Removed
 
