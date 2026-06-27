@@ -1,4 +1,18 @@
 {
-	"name": "artifact.unity-utils.Editor",
-	"references":[ "GUID:bb6cc166d1314fb4db821c892d007c97" ]
+    "name": "artifact.unity-utils.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bb6cc166d1314fb4db821c892d007c97"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

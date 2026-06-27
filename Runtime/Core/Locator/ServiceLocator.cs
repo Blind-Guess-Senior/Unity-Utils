@@ -9,7 +9,7 @@ using Artifact.UnityUtils.Utilities.DebugUtils;
 namespace Artifact.UnityUtils.Core.Locator
 {
     /// <summary>
-    /// Service locator which provide global accessiable services. 
+    /// Service locator which provide global accessible services. 
     /// </summary>
     /// <example>
     /// <code>

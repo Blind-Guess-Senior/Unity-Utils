@@ -5,7 +5,6 @@ using Artifact.UnityUtils.Core.Locator;
 using Artifact.UnityUtils.Data.Registry;
 using Artifact.UnityUtils.Extensions;
 using Artifact.UnityUtils.Utilities.DebugUtils;
-using UnityEditor;
 using UnityEngine;
 using StringExtensions = Artifact.UnityUtils.Extensions.StringExtensions;
 
@@ -111,16 +110,24 @@ namespace Artifact.UnityUtils.Data.Tag
         /// </summary>
         public override void InstallService()
         {
-            string[] libraryGuids = AssetDatabase.FindAssets($"t:{nameof(TagLibrary)}");
-            if (libraryGuids.Length == 0)
+            TagLibrary[] libraries = Resources.LoadAll<TagLibrary>(string.Empty);
+            if (libraries.Length == 0)
             {
                 ArtifactDebug.PackageLog(
-                    $"[Tag Library] {nameof(TagLibrary)}.asset not found! Please create one.", DebugLogLevel.Error);
+                    $"[Tag Library] {nameof(TagLibrary)}.asset not found in Resources. Please create exactly one.",
+                    DebugLogLevel.Error);
                 return;
             }
 
-            string libraryPath = AssetDatabase.GUIDToAssetPath(libraryGuids[0]);
-            var library = AssetDatabase.LoadAssetAtPath<TagLibrary>(libraryPath);
+            if (libraries.Length > 1)
+            {
+                ArtifactDebug.PackageLog(
+                    $"[Tag Library] Multiple {nameof(TagLibrary)} assets found in Resources. Please keep exactly one.",
+                    DebugLogLevel.Error);
+                return;
+            }
+
+            TagLibrary library = libraries[0];
 
             var registry = (TagRegistry)Activator.CreateInstance(
                 typeof(TagRegistry),

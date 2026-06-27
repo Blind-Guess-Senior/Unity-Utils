@@ -18,8 +18,6 @@ namespace Artifact.UnityUtils.Core.Installer
         /// <br/>
         /// Override it to do things like load resource and register in locator.
         /// </summary>
-        public virtual void InstallService()
-        {
-        }
+        public abstract void InstallService();
     }
 }
