@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using Artifact.UnityUtils.Attributes;
-using Artifact.UnityUtils.Core.Locator;
-using Artifact.UnityUtils.Extensions;
+using Artifact.Utils.Extensions;
+using Artifact.Utils.Attributes;
+using Artifact.Utils.Core.Locator;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Data.Tag
+namespace Artifact.Utils.Data.Tag
 {
     /// <summary>
     /// A class that Indicates that an object can have game tags attached,

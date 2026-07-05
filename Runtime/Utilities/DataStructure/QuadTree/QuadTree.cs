@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Artifact.UnityUtils.Utilities.DebugUtils;
+using Artifact.Utils.Utilities.DebugUtils;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Utilities.DataStructure.QuadTree
+namespace Artifact.Utils.Utilities.DataStructure.QuadTree
 {
     /// <summary>
     /// QuadTree data structure implementation.

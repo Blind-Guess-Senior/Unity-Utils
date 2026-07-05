@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Core.Event
+namespace Artifact.Utils.Core.Event
 {
     /// <summary>
     /// A data structure of continually listening one event and queued them for later usage. 

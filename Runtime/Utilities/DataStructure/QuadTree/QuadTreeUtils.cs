@@ -3,7 +3,7 @@ using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Utilities.DataStructure.QuadTree
+namespace Artifact.Utils.Utilities.DataStructure.QuadTree
 {
     /// <summary>
     /// Utils class for QuadTree. Especially for TItem = Collider2D situation.

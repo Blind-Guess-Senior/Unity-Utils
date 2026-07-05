@@ -1,10 +1,10 @@
-using Artifact.UnityUtils.Attributes;
+using Artifact.Utils.Attributes;
 using UnityEditor;
 using UnityEngine;
 
 // ReSharper disable once CheckNamespace
 
-namespace Artifact.UnityUtils.Editor.PropertiesDrawer
+namespace Artifact.Utils.Editor.PropertiesDrawer
 {
     /// <summary>
     /// Property drawer for fields that has [ReadOnly] attribute.

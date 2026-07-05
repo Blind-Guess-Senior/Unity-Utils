@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Artifact.UnityUtils.Reflection;
-using Artifact.UnityUtils.Utilities.Singleton;
+using Artifact.Utils.Reflection;
+using Artifact.Utils.Utilities.Singleton;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Core.Event
+namespace Artifact.Utils.Core.Event
 {
     /// <summary>
     /// Manages event buses and provides methods to subscribe and publish events.

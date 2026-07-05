@@ -1,8 +1,8 @@
 ﻿{
-  "name" : "com.artifact.unity-utils",
+  "name" : "com.artifact.utils",
   "version": "0.1.1",
   "displayName": "Artifact Unity Utils",
-  "description": "Artifact Unity Utils",
+  "description": "A collection of utilities and general frameworks for Unity.",
   "unity": "6000.0",
   "documentationUrl": "",
   "changelogUrl": "",
@@ -17,8 +17,8 @@
     "editor"
   ],
   "author": {
-    "name": "Team Artifact",
-    "email": "",
+    "name": "Project Artifact",
+    "email": "Blind-Guess-Senior@outlook.com",
     "url": "https://github.com/Blind-Guess-Senior/Unity-Utils"
   }
 }

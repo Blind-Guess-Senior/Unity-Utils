@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
-using Artifact.UnityUtils.Utilities.Singleton;
+using Artifact.Utils.Utilities.Singleton;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Core.Event
+namespace Artifact.Utils.Core.Event
 {
     /// <summary>
     /// Type enum of queued event.

@@ -3,7 +3,7 @@ using UnityEditor.Build;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Editor.SettingToggler
+namespace Artifact.Utils.Editor.SettingToggler
 {
     /// <summary>
     /// Editor tools for simplify compile flag management.

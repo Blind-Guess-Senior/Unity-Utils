@@ -4,7 +4,7 @@ using Debug = UnityEngine.Debug;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Utilities.DebugUtils
+namespace Artifact.Utils.Utilities.DebugUtils
 {
     /// <summary>
     /// Enum for switching debug level to set color and log level.

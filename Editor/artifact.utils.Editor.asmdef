@@ -1,6 +1,6 @@
 {
-    "name": "artifact.unity-utils.Editor",
-    "rootNamespace": "",
+    "name": "artifact.utils.Editor",
+    "rootNamespace": "Artifact.Utils.Editor",
     "references": [
         "GUID:bb6cc166d1314fb4db821c892d007c97"
     ],

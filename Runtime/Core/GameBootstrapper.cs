@@ -1,12 +1,12 @@
 using System;
-using Artifact.UnityUtils.Core.Installer;
-using Artifact.UnityUtils.Reflection;
-using Artifact.UnityUtils.Utilities.DebugUtils;
+using Artifact.Utils.Core.Installer;
+using Artifact.Utils.Reflection;
+using Artifact.Utils.Utilities.DebugUtils;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Core
+namespace Artifact.Utils.Core
 {
     /// <summary>
     /// Bootstrapper of game.

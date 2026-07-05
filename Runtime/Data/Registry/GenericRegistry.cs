@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Artifact.UnityUtils.Core.Locator;
-using Artifact.UnityUtils.Utilities.DebugUtils;
+using Artifact.Utils.Core.Locator;
+using Artifact.Utils.Utilities.DebugUtils;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Data.Registry
+namespace Artifact.Utils.Data.Registry
 {
     /// <summary>
     /// A library that store objects in specified type, and provide readonly query methods. 

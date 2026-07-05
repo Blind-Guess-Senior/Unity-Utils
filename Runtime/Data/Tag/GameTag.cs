@@ -1,13 +1,13 @@
 using System;
-using Artifact.UnityUtils.Attributes;
-using Artifact.UnityUtils.Extensions;
-using Artifact.UnityUtils.Utilities.DebugUtils;
+using Artifact.Utils.Extensions;
+using Artifact.Utils.Attributes;
+using Artifact.Utils.Utilities.DebugUtils;
 using UnityEditor;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Data.Tag
+namespace Artifact.Utils.Data.Tag
 {
     /// <summary>
     /// Game tag SO which can be created as a static asset.

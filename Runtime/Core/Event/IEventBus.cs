@@ -1,6 +1,6 @@
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Core.Event
+namespace Artifact.Utils.Core.Event
 {
     /// <summary>
     /// Interface representing an event bus.

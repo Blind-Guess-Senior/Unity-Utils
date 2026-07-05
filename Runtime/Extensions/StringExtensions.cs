@@ -5,7 +5,7 @@ using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Extensions
+namespace Artifact.Utils.Extensions
 {
     /// <summary>
     /// Provides extension methods for Strings.

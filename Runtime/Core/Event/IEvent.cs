@@ -1,6 +1,6 @@
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Core.Event
+namespace Artifact.Utils.Core.Event
 {
     /// <summary>
     /// Empty interface used for event queue or other things to store all type of game event.

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Artifact.UnityUtils.Utilities.DebugUtils;
+using Artifact.Utils.Utilities.DebugUtils;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Core.Event
+namespace Artifact.Utils.Core.Event
 {
     /// <summary>
     /// Abstract class representing an event bus that can subscribe, unsubscribe, and publish events.

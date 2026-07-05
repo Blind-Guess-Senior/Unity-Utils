@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Utilities.Singleton
+namespace Artifact.Utils.Utilities.Singleton
 {
     /// <summary>
     /// Abstract base class for creating singleton MonoBehaviour instances.

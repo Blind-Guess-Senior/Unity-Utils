@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Artifact.UnityUtils.Reflection;
+using Artifact.Utils.Reflection;
 using Newtonsoft.Json;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Utilities.DebugUtils
+namespace Artifact.Utils.Utilities.DebugUtils
 {
     /// <summary>
     /// Utility class for dump an object's field into human-readable format.

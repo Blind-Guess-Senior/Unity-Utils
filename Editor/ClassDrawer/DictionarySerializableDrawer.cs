@@ -1,11 +1,11 @@
-using Artifact.UnityUtils.Extensions.Containers;
-using Artifact.UnityUtils.Utilities.DebugUtils;
+using Artifact.Utils.Extensions.Containers;
+using Artifact.Utils.Utilities.DebugUtils;
 using UnityEditor;
 using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Editor.ClassDrawer
+namespace Artifact.Utils.Editor.ClassDrawer
 {
     /// <summary>
     /// Inspector drawer for DictionarySerializable&lt;,&gt; class.

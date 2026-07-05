@@ -1,8 +1,8 @@
-using Artifact.UnityUtils.Core.Locator;
+using Artifact.Utils.Core.Locator;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Core.Installer
+namespace Artifact.Utils.Core.Installer
 {
     /// <summary>
     /// Generic installer for ScriptableObject. Which will install itself into ServiceLocator.

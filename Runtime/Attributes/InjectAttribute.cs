@@ -2,7 +2,7 @@ using System;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Attributes
+namespace Artifact.Utils.Attributes
 {
     /// <summary>
     /// Attribute for injection.

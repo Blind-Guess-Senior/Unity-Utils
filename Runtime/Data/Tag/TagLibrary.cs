@@ -1,16 +1,16 @@
 using System;
 using System.Reflection;
-using Artifact.UnityUtils.Core.Installer;
-using Artifact.UnityUtils.Core.Locator;
-using Artifact.UnityUtils.Data.Registry;
-using Artifact.UnityUtils.Extensions;
-using Artifact.UnityUtils.Utilities.DebugUtils;
+using Artifact.Utils.Core.Installer;
+using Artifact.Utils.Core.Locator;
+using Artifact.Utils.Data.Registry;
+using Artifact.Utils.Extensions;
+using Artifact.Utils.Utilities.DebugUtils;
 using UnityEngine;
-using StringExtensions = Artifact.UnityUtils.Extensions.StringExtensions;
+using StringExtensions = Artifact.Utils.Extensions.StringExtensions;
 
 // ReSharper disable CheckNamespace
 
-namespace Artifact.UnityUtils.Data.Tag
+namespace Artifact.Utils.Data.Tag
 {
     /// <summary>
     /// Tag library SO which can be created as a static asset.
