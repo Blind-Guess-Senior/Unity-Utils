@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Artifact.Utils.Attributes;
+using Artifact.Utils.Attributes.UnityAttributes;
 using Artifact.Utils.Utilities.DebugUtils;
 
 // ReSharper disable CheckNamespace
@@ -88,7 +88,7 @@ namespace Artifact.Utils.Core.Locator
         /// <summary>
         /// Inject field value by registered service.
         /// </summary>
-        /// <param name="target">The object that want to get injection. Must have [Inject] attribute.</param>
+        /// <param name="target">The object that want to get injection. Must have <c>[Inject]</c> attribute.</param>
         public static void Inject(object target)
         {
             var type = target.GetType();

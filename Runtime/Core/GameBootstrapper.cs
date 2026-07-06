@@ -10,6 +10,7 @@ namespace Artifact.Utils.Core
 {
     /// <summary>
     /// Bootstrapper of game.
+    /// <br/>
     /// Do things like install all services.
     /// </summary>
     public static class GameBootstrapper

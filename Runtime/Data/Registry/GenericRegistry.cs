@@ -54,14 +54,18 @@ namespace Artifact.Utils.Data.Registry
 
         /// <summary>
         /// Constructor.
+        /// <br/>
         /// It will traverse given library, and use given key-calculate function to generate a key for each entry.
+        /// <nr/>
         /// Then build cache-map of given library. 
         /// </summary>
         /// <param name="library">The exist library that want to generate a registry utility.</param>
         /// <param name="keySetter">The function that map entry into a unique key. It receives 1 param typed entry type,
         /// and return key typed key type.</param>
         /// <remarks>
+        /// <para>
         /// <see cref="keySetter"/> must return unique result for each different input.
+        /// </para>
         /// </remarks>
         protected GenericRegistry(TLibrary library, Func<TEntry, TKey> keySetter)
         {

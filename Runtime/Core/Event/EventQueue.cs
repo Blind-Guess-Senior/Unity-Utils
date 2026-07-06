@@ -21,7 +21,7 @@ namespace Artifact.Utils.Core.Event
         protected readonly int _handlerID;
 
         /// <summary>
-        /// The queue that stores all events that have been listent.
+        /// The queue that stores all events that have been listened.
         /// </summary>
         protected readonly Queue<TEvent> _queue = new();
 
@@ -76,7 +76,7 @@ namespace Artifact.Utils.Core.Event
         /// Handler that receive event and store it into queue.
         /// </summary>
         /// <param name="event">The event to receive.</param>
-        public void OnEvent(TEvent @event)
+        private void OnEvent(TEvent @event)
         {
             if (@event == null) return;
             lock (_lock)

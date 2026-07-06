@@ -9,7 +9,9 @@ using UnityEngine;
 namespace Artifact.Utils.Core.Event
 {
     /// <summary>
+    /// <para>
     /// Manages event buses and provides methods to subscribe and publish events.
+    /// </para>
     /// </summary>
     /// <example>
     /// <code>
@@ -46,7 +48,7 @@ namespace Artifact.Utils.Core.Event
     ///         // React to jump event, e.g. play sound
     ///     }
     /// }
-    ///</code>
+    /// </code>
     /// </example>
     public class EventManager : Singleton<EventManager>
     {
@@ -116,7 +118,9 @@ namespace Artifact.Utils.Core.Event
         /// <param name="handler">The handler(with param of the Event) to add for the event.</param>
         /// <returns>The ID of the subscribed handler.</returns>
         /// <remarks>
+        /// <para>
         /// It's better not to discard return value of this method.
+        /// </para>
         /// </remarks>
         public static int Subscribe<TEventBus, TEvent>(Action<TEvent> handler)
             where TEventBus : EventBus<TEventBus>

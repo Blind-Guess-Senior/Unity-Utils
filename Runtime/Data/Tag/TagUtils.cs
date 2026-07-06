@@ -12,7 +12,7 @@ namespace Artifact.Utils.Data.Tag
         #region HasTag Static Util Methods
 
         /// <summary>
-        /// Check if given GameObject has given tag by GameTag entry.
+        /// Check if given <see cref="GameObject"/> has given tag by <see cref="GameTag"/> entry.
         /// </summary>
         /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagToCompare">The game tag entry to compare.</param>
@@ -21,7 +21,7 @@ namespace Artifact.Utils.Data.Tag
             => gameObject?.GetComponent<Taggable>()?.HasTag(tagToCompare) ?? false;
 
         /// <summary>
-        /// Check if given GameObject has given tag by full tag name.
+        /// Check if given <see cref="GameObject"/> has given tag by full tag name.
         /// </summary>
         /// <param name="gameObject">The game object to check.</param>
         /// <param name="fullTagName">The game tag's full name to compare.</param>
@@ -30,7 +30,7 @@ namespace Artifact.Utils.Data.Tag
             => gameObject?.GetComponent<Taggable>()?.HasTag(fullTagName) ?? false;
 
         /// <summary>
-        /// Check if given GameObject has given tag by GameTag entry.
+        /// Check if given <see cref="GameObject"/> has given tag by <see cref="GameTag"/> entry.
         /// </summary>
         /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagNamespace">The game tag's namespace to compare.</param>
@@ -40,7 +40,7 @@ namespace Artifact.Utils.Data.Tag
             => gameObject?.GetComponent<Taggable>()?.HasTag(tagNamespace, tagName) ?? false;
 
         /// <summary>
-        /// Check if given GameObject has given tag by tag name in "Default" namespace.
+        /// Check if given <see cref="GameObject"/> has given tag by tag name in "Default" namespace.
         /// </summary>
         /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagName">The game tag's name to compare.</param>
@@ -50,7 +50,7 @@ namespace Artifact.Utils.Data.Tag
             => gameObject?.GetComponent<Taggable>()?.HasTag(tagName, _) ?? false;
 
         /// <summary>
-        /// Check if given GameObject has given tag by tag hash.
+        /// Check if given <see cref="GameObject"/> has given tag by tag hash.
         /// </summary>
         /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagHash">The game tag's hash code to compare.</param>
@@ -59,7 +59,7 @@ namespace Artifact.Utils.Data.Tag
             => gameObject?.GetComponent<Taggable>()?.HasTag(tagHash) ?? false;
 
         /// <summary>
-        /// Check if given GameObject has given tag by tag name in "Default" namespace.
+        /// Check if given <see cref="GameObject"/> has given tag by tag name in "Default" namespace.
         /// </summary>
         /// <param name="gameObject">The game object to check.</param>
         /// <param name="tagName">The game tag's name to compare.</param>

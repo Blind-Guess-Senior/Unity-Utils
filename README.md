@@ -4,3 +4,4 @@
 - [ ] Global var
 - [ ] Stricter type constraints
 - [ ] Taggable editor utils
+- [ ] Rework debug utils

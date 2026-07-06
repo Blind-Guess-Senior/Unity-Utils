@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Artifact.Utils.Editor.ClassDrawer
 {
     /// <summary>
-    /// Inspector drawer for DictionarySerializable&lt;,&gt; class.
+    /// Inspector drawer for <c>DictionarySerializable&lt;,&gt;</c> class.
     /// </summary>
     [CustomPropertyDrawer(typeof(DictionarySerializable<,>), true)]
     public class DictionarySerializableDrawer : PropertyDrawer

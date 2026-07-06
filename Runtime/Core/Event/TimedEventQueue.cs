@@ -247,7 +247,7 @@ namespace Artifact.Utils.Core.Event
         /// </summary>
         /// <param name="event">The event to enqueue.</param>
         /// <param name="queueEventType">The type of queued event.</param>
-        /// <param name="tick">The value for waiting. Meaning changes for different QueueEventType.</param>
+        /// <param name="tick">The value for waiting. Meaning changes for different <c>QueueEventType</c>.</param>
         /// <returns>The event id in queue.</returns>
         /// <exception cref="ArgumentException">Occur when <see cref="QueueEventType"/> wrong.</exception>
         public int Enqueue(IEvent @event, QueueEventType queueEventType, ulong tick)
@@ -287,7 +287,7 @@ namespace Artifact.Utils.Core.Event
         /// </summary>
         /// <param name="event">The event to enqueue.</param>
         /// <param name="queueEventType">The type of queued event.</param>
-        /// <param name="time">The value for waiting. Meaning changes for different QueueEventType.</param>
+        /// <param name="time">The value for waiting. Meaning changes for different <c>QueueEventType</c>.</param>
         /// <returns>The event id in queue.</returns>
         /// <exception cref="ArgumentException">Occur when <see cref="QueueEventType"/> wrong.</exception>
         /// <remarks>
@@ -326,17 +326,17 @@ namespace Artifact.Utils.Core.Event
         }
 
         /// <summary>
-        /// Overload method for %int% type tick param.
+        /// Overload method for <see langword="int"/> type tick param.
         /// </summary>
         /// <param name="event">The event to enqueue.</param>
         /// <param name="queueEventType">The type of queued event.</param>
-        /// <param name="tick">The value for waiting. Meaning changes for different QueueEventType.</param>
+        /// <param name="tick">The value for waiting. Meaning changes for different <c>QueueEventType</c>.</param>
         /// <returns>The event id in queue.</returns>
         public int Enqueue(IEvent @event, QueueEventType queueEventType, int tick)
             => Enqueue(@event, queueEventType, (ulong)tick);
 
         /// <summary>
-        /// Overload method with default QueueEventType FixedTick.
+        /// Overload method with default <c>QueueEventType</c> <c>FixedTick</c>.
         /// </summary>
         /// <param name="event">The event to enqueue.</param>
         /// <param name="tick">The value of ticks for waiting.</param>
@@ -348,17 +348,17 @@ namespace Artifact.Utils.Core.Event
             => Enqueue(@event, QueueEventType.FixedTick, (ulong)tick);
 
         /// <summary>
-        /// Overload method for %double% type time param.
+        /// Overload method for <see langword="double"/> type time param.
         /// </summary>
         /// <param name="event">The event to enqueue.</param>
         /// <param name="queueEventType">The type of queued event.</param>
-        /// <param name="time">The value for waiting. Meaning changes for different QueueEventType.</param>
+        /// <param name="time">The value for waiting. Meaning changes for different <c>QueueEventType</c>.</param>
         /// <returns>The event id in queue.</returns>
         public int Enqueue(IEvent @event, QueueEventType queueEventType, double time)
             => Enqueue(@event, queueEventType, (float)time);
 
         /// <summary>
-        /// Overload method with default QueueEventType ScaledFixedTime.
+        /// Overload method with default <c>QueueEventType</c> <c>ScaledFixedTime</c>.
         /// </summary>
         /// <param name="event">The event to enqueue.</param>
         /// <param name="time">The value of seconds for waiting.</param>

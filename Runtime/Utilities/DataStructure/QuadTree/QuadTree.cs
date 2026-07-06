@@ -14,7 +14,9 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
     /// QuadTree data structure implementation.
     /// </summary>
     /// <remarks>
+    /// <para>
     /// Toggle in editor's "Artifact Unity Utils/Data Structure/QuadTree/Features" to enable/disable advanced features.
+    /// </para>
     /// </remarks>
     /// <example>
     /// <code>
@@ -73,11 +75,14 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
             public Vector2 Center;
 
             /// <summary>
+            /// <para>
             /// Boundaries in 4 directions of this node.
             /// Which is stored in Rect coordinate system.
-            /// <br/>
+            /// </para>
+            /// <para>
             /// They will be 10% larger than the actual size as tolerance
             /// to avoid entering and exiting too frequently and improve the accuracy of collision detection.
+            /// </para>
             /// </summary>
             public float Top;
 
@@ -94,7 +99,7 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
             /// The depth level of this node.
             /// 0 for root.
             /// </summary>
-            private int Level { get; }
+            private readonly int _level;
 
             /// <summary>
             /// Tree reference.
@@ -108,7 +113,9 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
 
             /// <summary>
             /// Four children nodes of current node.
+            /// <br/>
             /// null; Right-Up; Right-Down; Left-Down; Left-Up; respectively.
+            /// <br/>
             /// Same as cartesian coordinate system.
             /// </summary>
             private QuadTreeNode[] _subNodes;
@@ -116,29 +123,45 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
             /// <summary>
             /// Store all object in this node. Key is InstanceID of object.
             /// </summary>
-            private Dictionary<int, TItem> _items = new();
+            private readonly Dictionary<int, TItem> _items = new();
 
             /// <summary>
+            /// <para>
             /// Function that receive a TItem typed object and return Rect object which represent the item's AABB.
+            /// </para>
+            /// <para>
             /// Inherit from _tree.
+            /// </para>
             /// </summary>
             private readonly Func<TItem, Rect> _rectFunc;
 
             /// <summary>
+            /// <para>
             /// Function that receive two TItem typed objects and return whether these two are collided.
-            /// Inherit from _tre.
+            /// </para>
+            /// <para>
+            /// Inherit from _tree.
+            /// </para>
             /// </summary>
             private readonly Func<TItem, TItem, bool> _touchingFunc;
 
             /// <summary>
+            /// <para>
             /// Max object counts of one node.
+            /// </para>
+            /// <para>
             /// If exceed threshold, split will occur.
+            /// </para>
             /// </summary>
             public int SplitThreshold;
 
             /// <summary>
+            /// <para>
             /// Max depth of QuadTree.
+            /// </para>
+            /// <para>
             /// If one node's level equals _maxDepth, split won't occur.
+            /// </para>
             /// </summary>
             public int MaxDepth;
 
@@ -154,7 +177,7 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
                 _parent = parent;
                 _tree = tree;
 
-                Level = 0;
+                _level = 0;
 
                 _rectFunc = tree._rectFunc;
                 _touchingFunc = tree._touchingFunc;
@@ -170,7 +193,7 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
                 _parent = parent;
                 _tree = parent._tree;
 
-                Level = parent.Level + 1;
+                _level = parent._level + 1;
                 SplitThreshold = parent.SplitThreshold;
                 MaxDepth = parent.MaxDepth;
 
@@ -244,7 +267,7 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
 
                     nodes.Add(this);
 
-                    if (_items.Count > SplitThreshold && Level < MaxDepth)
+                    if (_items.Count > SplitThreshold && _level < MaxDepth)
                     {
                         Split();
                     }
@@ -418,7 +441,7 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
             /// Get all items that intersected with given item. Used for item that not in QuadTree.
             /// </summary>
             /// <param name="item">The item to check intersecting.</param>
-            /// <param name="predicate">The judgement function for intersection detection.</param>
+            /// <param name="predicate">The judgment function for intersection detection.</param>
             /// <param name="results">The results of intersection. Will be modified.</param>
             public void GetIntersected(TItem item, Func<TItem, bool> predicate, HashSet<TItem> results)
             {
@@ -705,7 +728,7 @@ namespace Artifact.Utils.Utilities.DataStructure.QuadTree
         /// Get all items that intersected with given item.
         /// </summary>
         /// <param name="item">The item to check intersecting.</param>
-        /// <param name="predicate">The judgement function for intersection detection.</param>
+        /// <param name="predicate">The judgment function for intersection detection.</param>
         /// <returns>A list of all intersected items. If no item found, it will return empty list.</returns>
         /// <remarks>
         /// Feature: Destroy auto-detect: When item is null, this method will automatically remove it.

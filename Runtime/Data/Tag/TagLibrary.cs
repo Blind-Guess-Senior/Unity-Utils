@@ -17,7 +17,7 @@ namespace Artifact.Utils.Data.Tag
     /// Stores all exist game tags.
     /// </summary>
     [CreateAssetMenu(fileName = "TagLibrary", menuName = "Artifact Unity Utils/Tag System/TagLibrary")]
-    public class TagLibrary : GenericLibrary<GameTag>
+    public sealed class TagLibrary : GenericLibrary<GameTag>
     {
     }
 
@@ -25,7 +25,7 @@ namespace Artifact.Utils.Data.Tag
     /// Registry utility class for tag library. 
     /// Provide query methods for all exist game tags.
     /// </summary>
-    public class TagRegistry : GenericRegistry<TagLibrary, GameTag, int>
+    public sealed class TagRegistry : GenericRegistry<TagLibrary, GameTag, int>
     {
         #region Constructor
 
@@ -34,7 +34,7 @@ namespace Artifact.Utils.Data.Tag
         /// Using tag's hash code as key.
         /// </summary>
         /// <param name="library">The tag library this registry works for.</param>
-        protected TagRegistry(TagLibrary library) : base(library, TagHash)
+        private TagRegistry(TagLibrary library) : base(library, TagHash)
         {
         }
 
@@ -99,32 +99,30 @@ namespace Artifact.Utils.Data.Tag
     }
 
     /// <summary>
-    /// Installer for TagRegistry that make registry available for taggable injection.
+    /// Installer for <see cref="TagRegistry"/> that make registry available for taggable injection.
     /// </summary>
-    public class TagRegistryInstaller : GenericInstaller<TagRegistry>
+    public sealed class TagRegistryInstaller : GenericInstaller<TagRegistry>
     {
         /// <summary>
         /// Install tag registry as a service in locator.
         /// <br/>
-        /// It would create an instance of TagRegistry and then register it to locator.
+        /// It would create an instance of <see cref="TagRegistry"/> and then register it to locator.
         /// </summary>
         public override void InstallService()
         {
             TagLibrary[] libraries = Resources.LoadAll<TagLibrary>(string.Empty);
-            if (libraries.Length == 0)
+            switch (libraries.Length)
             {
-                ArtifactDebug.PackageLog(
-                    $"[Tag Library] {nameof(TagLibrary)}.asset not found in Resources. Please create exactly one.",
-                    DebugLogLevel.Error);
-                return;
-            }
-
-            if (libraries.Length > 1)
-            {
-                ArtifactDebug.PackageLog(
-                    $"[Tag Library] Multiple {nameof(TagLibrary)} assets found in Resources. Please keep exactly one.",
-                    DebugLogLevel.Error);
-                return;
+                case 0:
+                    ArtifactDebug.PackageLog(
+                        $"[Tag Library] {nameof(TagLibrary)}.asset not found in Resources. Please create exactly one.",
+                        DebugLogLevel.Error);
+                    return;
+                case > 1:
+                    ArtifactDebug.PackageLog(
+                        $"[Tag Library] Multiple {nameof(TagLibrary)} assets found in Resources. Please keep exactly one.",
+                        DebugLogLevel.Error);
+                    return;
             }
 
             TagLibrary library = libraries[0];

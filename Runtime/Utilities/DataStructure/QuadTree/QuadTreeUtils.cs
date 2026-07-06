@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Artifact.Utils.Utilities.DataStructure.QuadTree
 {
     /// <summary>
-    /// Utils class for QuadTree. Especially for TItem = Collider2D situation.
+    /// Utils class for QuadTree. Especially for <c>TItem</c> = <see cref="Collider2D"/> situation.
     /// </summary>
     public static class QuadTreeUtils
     {

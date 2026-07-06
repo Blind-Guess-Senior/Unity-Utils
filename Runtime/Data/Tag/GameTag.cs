@@ -1,6 +1,6 @@
 using System;
 using Artifact.Utils.Extensions;
-using Artifact.Utils.Attributes;
+using Artifact.Utils.Attributes.UnityAttributes;
 using Artifact.Utils.Utilities.DebugUtils;
 using UnityEditor;
 using UnityEngine;

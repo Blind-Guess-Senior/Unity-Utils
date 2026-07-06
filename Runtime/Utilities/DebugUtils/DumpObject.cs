@@ -245,7 +245,7 @@ namespace Artifact.Utils.Utilities.DebugUtils
         /// <returns>A string representation of input field.</returns>
         private static string FieldToString(object obj)
         {
-            string dumped = "";
+            string dumped;
 
             // var type = obj.GetType();
             try

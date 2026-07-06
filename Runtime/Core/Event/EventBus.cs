@@ -29,7 +29,9 @@ namespace Artifact.Utils.Core.Event
         /// Dictionary to store event handlers by event type and handler ID.
         /// </summary>
         /// <remarks>
-        /// Action is a method that receive one param typed SpecificEvent : IEvent&lt;SpecificEventBus&gt;.
+        /// <para>
+        /// Action is a method that receive one param typed <c>SpecificEvent : IEvent&lt;SpecificEventBus&gt;</c>.
+        /// </para>
         /// </remarks>
         protected readonly Dictionary<Type, Dictionary<int, Action<IEvent<TEventBus>>>> handlers = new();
 
@@ -117,6 +119,7 @@ namespace Artifact.Utils.Core.Event
 
         /// <summary>
         /// Publishes an event by invoking all handlers for the event type.
+        /// <br/>
         /// It will run on a snapshot of current handlers list.
         /// </summary>
         /// <typeparam name="TEvent">The type of the event.</typeparam>

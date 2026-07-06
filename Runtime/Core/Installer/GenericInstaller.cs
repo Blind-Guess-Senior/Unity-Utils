@@ -5,11 +5,15 @@ using Artifact.Utils.Core.Locator;
 namespace Artifact.Utils.Core.Installer
 {
     /// <summary>
-    /// Generic installer for ScriptableObject. Which will install itself into ServiceLocator.
-    /// <br/>
+    /// <para>
+    /// Generic installer for <see cref="IService"/>. Which will install itself into <c>ServiceLocator</c>.
+    /// </para>
+    /// <para>
     /// Usage: derive from this class and override <see cref="InstallService"/>.
+    /// </para>
     /// </summary>
-    /// <typeparam name="T">The type of that ScriptableObject. Must implement <see cref="IService"/>.</typeparam>
+    /// <typeparam name="T">The type of that <see cref="IService"/>.</typeparam>
+    /// <seealso cref="GameBootstrapper"/>
     public abstract class GenericInstaller<T>
         where T : IService
     {

@@ -1,4 +1,4 @@
-using Artifact.Utils.Attributes;
+using Artifact.Utils.Attributes.UnityAttributes;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Artifact.Utils.Editor.PropertiesDrawer
 {
     /// <summary>
-    /// Property drawer for fields that has [ReadOnly] attribute.
+    /// Property drawer for fields that has <c>[ReadOnly]</c> attribute.
     /// </summary>
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
     public class ReadOnlyDrawer : PropertyDrawer
@@ -16,9 +16,10 @@ namespace Artifact.Utils.Editor.PropertiesDrawer
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            var wasEnabled = GUI.enabled;
             GUI.enabled = false;
             EditorGUI.PropertyField(position, property, label, true);
-            GUI.enabled = true;
+            GUI.enabled = wasEnabled;
         }
 
         #endregion

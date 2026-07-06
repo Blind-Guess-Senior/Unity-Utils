@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Artifact.Utils.Extensions;
-using Artifact.Utils.Attributes;
+using Artifact.Utils.Attributes.UnityAttributes;
 using Artifact.Utils.Core.Locator;
 using UnityEngine;
 
@@ -19,14 +19,19 @@ namespace Artifact.Utils.Data.Tag
         #region Fields
 
         /// <summary>
-        /// Hide 'tag' field in UnityEngine.Component.
+        /// Hide 'tag' field in <see cref="UnityEngine.Component"/>.
         /// </summary>
         private new string tag;
 
         /// <summary>
         /// A reference to tag registry to call utilities it provides.
         /// </summary>
-        [Inject] private TagRegistry _tagRegistry;
+        /// <remarks>
+        /// <para>
+        /// Use injection to keep it readonly and can be init as <see cref="MonoBehaviour"/>.
+        /// </para>
+        /// </remarks>
+        [Inject] private readonly TagRegistry _tagRegistry;
 
         /// <summary>
         /// Store game tags that defined before runtime.
@@ -60,7 +65,7 @@ namespace Artifact.Utils.Data.Tag
         /// <summary>
         /// Awake method to initialize the taggable class.
         /// <br/>
-        /// Will inject TagRegistry in runtime.
+        /// Will inject <see cref="TagRegistry"/> in runtime.
         /// </summary>
         private void Awake()
         {
@@ -111,7 +116,7 @@ namespace Artifact.Utils.Data.Tag
         #region HasTag Methods
 
         /// <summary>
-        /// Check if it has given tag by GameTag entry.
+        /// Check if it has given tag by <see cref="GameTag"/> entry.
         /// </summary>
         /// <param name="tagToCompare">The game tag entry to compare.</param>
         /// <returns>True if it has given tag; otherwise, false.</returns>
@@ -196,7 +201,7 @@ namespace Artifact.Utils.Data.Tag
         #region AddTag Methods
 
         /// <summary>
-        /// Add tag to runtime tags by GameTag entry.
+        /// Add tag to runtime tags by <see cref="GameTag"/> entry.
         /// </summary>
         /// <param name="tagToAdd">The game tag entry to add.</param>
         /// <returns>True if add successful; otherwise, false.</returns>
@@ -277,7 +282,7 @@ namespace Artifact.Utils.Data.Tag
                AddTag(_tagRegistry.GetDefaultTag(tagName));
 
         /// <summary>
-        /// Add tag to runtime tags by GameTag entry.
+        /// Add tag to runtime tags by <see cref="GameTag"/> entry.
         /// </summary>
         /// <param name="tagToAdd">The game tag entry to add.</param>
         /// <returns>True if add successful or tag already exists; otherwise, false.</returns>
@@ -376,7 +381,7 @@ namespace Artifact.Utils.Data.Tag
         #region RemoveTag Methods
 
         /// <summary>
-        /// Remove tag from runtime tags by GameTag entry.
+        /// Remove tag from runtime tags by <see cref="GameTag"/> entry.
         /// </summary>
         /// <param name="tagToRemove">The game tag entry to remove.</param>
         /// <returns>True if remove successful; otherwise, false.</returns>
@@ -455,7 +460,7 @@ namespace Artifact.Utils.Data.Tag
                RemoveTag(_tagRegistry.GetDefaultTag(tagName));
 
         /// <summary>
-        /// Remove tag from runtime tags by GameTag entry.
+        /// Remove tag from runtime tags by <see cref="GameTag"/> entry.
         /// </summary>
         /// <param name="tagToRemove">The game tag entry to remove.</param>
         /// <returns>True if remove successful or tag doesn't exist in set; otherwise, false.</returns>
@@ -554,7 +559,7 @@ namespace Artifact.Utils.Data.Tag
         #region EnableTag Methods
 
         /// <summary>
-        /// Enable tag in runtime by GameTag entry. It must already have that tag. 
+        /// Enable tag in runtime by <see cref="GameTag"/> entry. It must already have that tag. 
         /// </summary>
         /// <param name="tagToEnable">The game tag entry to enable.</param>
         /// <returns>True if enable successful; otherwise, false.</returns>
@@ -640,7 +645,7 @@ namespace Artifact.Utils.Data.Tag
 
 
         /// <summary>
-        /// Enable tag in runtime by GameTag entry. It must already have that tag (include disabled). 
+        /// Enable tag in runtime by <see cref="GameTag"/> entry. It must already have that tag (include disabled). 
         /// </summary>
         /// <param name="tagToEnable">The game tag entry to enable.</param>
         /// <returns>True if enable successful or tag already enabled; otherwise, false.</returns>
@@ -748,7 +753,7 @@ namespace Artifact.Utils.Data.Tag
         #region DisableTag Methods
 
         /// <summary>
-        /// Disable tag in runtime by GameTag entry. It must already have that tag. 
+        /// Disable tag in runtime by <see cref="GameTag"/> entry. It must already have that tag. 
         /// </summary>
         /// <param name="tagToDisable">The game tag entry to disable.</param>
         /// <returns>True if disable successful; otherwise, false.</returns>
@@ -834,7 +839,7 @@ namespace Artifact.Utils.Data.Tag
 
 
         /// <summary>
-        /// Disable tag in runtime by GameTag entry. It must already have that tag (include disabled). 
+        /// Disable tag in runtime by <see cref="GameTag"/> entry. It must already have that tag (include disabled). 
         /// </summary>
         /// <param name="tagToDisable">The game tag entry to disable.</param>
         /// <returns>True if disable successful or tag already disabled; otherwise, false.</returns>
