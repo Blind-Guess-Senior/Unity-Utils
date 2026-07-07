@@ -15,15 +15,19 @@ namespace Artifact.Utils.Utilities.Singleton
         #region Fields
 
         protected static T _instance;
+        private static readonly object _lock = new();
 
         #endregion
 
         #region Properties
 
         /// <summary>
+        /// <para>
         /// Gets the singleton instance. If the instance is undefined, it searches for it.
-        /// <br/>
+        /// </para>
+        /// <para>
         /// The result of search is not guaranteed. The existence of returned singleton is not guaranteed.
+        /// </para>
         /// </summary>
         /// <returns>The singleton instance of type T.</returns>
         /// <remarks>
@@ -37,7 +41,13 @@ namespace Artifact.Utils.Utilities.Singleton
             {
                 if (!_instance)
                 {
-                    _instance = FindAnyObjectByType<T>();
+                    lock (_lock)
+                    {
+                        if (!_instance)
+                        {
+                            _instance = FindAnyObjectByType<T>();
+                        }
+                    }
                 }
 
                 return _instance;

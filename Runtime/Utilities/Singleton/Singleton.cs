@@ -10,10 +10,13 @@ namespace Artifact.Utils.Utilities.Singleton
     }
 
     /// <summary>
+    /// <para>
     /// Abstract base class for creating singleton instances.
-    /// <br/>
+    /// </para>
+    /// <para>
     /// If you want to auto init singleton,
-    /// use [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+    /// use <c>[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]</c>
+    /// </para>
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
     /// <example>
@@ -47,12 +50,16 @@ namespace Artifact.Utils.Utilities.Singleton
     }
 
     /// <summary>
+    /// <para>
     /// Abstract base class for creating singleton instances.
+    /// <br/>
     /// Which would be init whenever any static member first being accessed.
     /// Every static members would be init whenever any static member first being accessed.
-    /// <br/>
+    /// </para>
+    /// <para>
     /// If you want to auto init singleton,
-    /// use [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
+    /// use <c>[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]</c>
+    /// </para>
     /// </summary>
     /// <typeparam name="T">Type of the singleton class. T must not inherit MonoBehaviour.</typeparam>
     /// <example>
