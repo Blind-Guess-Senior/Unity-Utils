@@ -17,11 +17,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Change namespace from `Artifact.Unity-Utils` to `Artifact.Utils`. Package info and asmdef changed as this.
+-
 
 ### Removed
 
 -
+
+## [0.2.0] - 2026-07-07
+
+### Fixed
+
+- Make `MonoSingleton` thread safe.
+
+### Changed
+
+- Change namespace from `Artifact.Unity-Utils` to `Artifact.Utils`. Package info and asmdef changed as this.
 
 ## [0.1.1] - 2026-06-27
 
@@ -37,10 +47,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Make generic install fully abstract.
-
-### Removed
-
--
 
 ## [0.1.0] - 2026-06-06
 
