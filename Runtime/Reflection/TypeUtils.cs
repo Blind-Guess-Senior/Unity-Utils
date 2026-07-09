@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Reflection
 {
     /// <summary>

@@ -1,7 +1,5 @@
 using System;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Attributes.UnityAttributes
 {
     /// <summary>

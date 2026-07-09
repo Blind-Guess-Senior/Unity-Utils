@@ -1,7 +1,5 @@
 using Artifact.Utils.Core.Locator;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Core.Installer
 {
     /// <summary>

@@ -1,5 +1,3 @@
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Core.Locator
 {
     /// <summary>

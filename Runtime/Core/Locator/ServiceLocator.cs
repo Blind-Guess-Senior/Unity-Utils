@@ -4,8 +4,6 @@ using System.Reflection;
 using Artifact.Utils.Attributes.UnityAttributes;
 using Artifact.Utils.Utilities.DebugUtils;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Core.Locator
 {
     /// <summary>

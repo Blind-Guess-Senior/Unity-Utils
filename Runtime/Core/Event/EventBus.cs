@@ -4,8 +4,6 @@ using System.Linq;
 using Artifact.Utils.Utilities.DebugUtils;
 using UnityEngine;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Core.Event
 {
     /// <summary>

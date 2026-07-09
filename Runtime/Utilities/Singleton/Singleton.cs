@@ -1,8 +1,6 @@
 using System;
 using UnityEngine.Assertions;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Utilities.Singleton
 {
     public interface ISingleton

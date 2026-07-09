@@ -1,8 +1,6 @@
 #if __ARTIFACT_UNITY_UTILS__QUADTREE_ENABLED
 using UnityEngine;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Utilities.DataStructure.QuadTree
 {
     /// <summary>

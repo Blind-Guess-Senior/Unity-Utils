@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Core.Event
 {
     /// <summary>

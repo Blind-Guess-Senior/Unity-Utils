@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using Artifact.Utils.Utilities.DebugUtils;
 using UnityEngine;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Extensions.Containers
 {
     /// <summary>

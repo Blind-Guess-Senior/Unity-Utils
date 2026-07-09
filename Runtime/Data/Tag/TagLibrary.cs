@@ -8,8 +8,6 @@ using Artifact.Utils.Utilities.DebugUtils;
 using UnityEngine;
 using StringExtensions = Artifact.Utils.Extensions.StringExtensions;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Data.Tag
 {
     /// <summary>

@@ -3,8 +3,6 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Extensions
 {
     /// <summary>

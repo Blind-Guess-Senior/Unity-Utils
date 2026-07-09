@@ -1,8 +1,6 @@
 using Artifact.Utils.Data.Tag;
 using UnityEditor;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Editor.RegistryTools
 {
     /// <summary>

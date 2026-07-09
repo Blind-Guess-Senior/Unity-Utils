@@ -5,8 +5,6 @@ using Artifact.Utils.Utilities.DebugUtils;
 using UnityEditor;
 using UnityEngine;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Data.Tag
 {
     /// <summary>

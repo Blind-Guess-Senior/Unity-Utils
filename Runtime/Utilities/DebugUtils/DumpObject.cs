@@ -5,8 +5,6 @@ using Artifact.Utils.Reflection;
 using Newtonsoft.Json;
 using UnityEngine;
 
-// ReSharper disable CheckNamespace
-
 namespace Artifact.Utils.Utilities.DebugUtils
 {
     /// <summary>
