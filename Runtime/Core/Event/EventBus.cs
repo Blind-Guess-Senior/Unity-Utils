@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Artifact.Utils.Utilities.DebugUtils;
+using UnityEngine;
 
 // ReSharper disable CheckNamespace
 
@@ -150,12 +151,12 @@ namespace Artifact.Utils.Core.Event
                 {
                     action?.Invoke(@event);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     ArtifactDebug.Log(
                         $"[Event Bus] Fatal: Invoke event {nameof(@event)}'s subscriber {nameof(action)} failed.",
                         DebugLogLevel.Fatal);
-                    // Debug.LogException(ex);
+                    Debug.LogException(ex);
                 }
             }
         }
