@@ -71,6 +71,7 @@ namespace Artifact.Utils.Editor.ClassDrawer
                         $"[DictionarySerializable - Drawer] This should never happen: {dictionary.GetType()} does not have TryAddPair().",
                         DebugLogLevel.Fatal);
                 }
+                tryAddMethod.Invoke(dictionary, null);
 
                 property.serializedObject.ApplyModifiedProperties();
             }

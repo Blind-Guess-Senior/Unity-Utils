@@ -1,6 +1,6 @@
 ﻿{
   "name" : "com.artifact.utils",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "displayName": "Artifact Unity Utils",
   "description": "A collection of utilities and general frameworks for Unity.",
   "unity": "6000.0",

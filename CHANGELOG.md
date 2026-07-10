@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [0.2.2] - 2026-07-11
+
+### Fixed
+
+- `DictionarySerializable` now will correctly add pair.
+
 ## [0.2.1] - 2026-07-09
 
 ### Fixed
