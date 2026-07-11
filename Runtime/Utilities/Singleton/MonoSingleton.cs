@@ -64,18 +64,14 @@ namespace Artifact.Utils.Utilities.Singleton
         /// </remarks>
         protected virtual void Awake()
         {
-            if (!_instance)
+            if (!_instance || _instance == this)
             {
                 _instance = this as T;
+                Init();
             }
             else
             {
                 Destroy(gameObject);
-            }
-
-            if (_instance == this)
-            {
-                Init();
             }
         }
 
