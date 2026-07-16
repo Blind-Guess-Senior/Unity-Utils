@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [0.2.4] - 2026-07-17
+
+### Fixed
+
+- Wrong serialize of `SerializableDictionary` caused by `SerializableDictionaryDrawer`.
+
 ## [0.2.3] - 2026-07-11
 
 ### Fixed

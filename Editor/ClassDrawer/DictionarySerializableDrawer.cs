@@ -41,6 +41,7 @@ namespace Artifact.Utils.Editor.ClassDrawer
                     Undo.RecordObject(property.serializedObject.targetObject, "Delete Key-Value Pair indexed" + i);
                     list.DeleteArrayElementAtIndex(i);
                     property.serializedObject.ApplyModifiedProperties();
+                    SyncDictionary(property);
                 }
 
                 GUILayout.Space(10); // The fixed space on the right side.
@@ -55,29 +56,54 @@ namespace Artifact.Utils.Editor.ClassDrawer
             GUILayout.FlexibleSpace();
             if (GUILayout.Button("Add", GUILayout.Width(60)))
             {
-                Undo.RecordObject(property.serializedObject.targetObject, "Add New Key-Value Pair");
-
-                property.serializedObject.ApplyModifiedProperties();
-
-                // Get relative object, method.
-                var target = property.serializedObject.targetObject;
-                var dictionary = fieldInfo.GetValue(target);
-                var tryAddMethod = dictionary.GetType().GetMethod("TryAddPair");
-
-                // Add key-value pair to dictionary.
-                if (tryAddMethod == null)
+                if (ContainsKey(list, pair))
                 {
                     ArtifactDebug.PackageLog(
-                        $"[DictionarySerializable - Drawer] This should never happen: {dictionary.GetType()} does not have TryAddPair().",
-                        DebugLogLevel.Fatal);
+                        "[DictionarySerializable - Drawer] Duplicate key.",
+                        DebugLogLevel.Warning);
                 }
-                tryAddMethod.Invoke(dictionary, null);
+                else
+                {
+                    Undo.RecordObject(property.serializedObject.targetObject, "Add New Key-Value Pair");
 
-                property.serializedObject.ApplyModifiedProperties();
+                    object newPairValue = pair.boxedValue;
+                    list.arraySize++;
+                    list.GetArrayElementAtIndex(list.arraySize - 1).boxedValue = newPairValue;
+
+                    property.serializedObject.ApplyModifiedProperties();
+                    SyncDictionary(property);
+                }
             }
 
             GUILayout.Space(10); // The fixed space on the right side.
             EditorGUILayout.EndHorizontal();
+        }
+
+        private static bool ContainsKey(SerializedProperty list, SerializedProperty pair)
+        {
+            SerializedProperty newKey = pair.FindPropertyRelative("key");
+
+            for (var i = 0; i < list.arraySize; i++)
+            {
+                SerializedProperty existingKey = list
+                    .GetArrayElementAtIndex(i)
+                    .FindPropertyRelative("key");
+
+                if (SerializedProperty.DataEquals(existingKey, newKey))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void SyncDictionary(SerializedProperty property)
+        {
+            var target = property.serializedObject.targetObject;
+            var dictionary = fieldInfo.GetValue(target);
+
+            ((ISerializationCallbackReceiver)dictionary).OnAfterDeserialize();
         }
 
         #endregion
